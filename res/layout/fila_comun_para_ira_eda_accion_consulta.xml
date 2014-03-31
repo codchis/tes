@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/alto_fila_comun_ira_eda_accion"
+    android:orientation="horizontal"
+    android:clickable="true"
+    android:background="@drawable/selector_fila_tabla" >
+    
+    <TextView android:id="@+id/txtFecha"
+        android:layout_width="@dimen/columna_comun_ira_eda_accion_fecha"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="[dd-MMM-aaaa]"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtUM"
+        android:layout_width="@dimen/columna_comun_ira_eda_accion_um"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="[unidad medica]"
+        android:gravity="center"/>    
+    
+    <TextView android:id="@+id/txtClave"
+        android:layout_width="@dimen/columna_comun_ira_eda_accion_clave"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="[clave]"
+        android:gravity="center" />
+    
+    <TextView android:id="@+id/txtDetalle"
+        android:layout_width="@dimen/columna_comun_ira_eda_accion_detalle"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="[detalle]"
+        android:gravity="center" />
+    
+    <TextView android:id="@+id/txtTratamiento"
+        android:layout_width="@dimen/columna_comun_ira_eda_accion_tratamiento"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="[tratamiento]"
+        android:gravity="center" />
+    
+</LinearLayout>

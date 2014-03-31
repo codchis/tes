@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Visualiza lectura de una TES -->    
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        
+	    <TextView android:layout_alignParentLeft="true" 
+	        android:layout_width="match_parent" 
+	        android:layout_height="wrap_content"
+	        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+	        android:text="Guardar cambios en la TES" />
+	    
+	    <ImageButton android:layout_alignParentRight="true"
+	        android:background="@android:color/transparent"
+	        android:id="@+id/btnAyuda"
+	        android:layout_width="30dp"
+	        android:layout_height="30dp"
+	        android:scaleType="centerCrop"
+	        android:src="@drawable/ayuda"
+	        android:contentDescription="@string/ayuda"/>
+	    
+	    <!-- Línea horizontal -->
+	    <View android:id="@+id/linea" 
+	        android:layout_below="@+id/btnAyuda"
+	        android:layout_width="match_parent"
+	        android:layout_height="1dp"
+	        android:background="@android:color/darker_gray" />
+
+	    <TextView android:layout_alignParentLeft="true"
+	        android:layout_below="@+id/linea"
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content"
+	        android:text="@string/acerque_tes_guardar"/>
+	    
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+	        android:paddingLeft="5dp"
+	        android:paddingRight="5dp"
+	        android:src="@drawable/tarjeta"
+	        android:contentDescription="@string/acerque_tes"/>
+	    
+	    
+	    <!-- El comportamiento de este botón es solo de salir -->
+	    <Button
+	        android:id="@+id/btnCancelar"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentBottom="true"
+	        android:layout_centerHorizontal="true"
+	        style="@style/boton"
+	        android:text="Continuar sin Grabar en TES" />
+	    
+    </RelativeLayout>

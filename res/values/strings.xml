@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TES</string>
+    <!-- caracteres permitidos aplica en el atributo digits -->
+    <string name="caracteres_permitidos">abcdefghijklmnñopqrstuvwxyz0123456789 ABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóúÁÉÍÓÚüÜ\'</string>
+    <string name="title_seccion_detail">Seccion Detail</string>
+    <string name="desconocido">DESCONOCIDO</string>
+    <string name="ninguno">NINGUNO</string>
+    <string name="acra_mensaje">La aplicación se ha detenido.\nSe enviará un informe de lo sucedido y se cerrará la aplicación.</string>
+    <string name="primera_vez">Primera vez</string>
+    <string name="secuencial">Subsecuente</string>
+    <string name="MARCA_VACUNA">X</string>
+    <string name="acerque_tes">Toque la tableta con la TES</string>
+    <string name="acerque_tes_de_nuevo">Hay pendientes que guardar en la tarjeta. Por favor toque la tableta con la TES una vez mas.</string>
+    <string name="acerque_tes_guardar">Toque la tableta con la TES para guardar</string>
+    <string name="informacion_guardada_en_tes">Información del paciente guardada en TES</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="ayuda">Ayuda</string>
+    <string name="agregar">Agregar</string>
+    <string name="usuario">Usuario</string>
+    <string name="invitado">Invitado</string>
+    <string name="sin_resultados">Sin resultados</string>
+    <string name="fecha">Fecha</string>
+    <string name="descripcion">Descripción</string>
+    <string name="clave">Clave</string>
+    <string name="detalle">Detalle</string>
+    <string name="tratamiento">Tratamiento</string>
+    <string name="datos_paciente">Datos del paciente</string>
+    <string name="actualizar_domicilio">Actualizar Domicilio</string>
+    <string name="actualizar_um">Asignar Paciente a esta Unidad Médica</string>
+    <string name="agregar_alergia">Agregar Alergia o Riesgo</string>
+    
+    <string name="agregar_vacuna">Agregar Vacuna</string>
+    <string name="agregar_nutricion">Agregar Control Nutricional</string>
+    <string name="agregar_eda">Agregar Control EDA</string>
+    <string name="agregar_ira">Agregar Control IRA</string>
+    <string name="agregar_accion">Agregar Accion Nutricional</string>
+    <string name="agregar_consulta">Agregar Control Consulta</string>
+    <string name="registrar_visita">Registrar visita</string>
+    
+    <string name="nombre">Nombre</string>
+    <string name="curp">Pre Curp</string>
+    <string name="sexo">Sexo</string>
+    <string name="grupo_sanguineo">G Sang</string>
+    <string name="fecha_nacimiento">Fecha Nacimiento</string>
+    <string name="edad">Edad</string>
+    <string name="ano_nacimiento">Año nacido</string>
+    <string name="domicilio">Domicilio</string>
+    <string name="cp">CP</string>
+    <string name="localidad">Localidad</string>
+    <string name="ageb">AGEB</string>
+    <string name="bcg">BCG</string>
+    <string name="hepatitis_b">Hepatitis B</string>
+    <string name="pentavalente">Pentavalente</string>
+    <string name="dpt">DPT</string>
+    <string name="rotavirus">Rotavirus</string>
+
+    <!-- AVISOS A USUARIO -->
+    <string name="aviso_llenar_campos">Favor de llenar todos los campos</string>
+    <string name="aviso_llenar_calle">Favor de registrar una calle</string>
+    
+    <!-- Tipos de censo visualizables -->
+    <string name="estatal">Estatal</string>
+    <string name="jurisdiccion">Jurisdicción</string>
+    <string name="municipio">Municipio</string>
+    <string name="unidad_medica">Unidad Médica</string>
+    <string name="localidad">Localidad</string>
+    
+    <string-array name="id_tipo_censo">
+        <item><!-- Localidad 0 no se usa --></item>
+        <item>@string/estatal</item>
+        <item>@string/jurisdiccion</item>
+        <item>@string/municipio</item>
+        <item>@string/unidad_medica</item>
+        <item>@string/localidad</item>
+    </string-array>
+    
+    <!-- Menú superior -->
+    <string name="atencion">Atención</string>
+    <string name="censo_nominal">Censo Nominal</string>
+    <string name="notificaciones">Notificaciones</string>
+    <string name="invitados">Invitados</string>
+    <string name="esquemas">Esquemas</string>
+    <string name="sincronizacion">Sincronización</string>
+    <string name="configuracion">Configuración</string>
+    <string name="cerrar_sesion">Cerrar Sesión</string>
+    
+    <string name="listar">Listar</string>
+    
+    <!-- Opciones de cuadros de diálogo -->
+    <string name="actualizar">Actualizar</string>
+    
+    <!-- OPCIONES DE SPINNER -->
+    <string name="indistinto">Indistinto</string>
+    <string name="masculino">Masculino</string>
+    <string name="femenino">Femenino</string>
+    
+    <!-- Para comparaciones en código basadas en estas letras -->
+    <string name="valor_masculino">M</string>
+    <string name="valor_femenino">F</string>
+    
+    <string-array name="opciones_sexo">
+        <item>@string/indistinto</item>
+        <item>@string/masculino</item>
+        <item>@string/femenino</item>
+    </string-array>
+    
+    <!-- SHARED PREFERENCES -->
+    <string name="url_sincronizacion">Url Sincronización</string>
+    <string name="url_sincronizacion_summary">Dirección del servidor usado para sincronizar</string>
+    <string name="reintentos_conexion">Reintentos de Conexión</string>
+    <string name="reintentos_conexion_summary">El número de intentos para conectar con servidor en fallos de conexión</string>
+    <string name="tiempo_espera_reintento">Tiempo de espera de reintento</string>
+    <string name="tiempo_espera_reintento_summary">El tiempo de espera en milisegundos entre intentos al haber error de conexión al servidor</string>
+    
+    <!-- TEXTOS DE AYUDA -->
+    <string name="ayuda_temporal">Ayuda temporal</string>
+    <string name="ayuda_login">Si ha instalado por primera vez la TES, presione el botón \'Sincronizar\' para actualizar los contenidos de la TES Móvil.  Antes de realizar este proceso, es necesario que se asegure de contar con una conexión a Internet.\n\n Seleccione del listado de usuarios su usuario, capture su contraseña y de clic en \'Acceder\' para entrar a la TES Móvil.\n\n En caso de ser un invitado temporal, da clic en \'Acceder como Invitado Temporal\', seleccione su usuario y presione \'Acceder\'.</string>
+    <string name="ayuda_tes_login">Acerque la Tarjeta Electrónica de Salud del paciente para levantar su información.\n\n En caso que el paciente no cuente con su TES, presione \'Cancelar\' y deberá acceder a los datos de la persona desde la opción del menú \'Censo Nominal\' o \'Esquemas Incompletos\'.</string>
+    <string name="ayuda_tes_guardar">Acerque la Tarjeta Electrónica de Salud del paciente para escribir su nueva información.\n\n En caso que el paciente no cuente con su TES, presione \'Continuar sin Grabar en TES\'.</string>
+    <string name="ayuda_agregar_alergia">Para agregar una alergia al paciente, seleccione del listado de el alérgeno al que es sensible el paciente.  Una vez seleccionado, presione \'Agregar Alergia\'.</string>
+    <string name="ayuda_ver_datos_paciente">Esta pantalla contiene los datos básicos del paciente que está atendiendo.  Para conocer sus controles, utilice el menú del lado izquierdo para ir a Vacunas, Controles o Acciones Nutricionales, IRAs, EDAs y Otras Consultas.</string>
+    <string name="ayuda_actualizar_domicilio">En caso que el domicilio del paciente se haya modificado, registre su nueva dirección procurando especificar la mayoría de sus campos.  Una vez que haya finalizado con la captura, presione \'Actualizar Domicilio\'.</string>
+    <string name="ayuda_actualizar_um">Para modificar la UM tratante del paciente a la UM que atiende esta tableta, de clic en el botón \'Asignar Paciente a esta Unidad Médica\'.</string>
+    <string name="ayuda_configuracion">Desde esta pantalla puede modificar la dirección a la cual se realizan las sincronizaciones de esta tableta.  Puede ser motivo de error el modificar esta dirección si no se cuenta con el conocimiento requerido.  Una vez modificada la dirección, de click en el botón \'Actualizar\'.</string>
+    <string name="ayuda_ver_acciones_nutricionales">La siguiente tabla muestra las Acciones Nutricionales que ha recibido el paciente, indicando la fecha de atención, UM que realizó el control y la acción emprendida.</string>
+    <string name="ayuda_boton_agregar_accion_nutricional">Si desea agregar una nueva Acción Nutricional al paciente, de clic en \'Agregar Acción Nutricional\'.</string>
+    <string name="ayuda_agregar_accion_nutricional">Indique la Acción nutricional que desea agregar al usuario desde el listado \'Acciones Nutricionales\'.  Una vez seleccionada, presione el botón \'Agregar\'.</string>
+    <string name="ayuda_ver_consultas">La siguiente tabla muestra las Consultas que ha recibido el paciente, indicando la fecha de atención, UM que realizó la consulta, la descripción de la afección por la cual recibió atención y el tratamiento recibido.</string>
+    <string name="ayuda_boton_agregar_consulta">Si desea agregar una nueva Consulta al paciente, de clic en \'Agregar Control Consulta\'.</string>
+    <string name="ayuda_agregar_consulta">Indique la afección por la cual recibió atención el paciente desde el listado de \'Afecciones\'.  Indique el tratamiento aplicado, desde el listado de \'Tratamiento\'.  Una vez seleccionados ambos, presione el botón \'Agregar\'.</string>
+    <string name="ayuda_ver_edas">La siguiente tabla muestra las Consultas que ha recibido el paciente por Enfermedades Diarreicas Agudas (EDAs), indicando la fecha de atención, UM que realizó la consulta, la descripción de la afección por la cual recibió atención y el tratamiento recibido.</string>
+    <string name="ayuda_boton_agregar_eda">Si desea agregar un nuevo Control de EDAs, de click en \'Agregar Control EDA\'.</string>
+    <string name="ayuda_agregar_eda">Indique la afección por la cual recibió atención el paciente desde el listado de \'Afecciones\'.  Indique el tratamiento aplicado, desde el listado de \'Tratamiento\'.  Una vez seleccionados ambos, presione el botón \'Agregar\'.</string>
+    <string name="ayuda_ver_iras">La siguente tabla muestra las Consultas que ha recibido el paciente por Infecciones Respiratorias Agudas (IRAs), indicando la fecha de atención, UM que realizó la consulta, la descripción de la afección por la cual recibió atención y el tratamiento recibido.</string>
+    <string name="ayuda_boton_agregar_ira">Si desea agregar un nuevo Control de EDAs, de clic en \'Agregar Control IRA\'.</string>
+    <string name="ayuda_agregar_ira">Indique la afección por la cual recibió atención el paciente desde el listado de \'Afecciones\'.  Indique el tratamiento aplicado, desde el listado de \'Tratamiento\'.  Una vez seleccionados ambos, presione el botón \'Agregar\'.</string>
+    <string name="ayuda_ver_controles_nutricionales">El gráfico que aparece a continuación ubica el peso y talla del Paciente con referencia a los estándares de Peso y Talla Ideales, Desnutrición, Sobrepeso y Obesidad.  Para conocer los valores específicos de peso y edad, de clic en la algún punto de la línea que ilustra al Paciente (en color Azul).</string>
+    <string name="ayuda_boton_agregar_control_nutricional">Si desea agregar un nuevo Control de Nutricional, de clic en \'Agregar Control Nutricional\'.</string>
+    <string name="ayuda_agregar_control_nutricional">Indique el Peso y la Talla del Paciente para su captura.  Una vez ingresados los datos, presione el botón \'Agregar\'.</string>
+	<string name="ayuda_ver_vacunas">La gráfica que se muestra indica las vacunas que ha recibido el Paciente con una X.  En color rojo se muestra aquellas vacunas que están consideradas prioritarias y que requiere el Paciente de forma inmediata.  En color rosa se muestran aquellas vacunas que serán consideradas como esquema incompleto una vez superado el Periodo de Ventana del Esquemas Incompletos.\n\n Posteriormente se listan todas las Vacunas indicando Fecha, UM aplicante y la descripción de la Vacuna.\n\n Puede agregar una nueva vacuna dando clic sobre la casilla de la vacuna correspondiente desde la tabla de Vacunas o desde la sección inferior.</string>
+    <string name="ayuda_boton_agregar_vacuna">Si desea agregar una nueva Vacuna al Paciente, de clic en \'Agregar Vacuna\'.</string>
+    <string name="ayuda_agregar_vacuna">Indique la vacuna que está aplicando desde el listado \'Vacuna\'.  Capture el Número de Lote de la Vacuna aplicada.  Una vez ingresados los datos, presione el botón \'Agregar\'.</string>
+    <string name="ayuda_notificaciones">Esta sección muestra las notificaciones que son enviadas desde Oficina Central y otros coordinadores de Vacunación Estatales y Jurisdiccionales.</string>
+    <string name="ayuda_reportes">Las siguientes tablas muestran las atenciones realizadas por esta tableta.  El primer listado muestra las Vacunas que aún no están registradas en el Servidor Central.  El segundo listado muestra el total de Vacunas aplicadas.</string>
+    <string name="ayuda_sincronizacion">Esta sección es para sincronizar los contenidos de la Tableta con el Servidor Central.  La pantalla indica: La versión Actual de la TES Móvil instalada, la fecha de la última Sincronización realizada con éxito, el total de controles (Vacunas, Nutricionales, IRAs, EDAs, Consultas y Acciones) que no han sido reportados al Servidor Central, el nombre de la UM a la que sirve esta aplicación y el total de pacientes modificados (en su dirección, alergias o UM tratante) que no han sido reportados al Servidor Central.\n\n Antes de realizar este proceso, es necesario que se asegure de contar con una conexión a Internet.</string>
+    <string name="ayuda_visitar">Indique la causa por la cual no se pudo aplicar la vacuna en esta visita de la lista de opciones.\n\nNOTA: Este proceso sacará al paciente del listado de esquema incompleto de ESTA tableta</string>
+    <string name="ayuda_prioridades">Muestra el total de vacunas requeridas con los esquemas incompletos que se ven actualmente en pantalla</string>
+    
+    
+</resources>

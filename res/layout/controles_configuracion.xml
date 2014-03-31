@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- Título -->
+    <include 
+    	android:id="@+id/barra_titulo_ver"
+        layout="@layout/barra_titulo"/>
+	
+    <!-- Contenido -->
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+        
+        <TextView android:layout_weight="30"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/url_sincronizacion"/>
+        
+        <EditText android:layout_weight="70" 
+            android:id="@+id/txtUrl" 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="textUri"/>
+    </LinearLayout>
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+        
+        <TextView android:layout_weight="50"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Días que un padecimiento de IRA es visible"/>
+        
+        <EditText android:layout_weight="50" 
+            android:id="@+id/txtFiltroIras" 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:maxLength="3"
+            android:inputType="number"/>
+    </LinearLayout>
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+        
+        <TextView android:layout_weight="50"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Días que un padecimiento de EDA es visible"/>
+        
+        <EditText android:layout_weight="50" 
+            android:id="@+id/txtFiltroEdas" 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:maxLength="3"
+            android:inputType="number"/>
+    </LinearLayout>
+    
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+        
+        <TextView android:layout_weight="50"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Días que un padecimiento de Consulta es visible"/>
+        
+        <EditText android:layout_weight="50" 
+            android:id="@+id/txtFiltroConsultas" 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:maxLength="3"
+            android:inputType="number"/>
+    </LinearLayout>
+    
+    <Button
+        android:id="@+id/btnActualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="@string/actualizar" />
+    
+</LinearLayout>

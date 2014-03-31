@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="30dp" >
+
+        <LinearLayout
+            android:id="@+id/accion_ver_datos_paciente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <!-- Título -->
+
+            <include
+                android:id="@+id/barra_titulo_ver"
+                layout="@layout/barra_titulo" />
+
+            <!-- Contenido -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nombre" />
+
+                <EditText
+                    android:id="@+id/txtNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="text"
+                    android:singleLine="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/curp" />
+
+                <EditText
+                    android:id="@+id/txtCurp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/edad" />
+
+                <EditText
+                    android:id="@+id/txtEdad"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="text" />
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sexo" />
+
+                <EditText
+                    android:id="@+id/txtSexo"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="text" />
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/grupo_sanguineo" />
+
+                <EditText
+                    android:id="@+id/txtSangre"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/domicilio" />
+
+                <EditText
+                    android:id="@+id/txtDireccion"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:inputType="text" />
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cp" />
+
+                <EditText
+                    android:id="@+id/txtCP"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:enabled="false"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="Referencia" />
+
+                <EditText
+                    android:id="@+id/txtReferencia"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="AGEB" />
+
+                <EditText
+                    android:id="@+id/txtAGEB"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:inputType="text"
+                    android:maxLength="4" />
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sector" />
+
+                <EditText
+                    android:id="@+id/txtSector"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:inputType="text"
+                    android:maxLength="4" />
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Manzana" />
+
+                <EditText
+                    android:id="@+id/txtManzana"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:inputType="text"
+                    android:maxLength="3" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/localidad" />
+
+                <EditText
+                    android:id="@+id/txtLocalidad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha Reg. Civil" />
+
+                <EditText
+                    android:id="@+id/txtFechaRegistroCivil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="Localidad Reg. Civil" />
+
+                <EditText
+                    android:id="@+id/txtLocalidadRegistroCivil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="UM Tratante" />
+
+                <EditText
+                    android:id="@+id/txtUnidadMedicaTratante"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="Madre / Tutor" />
+
+                <EditText
+                    android:id="@+id/txtTutor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alergias y antecedentes heredofamiliares de riesgo:"
+                android:textStyle="bold" />
+
+            <com.siigs.tes.ui.ListaSimple
+                android:id="@+id/lsAlergiasActuales"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:listitem="@android:layout/simple_list_item_checked" />
+
+            <!-- Si no hay alergias, este view debe visualizarse -->
+
+            <TextView
+                android:id="@+id/lblSinAlergiasVer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(Sin alergias)"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/accion_editar_domicilio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical" >
+
+            <!-- Título -->
+
+            <include
+                android:id="@+id/barra_titulo_domicilio"
+                layout="@layout/barra_titulo" />
+
+            <!-- Domicilio -->
+
+            <TextView 
+                style="@android:style/TextAppearance.DeviceDefault.DialogWindowTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/nombre_usuario"
+                android:text="@string/domicilio" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="Calle" />
+
+                <EditText
+                    android:id="@+id/txtCalle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="@string/caracteres_permitidos"
+                    android:inputType="text"
+                    android:singleLine="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="No." />
+
+                <EditText
+                    android:id="@+id/txtNumero"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:digits="@string/caracteres_permitidos"
+                    android:singleLine="true" />
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Colonia" />
+
+                <EditText
+                    android:id="@+id/txtColonia"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:digits="@string/caracteres_permitidos"
+                    android:singleLine="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="Referencia" />
+
+                <EditText
+                    android:id="@+id/txtReferenciaEditar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:digits="@string/caracteres_permitidos"
+                    android:singleLine="true" />
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="C.P." />
+
+                <EditText
+                    android:id="@+id/txtCPeditar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".3"
+                    android:inputType="number"
+                    android:singleLine="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="AGEB" />
+
+                <EditText
+                    android:id="@+id/txtAGEBeditar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:digits="@string/caracteres_permitidos"
+                    android:inputType="textCapCharacters"
+                    android:maxLength="4" />
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sector" />
+
+                <EditText
+                    android:id="@+id/txtSectorEditar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:digits="@string/caracteres_permitidos"
+                    android:inputType="text"
+                    android:maxLength="4" />
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Manzana" />
+
+                <EditText
+                    android:id="@+id/txtManzanaEditar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:digits="@string/caracteres_permitidos"
+                    android:inputType="text"
+                    android:maxLength="3" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/localidad" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/acLocalidad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:completionThreshold="1"
+                    android:digits="@string/caracteres_permitidos"
+                    android:ems="10"
+                    android:hint="Debe seleccionar una localidad"
+                    android:lines="3" >
+                </AutoCompleteTextView>
+                
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnActualizarDireccion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="@string/actualizar_domicilio" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/accion_editar_um"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical" >
+
+            <!-- Título -->
+
+            <include 
+                android:id="@+id/barra_titulo_um"
+                layout="@layout/barra_titulo"/>
+            
+            
+            <!-- Unidad Médica -->
+            <TextView
+                android:layout_marginTop="10dp"
+                style="@android:style/TextAppearance.DeviceDefault.DialogWindowTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/nombre_usuario"
+                android:text="UM Tratante" />
+            
+            <Button android:id="@+id/btnActualizarUM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="@string/actualizar_um"/>
+            
+        </LinearLayout>
+        
+        
+        <LinearLayout
+            android:id="@+id/accion_editar_alergias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical" >
+
+            <!-- Título -->
+
+            <include 
+                android:id="@+id/barra_titulo_alergias"
+                layout="@layout/barra_titulo"/>
+            
+            <!-- Reacciones alérgicas -->
+            <TextView
+                android:layout_marginTop="10dp"
+                style="@android:style/TextAppearance.DeviceDefault.DialogWindowTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/nombre_usuario"
+                android:text="Seleccione la alergia o riesgo heredofamiliar a agregar en paciente" />
+            
+            <!-- Al implementar esto checar: 
+            http://www.androidhive.info/2013/07/android-expandable-list-view-tutorial/ -->
+
+            <Spinner
+                android:id="@+id/spAlergiaAgregar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/fila_principalfragment" />
+            
+            <Button android:id="@+id/btnAgregarAlergia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="@string/agregar_alergia"/>
+            
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

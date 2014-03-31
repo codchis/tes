@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" 
+    android:layout_height="wrap_content" >
+
+    <TextView 
+        android:id="@+id/lblTitulo"
+        android:layout_alignParentLeft="true"
+        style="@style/nombre_usuario"
+        android:layout_marginRight="@dimen/separacion_nombre_usuario_de_botones_menu"
+        android:text="[Usuario]"/>
+    
+    <HorizontalScrollView
+        android:background="@color/boton_menu_normal"
+        android:layout_toRightOf="@+id/lblTitulo"
+        android:layout_width="match_parent" 
+        android:layout_height="match_parent"
+        >
+        
+        <LinearLayout 
+            android:background="@drawable/gradiente_verde"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" 
+            android:gravity="right">
+            
+            
+            <TextView
+                android:id="@+id/mnAtencion"
+			    style="@style/boton_menu_superior"
+			    android:drawableLeft="@drawable/atencion"
+			    android:text="@string/atencion"/>
+		    
+            <TextView
+                android:id="@+id/mnCenso"
+			    style="@style/boton_menu_superior"
+			    android:drawableLeft="@drawable/censo"
+			    android:text="@string/censo_nominal"/>
+		    
+            <TextView
+                android:id="@+id/mnNotificaciones"
+			    style="@style/boton_menu_superior"
+			    android:drawableLeft="@drawable/notificacion"
+			    android:text="@string/notificaciones"/>
+            
+            <TextView
+                android:id="@+id/mnEsquemas"
+			    style="@style/boton_menu_superior"
+			    android:drawableLeft="@drawable/esquema"
+			    android:text="@string/esquemas"/>
+            
+            <TextView
+                android:id="@+id/mnSincronizacion"
+			    style="@style/boton_menu_superior"
+			    android:drawableLeft="@drawable/sincronizacion"
+			    android:text="@string/sincronizacion"/>
+		    
+            <TextView
+                android:id="@+id/mnConfiguracion"
+			    style="@style/boton_menu_superior"
+			    android:drawableLeft="@drawable/configuracion"
+			    android:text="@string/configuracion"/>
+		    
+            <TextView
+                android:id="@+id/mnInvitados"
+			    style="@style/boton_menu_superior"
+			    android:drawableLeft="@drawable/invitados"
+			    android:text="@string/invitados"/>
+		    
+            <TextView
+                android:id="@+id/mnCerrar"
+			    style="@style/boton_menu_superior"
+			    android:drawableLeft="@drawable/cerrar"
+			    android:text="@string/cerrar_sesion"/>
+		    
+            
+		</LinearLayout>
+    
+    </HorizontalScrollView>
+
+</RelativeLayout>

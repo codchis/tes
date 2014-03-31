@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Selector para definir los estados de color/forma/fondo que tiene un item de lista
+Este selector está enfocado en particular para los items de {@link PrincipalFragment}
+a travéz del layout {@link fila_principalfragment} -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <item 
+        android:state_pressed="true"
+        android:drawable="@color/boton_menu_presionado" />
+
+    <!-- Estos sirven cuando se usa teclado externo -->
+    <item 
+        android:state_selected="true"
+        android:drawable="@color/boton_menu_activado" />
+    <item 
+        android:state_focused="true"
+        android:drawable="@color/boton_menu_activado" />
+    <!-- Fin solo teclado -->
+
+
+    
+    <item 
+        android:state_activated="true" 
+        android:drawable="@color/boton_menu_activado" />
+    
+    <item 
+        android:drawable="@color/boton_menu_normal"/>
+    
+    
+</selector>

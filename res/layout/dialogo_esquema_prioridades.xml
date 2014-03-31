@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Requerimientos de biológicos"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+
+        <ImageButton
+            android:id="@+id/btnAyuda"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/ayuda"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ayuda" />
+    </RelativeLayout>
+    <!-- Línea horizontal -->
+
+    <View
+        android:layout_width="400dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+    
+    <ScrollView 
+        android:layout_width="match_parent" 
+        android:layout_height="match_parent">
+        
+	    <GridLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:columnCount="2"
+	        android:rowCount="2" >
+	
+	
+	        <TextView
+	            android:layout_column="0"
+	            android:layout_gravity="left|center_vertical"
+	            android:layout_row="0"
+	            android:padding="@dimen/padding_prioridad"
+	            android:textStyle="bold"
+	            android:text="Vacuna" />
+	
+	        <TextView
+	            style="@style/celda_prioridad"
+	            android:layout_column="1"
+	            android:layout_row="0"
+	            android:textStyle="bold"
+	            android:text="Cantidad" />
+	        
+	        <TextView
+	            style="@style/celda_prioridad"
+	            android:layout_column="0"
+	            android:layout_row="1"
+	            android:text="@string/bcg" />
+	
+	        
+	        <TextView
+	            android:id="@+id/bcg_p"
+	            style="@style/celda_prioridad"
+	            android:layout_column="1"
+	            android:layout_row="1"
+	            android:text="¿¿" />
+	
+	        <TextView
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="HB1" />
+	
+	        <TextView
+	            android:id="@+id/hb1_p"
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="¿¿" />
+	
+	        <TextView
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="HB2" />
+	
+	        <TextView
+	            android:id="@+id/hb2_p"
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="¿¿" />
+	
+	        <TextView
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="HB3" />
+	
+	        <TextView
+	            android:id="@+id/hb3_p"
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="¿¿" />
+	
+	        <TextView
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="PA1" />
+	
+	        <TextView
+	            android:id="@+id/pa1_p"
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="¿¿" />
+	
+	        <TextView
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="PA2" />
+	
+	        <TextView
+	            android:id="@+id/pa2_p"
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="¿¿" />
+	
+	        <TextView
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="PA3" />
+	
+	        <TextView
+	            android:id="@+id/pa3_p"
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="¿¿" />
+	
+	        <TextView
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="PA4" />
+	
+	        <TextView
+	            android:id="@+id/pa4_p"
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="¿¿" />
+	
+	        <TextView
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="DPTR" />
+	
+	        <TextView
+	            android:id="@+id/dptr_p"
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="¿¿" />
+	
+	        <TextView
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="SRP1" />
+	
+	        <TextView
+	            android:id="@+id/srp1_p"
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="¿¿" />
+	
+	        <TextView
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="SRP2" />
+	
+	        <TextView
+	            android:id="@+id/srp2_p"
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="¿¿" />
+	
+	        <TextView
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="RV1" />
+	
+	        <TextView
+	            android:id="@+id/rv1_p"
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="¿¿" />
+	
+	        <TextView
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="RV2" />
+	
+	        <TextView
+	            android:id="@+id/rv2_p"
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="¿¿" />
+	
+	        
+	        <TextView
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="RV3" />
+	
+	        <TextView
+	            android:id="@+id/rv3_p"
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="¿¿" />
+	        
+	        <TextView
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="NC1" />
+	
+	        <TextView
+	            android:id="@+id/nc1_p"
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="¿¿" />
+	
+	        <TextView
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="NC2" />
+	
+	        <TextView
+	            android:id="@+id/nc2_p"
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="¿¿" />
+	
+	        <TextView
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="NC3" />
+	
+	        <TextView
+	            android:id="@+id/nc3_p"
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="¿¿" />
+	
+	        <TextView
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="IN1" />
+	
+	        <TextView
+	            android:id="@+id/in1_p"
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="¿¿" />
+	
+	        <TextView
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="IN2" />
+	
+	        <TextView
+	            android:id="@+id/in2_p"
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="¿¿" />
+	
+	        <TextView
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="INR" />
+	
+	        <TextView
+	            android:id="@+id/inr_p"
+	            style="@style/celda_prioridad"
+	            android:layout_gravity="left"
+	            android:text="¿¿" />
+	
+	    </GridLayout>
+
+	</ScrollView>
+	
+</LinearLayout>

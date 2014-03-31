@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Selector para definir estados visuales de un botón -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <item android:state_enabled="false"
+        android:drawable="@drawable/borde_gris"/>
+    
+    <item 
+        android:state_pressed="true"
+        android:state_enabled="true"
+        android:drawable="@color/boton_menu_activado" />
+
+    <item 
+        android:state_focused="true"
+        android:state_enabled="true"
+        android:drawable="@color/boton_menu_activado" />
+    
+    <item 
+        android:state_enabled="true"
+        android:drawable="@color/nombre_usuario"/>
+    
+</selector>

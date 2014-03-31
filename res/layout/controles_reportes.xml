@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="40dp"
+        android:orientation="vertical" >
+
+        
+
+           <!-- Título -->
+           <include 
+               android:id="@+id/barra_titulo"
+               layout="@layout/barra_titulo"/>
+           
+           
+           <TextView 
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Vacunaciones sin sincronizar"/>
+           
+           <!-- Contenido -->
+           <HorizontalScrollView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:layout_marginTop="10dp">
+
+           <!-- CONTENEDOR PRINCIPAL DE RESULTADOS -->
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="vertical" >
+
+               <!-- CABECERA DE RESULTADOS DEL LISTVIEW -->
+               
+               <LinearLayout android:orientation="horizontal"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   style="@style/celda_header">
+                   
+                   <TextView 
+                       android:layout_width="@dimen/columna_reportes_vacunas_vacuna" 
+                       android:layout_height="match_parent"
+                       android:text="Vacuna" 
+                       android:gravity="center" 
+                       style="@style/celda_header" />
+                   
+                   <TextView 
+                       android:layout_width="@dimen/columna_reportes_vacunas_aplicadas" 
+                       android:layout_height="match_parent"
+                       android:text="Aplicadas" 
+                       android:gravity="center" 
+                       style="@style/celda_header" />        
+                   
+                   <TextView 
+                       android:layout_width="@dimen/columna_reportes_vacunas_lotes" 
+                       android:layout_height="match_parent"
+                       android:text="Lotes" 
+                       android:gravity="center" 
+                       style="@style/celda_header" />
+                   
+                   <TextView 
+                       android:layout_width="@dimen/columna_reportes_vacunas_sinlote" 
+                       android:layout_height="match_parent"
+                       android:text="Sin Lote" 
+                       android:gravity="center" 
+                       style="@style/celda_header" />
+                   
+               </LinearLayout>
+
+
+			<!-- DATOS -->
+               <com.siigs.tes.ui.ListaSimple
+               android:orientation="vertical"
+               android:id="@+id/lsSinSincronizar"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               tools:listitem="@android:layout/simple_list_item_checked" />
+
+           </LinearLayout>
+           
+       </HorizontalScrollView>
+
+           
+       <TextView 
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Todas las vacunaciones"/>
+           
+           <!-- Contenido -->
+           <HorizontalScrollView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:layout_marginTop="10dp">
+
+           <!-- CONTENEDOR PRINCIPAL DE RESULTADOS -->
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="vertical" >
+
+               <!-- CABECERA DE RESULTADOS DEL LISTVIEW -->
+               
+               <LinearLayout android:orientation="horizontal"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   style="@style/celda_header">
+                   
+                   <TextView 
+                       android:layout_width="@dimen/columna_reportes_vacunas_vacuna" 
+                       android:layout_height="match_parent"
+                       android:text="Vacuna" 
+                       android:gravity="center" 
+                       style="@style/celda_header" />
+                   
+                   <TextView 
+                       android:layout_width="@dimen/columna_reportes_vacunas_aplicadas" 
+                       android:layout_height="match_parent"
+                       android:text="Aplicadas" 
+                       android:gravity="center" 
+                       style="@style/celda_header" />        
+                   
+                   <TextView 
+                       android:layout_width="@dimen/columna_reportes_vacunas_lotes" 
+                       android:layout_height="match_parent"
+                       android:text="Lotes" 
+                       android:gravity="center" 
+                       style="@style/celda_header" />
+                   
+                   <TextView 
+                       android:layout_width="@dimen/columna_reportes_vacunas_sinlote" 
+                       android:layout_height="match_parent"
+                       android:text="Sin Lote" 
+                       android:gravity="center" 
+                       style="@style/celda_header" />
+                   
+               </LinearLayout>
+
+
+			<!-- DATOS -->
+               <com.siigs.tes.ui.ListaSimple
+               android:orientation="vertical"
+               android:id="@+id/lsTodos"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               tools:listitem="@android:layout/simple_list_item_checked" />
+
+           </LinearLayout>
+           
+       </HorizontalScrollView>
+           
+           	        
+    </LinearLayout>
+
+</ScrollView>

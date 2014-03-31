@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fila de resultados visualizados en controles_censo_censo_nominal.xml 
+Este diseño debe hacer match perfecto en cantidad de controles y ancho
+de cada uno con la cabecera del xml que lo usa para simular vista
+similar a una tabla -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/selector_fila_tabla" >
+    
+    <LinearLayout
+        android:orientation="vertical" 
+        android:clickable="true" 
+        android:background="@drawable/selector_link_lista"
+        android:layout_width="70dp"
+        android:layout_height="match_parent">
+        
+	    <TextView android:id="@+id/txtPaterno"
+	        android:background="@drawable/borde_gris"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:text="Paterno"
+	        android:gravity="center"
+	        android:textStyle="bold"
+	        android:textColor="@color/link_texto"/>
+        
+	    <TextView android:id="@+id/txtPaternoTutor"
+	        android:background="@drawable/borde_gris"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:text="Paterno"
+	        android:gravity="center"
+	        android:textColor="@color/link_texto"/>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:orientation="vertical" 
+        android:clickable="true" 
+        android:background="@drawable/selector_link_lista"
+        android:layout_width="70dp"
+        android:layout_height="match_parent">
+        
+	    <TextView android:id="@+id/txtMaterno"
+	        android:background="@drawable/borde_gris"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:text="Materno"
+	        android:gravity="center"
+	        android:textStyle="bold"
+	        android:textColor="@color/link_texto"/>
+        
+	    <TextView android:id="@+id/txtMaternoTutor"
+	        android:background="@drawable/borde_gris"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:text="Materno"
+	        android:gravity="center"
+	        android:textColor="@color/link_texto"/>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:orientation="vertical" 
+        android:clickable="true" 
+        android:background="@drawable/selector_link_lista"
+        android:layout_width="70dp"
+        android:layout_height="match_parent">
+        
+	    <TextView android:id="@+id/txtNombre"
+	        android:background="@drawable/borde_gris"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:text="Nombre"
+	        android:gravity="center"
+	        android:textStyle="bold"
+	        android:textColor="@color/link_texto"/>
+        
+	    <TextView android:id="@+id/txtNombreTutor"
+	        android:background="@drawable/borde_gris"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:text="Nombre"
+	        android:gravity="center"
+	        android:textColor="@color/link_texto"/>
+    </LinearLayout>
+    
+    <TextView android:id="@+id/txtDomicilio"
+        android:layout_width="140dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="[Calle], [Numero], + [Colonia]. + [Referencia]"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtCurp"
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="saca830223456chs0723"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtAGEB"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="ageb"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtFechaNacimiento"
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="dd-Feb-aaaa"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtPartoMultiple"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="[trillisos 4]"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtSexo"
+        android:layout_width="13dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="X"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtBCG_U"
+        android:tag="vacuna"
+        android:layout_width="@dimen/columna_censo"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="¿"
+        android:gravity="center" />
+    
+    <TextView android:id="@+id/txtHepatitis_1"
+        android:tag="vacuna"
+        android:layout_width="@dimen/columna_censo"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="¿"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtHepatitis_2"
+        android:tag="vacuna"
+        android:layout_width="@dimen/columna_censo"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="¿"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtHepatitis_3"
+        android:tag="vacuna"
+        android:layout_width="@dimen/columna_censo"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="¿"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtPentavalente_1"
+        android:tag="vacuna"
+        android:layout_width="@dimen/columna_censo"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="¿"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtPentavalente_2"
+        android:tag="vacuna"
+        android:layout_width="@dimen/columna_censo"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="¿"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtPentavalente_3"
+        android:tag="vacuna"
+        android:layout_width="@dimen/columna_censo"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="¿"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtPentavalente_4"
+        android:tag="vacuna"
+        android:layout_width="@dimen/columna_censo"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="¿"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtDPT_R"
+        android:tag="vacuna"
+        android:layout_width="@dimen/columna_censo"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="¿"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtSRP_1"
+        android:tag="vacuna"
+        android:layout_width="@dimen/columna_censo"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="¿"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtSRP_2"
+        android:tag="vacuna"
+        android:layout_width="@dimen/columna_censo"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="¿"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtROTAVIRUS_1"
+        android:tag="vacuna"
+        android:layout_width="@dimen/columna_censo"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="¿"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtROTAVIRUS_2"
+        android:tag="vacuna"
+        android:layout_width="@dimen/columna_censo"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="¿"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtROTAVIRUS_3"
+        android:tag="vacuna"
+        android:layout_width="@dimen/columna_censo"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="¿"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtNEUMOCOCO_1"
+        android:tag="vacuna"
+        android:layout_width="@dimen/columna_censo"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="¿"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtNEUMOCOCO_2"
+        android:tag="vacuna"
+        android:layout_width="@dimen/columna_censo"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="¿"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtNEUMOCOCO_3"
+        android:tag="vacuna"
+        android:layout_width="@dimen/columna_censo"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="¿"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtINFLUENZA_1"
+        android:tag="vacuna"
+        android:layout_width="@dimen/columna_censo"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="¿"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtINFLUENZA_2"
+        android:tag="vacuna"
+        android:layout_width="@dimen/columna_censo"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="¿"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtINFLUENZA_R"
+        android:tag="vacuna"
+        android:layout_width="@dimen/columna_censo"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="¿"
+        android:gravity="center"/>
+    
+    <ImageButton android:id="@+id/btnVisitar"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/visitas"/>
+    
+</LinearLayout>

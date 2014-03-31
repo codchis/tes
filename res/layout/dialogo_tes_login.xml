@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Visualiza lectura de una TES -->    
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        
+	    <TextView android:layout_alignParentLeft="true" 
+	        android:layout_width="match_parent" 
+	        android:layout_height="wrap_content"
+	        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+	        android:text="@string/acerque_tes" />
+	    
+	    <ImageButton android:layout_alignParentRight="true"
+	        android:background="@android:color/transparent"
+	        android:id="@+id/btnAyuda"
+	        android:layout_width="30dp"
+	        android:layout_height="30dp"
+	        android:scaleType="centerCrop"
+	        android:src="@drawable/ayuda"
+	        android:contentDescription="@string/ayuda"/>
+	    
+	    <!-- Línea horizontal -->
+	    <View android:layout_below="@+id/btnAyuda"
+	        android:layout_width="match_parent"
+	        android:layout_height="1dp"
+	        android:background="@android:color/darker_gray" />
+
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+	        android:layout_marginLeft="5dp"
+	        android:layout_marginRight="5dp"
+	        android:src="@drawable/tarjeta"
+	        android:contentDescription="@string/acerque_tes"/>
+    
+	    <TextView 
+	        android:id="@+id/txtPasarTesDeNuevo"
+	        android:visibility="gone"
+	        android:textStyle="bold"
+	        android:textSize="16sp"
+	        android:padding="10dp"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_above="@+id/btnCancelar"
+	        android:text="@string/acerque_tes_de_nuevo"/>
+	    
+	    <Button android:layout_alignParentBottom="true" 
+	        android:id="@+id/btnCancelar"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+	        style="@style/boton"
+	        android:text="@string/cancelar"/>
+    
+    </RelativeLayout>

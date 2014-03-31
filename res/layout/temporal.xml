@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <com.siigs.tes.ui.VerticalTextView 
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradiente_verde"
+        android:text="Rotado" />
+    
+    <com.siigs.tes.ui.VerticalTextView 
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradiente_rojo"
+        android:text="Mucho más rotado" />
+    
+    <com.siigs.tes.ui.VerticalTextView 
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradiente_azul"
+        android:text="Normalito" />
+    
+    <com.siigs.tes.ui.VerticalTextView 
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradiente_celeste"
+        android:text="Mucho más rotado" />
+    
+    <com.siigs.tes.ui.VerticalTextView 
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradiente_amarillo"
+        android:text="Mucho más rotado" />
+    
+    <com.siigs.tes.ui.VerticalTextView 
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradiente_naranja"
+        android:text="Mucho más rotado" />
+    
+    <com.siigs.tes.ui.VerticalTextView 
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradiente_azul_medio"
+        android:text="Mucho más rotado" />
+
+    <TextView
+        android:id="@+id/textView1"
+        style="@style/boton_menu_superior"
+        android:text="Un texto menú"/>
+
+</LinearLayout>

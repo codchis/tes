@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Por seguir nomenclatura "grupo_subgrupo" el nombre de este layout
+se compone de Grupo:controles, Subgrupo:censo, Control:censo_nominal -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- Formulario filtro -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/atributo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="15"
+            android:text="@string/nombre" />
+
+        <EditText
+            android:id="@+id/txtNombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="35"
+            android:digits="@string/caracteres_permitidos"
+            android:singleLine="true" />
+
+        <TextView
+            style="@style/atributo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_weight="10"
+            android:text="@string/sexo" />
+
+        <Spinner
+            android:id="@+id/spSexo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="40"
+            tools:listitem="@android:layout/simple_spinner_dropdown_item" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/atributo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="15"
+            android:text="@string/ano_nacimiento" />
+
+        <EditText
+            android:id="@+id/txtAnoNacimiento"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="12"
+            android:inputType="number"
+            android:maxLength="4" />
+
+        <TextView
+            style="@style/atributo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:gravity="center_horizontal"
+            android:text="@string/ageb" />
+
+        <EditText
+            android:id="@+id/txtAGEB"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="13"
+            android:inputType="textCapCharacters"
+            android:digits="@string/caracteres_permitidos"
+            android:maxLength="4" />
+        
+        <Button
+            android:id="@+id/btnVerTodos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_weight="25"
+            android:text="Ver Todos" />
+
+        <Button
+            android:id="@+id/btnFiltrar"
+            android:drawableStart="@drawable/filtro"
+            android:drawablePadding="-80dp"
+            android:paddingLeft="50dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="25"
+            android:text="Filtrar" />
+    </LinearLayout>
+
+    <!-- Contenido de resultados -->
+
+    <HorizontalScrollView
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <!-- CONTENEDOR PRINCIPAL DE RESULTADOS -->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <!-- CABECERA DE RESULTADOS DEL LISTVIEW -->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/celda_header"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/celda_header" >
+
+                    <TextView
+                        android:id="@+id/nombre_apellidos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        style="@style/celda_header"
+                        android:gravity="center"
+                        android:text="NOMBRE Y APELLIDOS" />
+
+                    <TextView
+                        android:id="@+id/paterno"
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/nombre_apellidos"
+                        style="@style/celda_header"
+                        android:gravity="center"
+                        android:text="Paterno" />
+
+                    <TextView
+                        android:id="@+id/materno"
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/nombre_apellidos"
+                        android:layout_toRightOf="@+id/paterno"
+                        style="@style/celda_header"
+                        android:gravity="center"
+                        android:text="Materno" />
+
+                    <TextView
+                        android:id="@+id/nombre"
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/nombre_apellidos"
+                        android:layout_toRightOf="@+id/materno"
+                        style="@style/celda_header"
+                        android:gravity="center"
+                        android:text="@string/nombre" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="match_parent"
+                    style="@style/celda_header"
+                    android:gravity="center"
+                    android:text="@string/domicilio" />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    style="@style/celda_header"
+                    android:gravity="center"
+                    android:text="@string/curp" />
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    style="@style/celda_header"
+                    android:gravity="center"
+                    android:text="@string/ageb" />
+                
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    style="@style/celda_header"
+                    android:gravity="center"
+                    android:text="@string/fecha_nacimiento" />
+
+                <TextView
+                    android:id="@+id/txtTituloParto"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    style="@style/celda_header"
+                    android:gravity="center"
+                    android:text="Parto Multiple" />
+                
+                <TextView
+                    android:layout_width="13dp"
+                    android:layout_height="match_parent"
+                    style="@style/celda_header"
+                    android:gravity="center"
+                    android:text="@string/sexo" />
+
+
+                    <!-- 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/celda_header"
+                        android:gravity="center"
+                        android:text="Esquema de Vacunación" />
+ 					-->
+
+                    <!-- Celdas de vacunas individuales (U,1,2,3,R,etc) -->
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/celda_header"
+                        android:orientation="horizontal" >
+
+                        <!-- BCG -->
+
+                        <TextView
+                            style="@style/header_vacuna"
+                            android:gravity="center"
+                            android:text="@string/bcg" />
+
+                        <!-- Hepatitis B -->
+
+                        <TextView
+                            style="@style/header_vacuna"
+                            android:gravity="center"
+                            android:text="HB1" />
+
+                        <TextView
+                            style="@style/header_vacuna"
+                            android:gravity="center"
+                            android:text="HB2" />
+
+                        <TextView
+                            style="@style/header_vacuna"
+                            android:gravity="center"
+                            android:text="HB3" />
+
+                        <!-- Pentavalente -->
+
+                        <TextView
+                            style="@style/header_vacuna"
+                            android:gravity="center"
+                            android:text="PA1" />
+
+                        <TextView
+                            style="@style/header_vacuna"
+                            android:gravity="center"
+                            android:text="PA2" />
+
+                        <TextView
+                            style="@style/header_vacuna"
+                            android:gravity="center"
+                            android:text="PA3" />
+
+                        <TextView
+                            style="@style/header_vacuna"
+                            android:gravity="center"
+                            android:text="PA4" />
+
+                        <!-- DPT -->
+
+                        <TextView
+                            style="@style/header_vacuna"
+                            android:gravity="center"
+                            android:text="DPTR" />
+
+                        <!-- SRP -->
+
+                        <TextView
+                            style="@style/header_vacuna"
+                            android:gravity="center"
+                            android:text="SRP1" />
+
+                        <TextView
+                            style="@style/header_vacuna"
+                            android:gravity="center"
+                            android:text="SRP2" />
+
+                        <!-- Rotavirus -->
+
+                        <TextView
+                            style="@style/header_vacuna"
+                            android:gravity="center"
+                            android:text="RV1" />
+
+                        <TextView
+                            style="@style/header_vacuna"
+                            android:gravity="center"
+                            android:text="RV2" />
+
+                        <TextView
+                            style="@style/header_vacuna"
+                            android:gravity="center"
+                            android:text="RV3" />
+
+                        <!-- Neumococo -->
+
+                        <TextView
+                            style="@style/header_vacuna"
+                            android:gravity="center"
+                            android:text="NC1" />
+
+                        <TextView
+                            style="@style/header_vacuna"
+                            android:gravity="center"
+                            android:text="NC2" />
+
+                        <TextView
+                            style="@style/header_vacuna"
+                            android:gravity="center"
+                            android:text="NC3" />
+
+                        <!-- Influenza -->
+
+                        <TextView
+                            style="@style/header_vacuna"
+                            android:gravity="center"
+                            android:text="IN1" />
+
+                        <TextView
+                            style="@style/header_vacuna"
+                            android:gravity="center"
+                            android:text="IN2" />
+
+                        <TextView
+                            style="@style/header_vacuna"
+                            android:gravity="center"
+                            android:text="INR" />
+                    </LinearLayout>
+                    
+                    <ImageButton android:id="@+id/btnTotalPrioridades"
+				        android:layout_width="30dp"
+				        android:layout_height="match_parent"
+				        android:src="@drawable/totalbiologicos"/>
+            </LinearLayout>
+
+            <!-- DATOS -->
+
+			<ProgressBar android:id="@+id/pbProgreso"
+			    android:indeterminateOnly="true"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:visibility="gone"/>
+
+            <ListView
+                android:id="@+id/lvResultados"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/fila_censo_nominal" >
+                
+                
+            </ListView>
+
+            <TextView
+                android:id="@+id/txtSinResultados"
+                style="@style/sin_resultados"
+                android:visibility="gone" />
+            
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</LinearLayout>

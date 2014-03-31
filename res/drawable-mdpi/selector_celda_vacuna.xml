@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Define comportamiento de una celda normal de vacuna -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item 
+        android:state_pressed="true"
+        android:drawable="@drawable/gradiente_amarillo_borde" />
+    
+    <item 
+        android:drawable="@drawable/borde_celda_vacuna"/>
+    
+ </selector>

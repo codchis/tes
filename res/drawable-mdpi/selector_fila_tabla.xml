@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Selector para definir los estados de color/forma/fondo que tiene un item de lista -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <item 
+        android:state_pressed="true" 
+        android:state_enabled="true"
+        android:drawable="@color/fila_tabla_pressed"/>
+    
+    <item
+        android:state_enabled="true"
+        android:drawable="@color/fila_tabla_normal"/>
+    
+ </selector>

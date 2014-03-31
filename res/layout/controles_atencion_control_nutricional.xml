@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView 
+            android:id="@+id/txtDatosBasicos"
+            style="@style/datos_basicos_paciente"
+            android:text="[DATOS BÁSICOS]"/>
+        
+        <LinearLayout
+            android:id="@+id/accion_ver_nutricion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <!-- Título -->
+            <include 
+                android:id="@+id/barra_titulo_ver_nutricion"
+                layout="@layout/barra_titulo"/>
+            
+            <!-- Contenido -->
+                
+                <TextView 
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:textStyle="bold"
+                    android:text="Peso (kg)"/>
+                
+                <com.example.chartlibrary.LineGraph
+			        android:layout_width="match_parent"
+			        android:layout_height="200dp"
+			        
+			        android:id="@+id/grafica_lineal"/>
+			    
+                <!-- Info gráfica -->
+                <TextView 
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:textStyle="bold"
+                    android:text="Tiempo (meses)"/>
+                
+	            <LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content" >
+	
+	                <TextView
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginRight="5dp"
+	                    android:text="Paciente" />
+	                <View
+	                    android:layout_width="0dp"
+	                    android:layout_height="match_parent"
+	                    android:layout_weight="1"
+	                    android:background="@color/grafica_linea_paciente"/>
+	                
+	                <TextView
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginLeft="20dp"
+	                    android:layout_marginRight="5dp"
+	                    android:text="Bajo Peso" />
+	                <View
+	                    android:layout_width="0dp"
+	                    android:layout_height="match_parent"
+	                    android:layout_weight="1"
+	                    android:background="#ffcc0a"/>
+	                
+	                <TextView
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginLeft="20dp"
+	                    android:layout_marginRight="5dp"
+	                    android:text="Peso Normal" />
+	                <View
+	                    android:layout_width="0dp"
+	                    android:layout_height="match_parent"
+	                    android:layout_weight="1"
+	                    android:background="#61ac1e"/>
+	                
+	                <TextView
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginLeft="20dp"
+	                    android:layout_marginRight="5dp"
+	                    android:text="Sobrepeso" />
+	                <View
+	                    android:layout_width="0dp"
+	                    android:layout_height="match_parent"
+	                    android:layout_weight="1"
+	                    android:background="#f78f24"/>
+	                
+	                <TextView
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginLeft="20dp"
+	                    android:layout_marginRight="5dp"
+	                    android:text="Obesidad" />
+	                <View
+	                    android:layout_width="0dp"
+	                    android:layout_height="match_parent"
+	                    android:layout_weight="1"
+	                    android:background="#e82128"/>
+	            </LinearLayout>
+            
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/accion_agregar_nutricion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical" >
+
+            <!-- Título -->
+            <include 
+                android:id="@+id/barra_titulo_agregar_nutricion"
+                layout="@layout/barra_titulo"/>
+
+            
+            <!-- Contenido -->
+            <Button android:id="@+id/btnAgregarControl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Agregar Control"/>
+
+                                
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

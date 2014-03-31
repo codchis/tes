@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:clickable="true"
+    android:background="@drawable/selector_fila_tabla" >
+    
+    <TextView android:id="@+id/txtVacuna"
+        android:layout_width="@dimen/columna_reportes_vacunas_vacuna"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="[vacuna]"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtAplicadas"
+        android:layout_width="@dimen/columna_reportes_vacunas_aplicadas"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="[aplicadas]"
+        android:gravity="center"/>    
+    
+    <TextView android:id="@+id/txtLotes"
+        android:layout_width="@dimen/columna_reportes_vacunas_lotes"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="[lotes]"
+        android:gravity="center"/>
+    
+    <TextView android:id="@+id/txtSinLote"
+        android:layout_width="@dimen/columna_reportes_vacunas_sinlote"
+        android:layout_height="match_parent"
+        android:background="@drawable/borde_gris"
+        android:text="[sin lote]"
+        android:gravity="center"/>
+        
+</LinearLayout>

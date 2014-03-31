@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Selector para definir los estados de color/forma/fondo que tiene un item de lista
+Este selector está enfocado en particular para los items que funcionan como botones de texto
+en una fila de un ListView -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <item 
+        android:state_pressed="true"
+        android:state_enabled="true"
+        android:drawable="@color/link_texto_fondo" />
+<!-- 
+    <item 
+        android:state_activated="true"
+        android:drawable="@drawable/gradiente_azul_medio" />
+     -->
+    <item
+        android:state_enabled="true" 
+        android:drawable="@drawable/borde_gris"/>
+    
+</selector>
