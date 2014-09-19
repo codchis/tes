@@ -6,6 +6,7 @@ import com.siigs.tes.Sesion.DatosPaciente;
 import com.siigs.tes.controles.CensoCensoNominal;
 import com.siigs.tes.controles.ContenidoControles;
 import com.siigs.tes.controles.ContenidoControles.ItemControl;
+import com.siigs.tes.datos.BaseDatos;
 import com.siigs.tes.datos.tablas.ErrorSis;
 
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 /**
@@ -53,9 +55,12 @@ public class PrincipalActivity extends FragmentActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_principal_onepane);
+		setContentView(R.layout.activity_principal_twopane);//.activity_principal_onepane);
+		
+		//getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 		this.aplicacion = (TesAplicacion)getApplication();
+		
 
 		if (findViewById(R.id.seccion_detail_container) != null) {
 			// The detail container view will be present only in the

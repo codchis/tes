@@ -106,6 +106,108 @@
 
                                 
         </LinearLayout>
+        
+        
+        
+        <!-- Secciones de sales de rehidratación oral -->
+        
+        <LinearLayout
+            android:id="@+id/accion_ver_sales"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <!-- Título -->
+            <include 
+                android:id="@+id/barra_titulo_ver_sales"
+                layout="@layout/barra_titulo"/>
+            
+            <!-- Contenido -->
+            <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp">
+
+            <!-- CONTENEDOR PRINCIPAL DE RESULTADOS -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <!-- CABECERA DE RESULTADOS DEL LISTVIEW -->
+                
+                <LinearLayout android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/borde">
+                    
+                    <TextView 
+                        android:layout_width="@dimen/columna_comun_ira_eda_accion_fecha" 
+                        android:layout_height="match_parent"
+                        android:text="@string/fecha" 
+                        android:gravity="center" 
+                        style="@style/celda_header" />
+                    
+                    <TextView 
+                        android:layout_width="@dimen/columna_comun_ira_eda_accion_um" 
+                        android:layout_height="match_parent"
+                        android:text="UM" 
+                        android:gravity="center" 
+                        style="@style/celda_header" />        
+                    
+                    <TextView 
+                        android:layout_width="@dimen/columna_comun_ira_eda_accion_detalle" 
+                        android:layout_height="match_parent"
+                        android:text="Cantidad entregada" 
+                        android:gravity="center" 
+                        style="@style/celda_header" />
+                    
+                </LinearLayout>
+	
+	
+				<!-- DATOS -->
+                <com.siigs.tes.ui.ListaSimple
+                android:orientation="vertical"
+                android:id="@+id/lsSales"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:listitem="@android:layout/simple_list_item_checked" />
+
+            </LinearLayout>
+            
+        	</HorizontalScrollView>
+	        
+    	</LinearLayout>
+        
+        
+        <LinearLayout
+            android:id="@+id/accion_agregar_sales"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical" >
+
+            <!-- Título -->
+            <include 
+                android:id="@+id/barra_titulo_agregar_sales"
+                layout="@layout/barra_titulo"/>
+
+            
+            <!-- Contenido -->
+            <Button android:id="@+id/btnAgregarSales"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Registrar entrega de SRO"/>
+
+                                
+        </LinearLayout>
+        
+        
+        
     </LinearLayout>
 
+    
 </ScrollView>

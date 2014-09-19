@@ -2,7 +2,6 @@ package com.siigs.tes.ui;
 
 import java.util.List;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,12 +14,13 @@ import android.widget.TextView;
  * widgets TextView que visualizarán los atributos definidos.
  * @author Axel
  *
- * @param <T>
+ * @param <T> Clase genérica
  */
 public class AdaptadorArrayMultiTextView<T> extends ArrayAdapter<T> {
 
 	private Context contexto;
 	private int layoutId;
+	private int dropDownLayoutId; //asignable en setDrowDownViewResource
 	private List<T> datos;
 	
 	private String[] bindDeAtributo; //Atributos de <T> que se mapearán
@@ -44,6 +44,7 @@ public class AdaptadorArrayMultiTextView<T> extends ArrayAdapter<T> {
 		super(c, layout, datos);
 		this.contexto = c;
 		this.layoutId = layout;
+		this.dropDownLayoutId = layout;
 		this.datos = datos;
 		this.bindDeAtributo = bindDeAtributo;
 		this.bindIdView = bindHaciaIdView;
@@ -53,10 +54,22 @@ public class AdaptadorArrayMultiTextView<T> extends ArrayAdapter<T> {
 	
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
+		return crearView(position, convertView, parent, this.layoutId);
+	}
+	
+	/**
+	 * Construye un View con el layout especificado. Usado por getView() y getDropDownView()
+	 * @param position
+	 * @param convertView
+	 * @param parent
+	 * @param layout
+	 * @return
+	 */
+	private View crearView(int position, View convertView, ViewGroup parent, int layout){
 		View salida = convertView;
 		if(salida == null){
 			LayoutInflater inflater =LayoutInflater.from(contexto);
-			salida = inflater.inflate(this.layoutId, parent, false);	
+			salida = inflater.inflate(layout, parent, false);	
 		}
 		
 		T elemento = datos.get(position);
@@ -69,9 +82,9 @@ public class AdaptadorArrayMultiTextView<T> extends ArrayAdapter<T> {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			TextView destino = (TextView) salida.findViewById(this.bindIdView[i]);
+			View destino = salida.findViewById(this.bindIdView[i]);
 			if(miBinder == null || !miBinder.setViewValue(destino, "setText", elemento, bindDeAtributo[i], valor, position))
-				destino.setText(valor);
+				((TextView)destino).setText(valor);
 		}
 
 		return salida; //super.getView(position, convertView, parent);
@@ -79,15 +92,21 @@ public class AdaptadorArrayMultiTextView<T> extends ArrayAdapter<T> {
 
 	@Override
 	/**
-	 * Regresamos lo mismo que getView() pues queremos mostrar mismos datos en caso de un spinner
+	 * Regresamos lo mismo que getView() pues queremos mostrar mismos datos pero con layout de drop down
 	 * @param position
 	 * @param convertView
 	 * @param parent
 	 * @return
 	 */
 	public View getDropDownView(int position, View convertView, ViewGroup parent) {
-		return getView(position, convertView, parent);
+		return crearView(position, convertView, parent, this.dropDownLayoutId);
+		//return getView(position, convertView, parent);
 		//return super.getDropDownView(position, convertView, parent);
+	}
+	
+	@Override
+	public void setDropDownViewResource(int resource) {
+		this.dropDownLayoutId = resource;
 	}
 
 	@Override

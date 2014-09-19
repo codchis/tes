@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Descripción de dispositivos USB a los que reacciona la aplicación (Usado en Intent-Filter del Manifest) -->
+<resources>
+    <usb-device vendor-id="1027" product-id="24577" />
+    <usb-device vendor-id="9025" />
+    <usb-device vendor-id="5824" product-id="1155" />
+    <usb-device vendor-id="4292" product-id="60000" />
+</resources>

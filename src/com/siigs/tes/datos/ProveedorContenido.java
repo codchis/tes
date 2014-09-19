@@ -4,8 +4,10 @@ package com.siigs.tes.datos;
 import java.util.ArrayList;
 
 import com.siigs.tes.datos.tablas.*;
+import com.siigs.tes.datos.tablas.graficas.*;
 import com.siigs.tes.datos.vistas.Censo;
 import com.siigs.tes.datos.vistas.EsquemasIncompletos;
+import com.siigs.tes.datos.vistas.LocalidadDomicilioPersonas;
 import com.siigs.tes.datos.vistas.ReportesVacunas;
 
 import android.content.ContentProvider;
@@ -188,6 +190,12 @@ public class ProveedorContenido extends ContentProvider {
 	public static final Uri CONTROL_NUTRICIONAL_CONTENT_URI = Uri.parse("content://" + AUTHORITY
 	        + "/" + CONTROL_NUTRICIONAL_PATH);
 	
+	private static final String CONTROL_PERIMETRO_CEFALICO_PATH = ControlPerimetroCefalico.NOMBRE_TABLA;
+	public static final int CONTROL_PERIMETRO_CEFALICO_TODOS = 75;
+	public static final int CONTROL_PERIMETRO_CEFALICO_ID = 76;
+	public static final Uri CONTROL_PERIMETRO_CEFALICO_CONTENT_URI = Uri.parse("content://" + AUTHORITY
+	        + "/" + CONTROL_PERIMETRO_CEFALICO_PATH);
+	
 	private static final String PERSONA_ALERGIA_PATH = PersonaAlergia.NOMBRE_TABLA;
 	public static final int PERSONA_ALERGIA_TODOS = 80;
 	public static final int PERSONA_ALERGIA_ID = 81;
@@ -278,6 +286,90 @@ public class ProveedorContenido extends ContentProvider {
 	public static final Uri PARTO_MULTIPLE_CONTENT_URI = Uri.parse("content://" + AUTHORITY
 	        + "/" + PARTO_MULTIPLE_PATH);
 	
+	private static final String ESTADO_NUTRICION_PESO_PATH = EstadoNutricionPeso.NOMBRE_TABLA;
+	public static final int ESTADO_NUTRICION_PESO_TODOS = 1780;
+	public static final int ESTADO_NUTRICION_PESO_ID = 1781;
+	public static final Uri ESTADO_NUTRICION_PESO_CONTENT_URI = Uri.parse("content://" + AUTHORITY
+	        + "/" + ESTADO_NUTRICION_PESO_PATH);
+	
+	private static final String ESTADO_NUTRICION_PESO_POR_EDAD_PATH = EstadoNutricionPesoPorEdad.NOMBRE_TABLA;
+	public static final int ESTADO_NUTRICION_PESO_POR_EDAD_TODOS = 1782;
+	public static final int ESTADO_NUTRICION_PESO_POR_EDAD_ID = 1783;
+	public static final Uri ESTADO_NUTRICION_PESO_POR_EDAD_CONTENT_URI = Uri.parse("content://" + AUTHORITY
+	        + "/" + ESTADO_NUTRICION_PESO_POR_EDAD_PATH);
+	
+	private static final String ESTADO_NUTRICION_PESO_POR_ALTURA_PATH = EstadoNutricionPesoPorAltura.NOMBRE_TABLA;
+	public static final int ESTADO_NUTRICION_PESO_POR_ALTURA_TODOS = 1784;
+	public static final int ESTADO_NUTRICION_PESO_POR_ALTURA_ID = 1785;
+	public static final Uri ESTADO_NUTRICION_PESO_POR_ALTURA_CONTENT_URI = Uri.parse("content://" + AUTHORITY
+	        + "/" + ESTADO_NUTRICION_PESO_POR_ALTURA_PATH);
+	
+	private static final String ESTADO_NUTRICION_ALTURA_PATH = EstadoNutricionAltura.NOMBRE_TABLA;
+	public static final int ESTADO_NUTRICION_ALTURA_TODOS = 1786;
+	public static final int ESTADO_NUTRICION_ALTURA_ID = 1787;
+	public static final Uri ESTADO_NUTRICION_ALTURA_CONTENT_URI = Uri.parse("content://" + AUTHORITY
+	        + "/" + ESTADO_NUTRICION_ALTURA_PATH);
+	
+	private static final String ESTADO_NUTRICION_ALTURA_POR_EDAD_PATH = EstadoNutricionAlturaPorEdad.NOMBRE_TABLA;
+	public static final int ESTADO_NUTRICION_ALTURA_POR_EDAD_TODOS = 1788;
+	public static final int ESTADO_NUTRICION_ALTURA_POR_EDAD_ID = 1789;
+	public static final Uri ESTADO_NUTRICION_ALTURA_POR_EDAD_CONTENT_URI = Uri.parse("content://" + AUTHORITY
+	        + "/" + ESTADO_NUTRICION_ALTURA_POR_EDAD_PATH);
+	
+	private static final String ESTADO_IMC_PATH = EstadoImc.NOMBRE_TABLA;
+	public static final int ESTADO_IMC_TODOS = 1790;
+	public static final int ESTADO_IMC_ID = 1791;
+	public static final Uri ESTADO_IMC_CONTENT_URI = Uri.parse("content://" + AUTHORITY
+	        + "/" + ESTADO_IMC_PATH);
+	
+	private static final String ESTADO_IMC_POR_EDAD_PATH = EstadoImcPorEdad.NOMBRE_TABLA;
+	public static final int ESTADO_IMC_POR_EDAD_TODOS = 1792;
+	public static final int ESTADO_IMC_POR_EDAD_ID = 1793;
+	public static final Uri ESTADO_IMC_POR_EDAD_CONTENT_URI = Uri.parse("content://" + AUTHORITY
+	        + "/" + ESTADO_IMC_POR_EDAD_PATH);
+	
+	private static final String ESTADO_PERIMETRO_PATH = EstadoPerimetroCefalico.NOMBRE_TABLA;
+	public static final int ESTADO_PERIMETRO_TODOS = 1794;
+	public static final int ESTADO_PERIMETRO_ID = 1795;
+	public static final Uri ESTADO_PERIMETRO_CONTENT_URI = Uri.parse("content://" + AUTHORITY
+	        + "/" + ESTADO_PERIMETRO_PATH);
+	
+	private static final String ESTADO_PERIMETRO_POR_EDAD_PATH = EstadoPerimetroCefalicoPorEdad.NOMBRE_TABLA;
+	public static final int ESTADO_PERIMETRO_POR_EDAD_TODOS = 1796;
+	public static final int ESTADO_PERIMETRO_POR_EDAD_ID = 1797;
+	public static final Uri ESTADO_PERIMETRO_POR_EDAD_CONTENT_URI = Uri.parse("content://" + AUTHORITY
+	        + "/" + ESTADO_PERIMETRO_POR_EDAD_PATH);
+	
+	private static final String HEMOGLOBINA_ALTITUD_PATH = HemoglobinaAltitud.NOMBRE_TABLA;
+	public static final int HEMOGLOBINA_ALTITUD_TODOS = 1798;
+	public static final int HEMOGLOBINA_ALTITUD_ID = 1799;
+	public static final Uri HEMOGLOBINA_ALTITUD_CONTENT_URI = Uri.parse("content://" + AUTHORITY
+	        + "/" + HEMOGLOBINA_ALTITUD_PATH);
+	
+	private static final String SALES_REHIDRATACION_PATH = SalesRehidratacion.NOMBRE_TABLA;
+	public static final int SALES_REHIDRATACION_TODOS = 1900;
+	public static final int SALES_REHIDRATACION_ID = 1901;
+	public static final Uri SALES_REHIDRATACION_CONTENT_URI = Uri.parse("content://" + AUTHORITY
+	        + "/" + SALES_REHIDRATACION_PATH);
+	
+	private static final String ESTIMULACION_TEMPRANA_PATH = EstimulacionTemprana.NOMBRE_TABLA;
+	public static final int ESTIMULACION_TEMPRANA_TODOS = 1905;
+	public static final int ESTIMULACION_TEMPRANA_ID = 1906;
+	public static final Uri ESTIMULACION_TEMPRANA_CONTENT_URI = Uri.parse("content://" + AUTHORITY
+	        + "/" + ESTIMULACION_TEMPRANA_PATH);
+	
+	private static final String GRUPO_ATENCION_PATH = GrupoAtencion.NOMBRE_TABLA;
+	public static final int GRUPO_ATENCION_TODOS = 1910;
+	public static final int GRUPO_ATENCION_ID = 1911;
+	public static final Uri GRUPO_ATENCION_CONTENT_URI = Uri.parse("content://" + AUTHORITY
+	        + "/" + GRUPO_ATENCION_PATH);
+	
+	private static final String CATEGORIA_CIE10_PATH = CategoriaCie10.NOMBRE_TABLA;
+	public static final int CATEGORIA_CIE10_TODOS = 1915;
+	public static final int CATEGORIA_CIE10_ID = 1916;
+	public static final Uri CATEGORIA_CIE10_CONTENT_URI = Uri.parse("content://" + AUTHORITY
+	        + "/" + CATEGORIA_CIE10_PATH);
+	
 	//VISTAS
 	private static final String CENSO_PATH = "censo";
 	public static final int CENSO_TODOS = 1800;
@@ -297,6 +389,11 @@ public class ProveedorContenido extends ContentProvider {
 	public static final int REPORTE_VACUNAS_TODOS = 1820;
 	public static final Uri REPORTE_VACUNAS_CONTENT_URI = Uri.parse("content://" + AUTHORITY
 	        + "/" + REPORTE_VACUNAS_PATH);
+	
+	private static final String VISTA_LOCALIDAD_DOMICILIO_PERSONA_PATH = "vista_localidad_domicilio_persona";
+	public static final int VISTA_LOCALIDAD_DOMICILIO_PERSONA_TODOS = 1825;
+	public static final Uri VISTA_LOCALIDAD_DOMICILIO_PERSONA_CONTENT_URI = Uri.parse("content://" + AUTHORITY
+	        + "/" + VISTA_LOCALIDAD_DOMICILIO_PERSONA_PATH);
 	
 	/*
 	public static final String CONTENT_ITEM_TYPE = 
@@ -378,6 +475,9 @@ public class ProveedorContenido extends ContentProvider {
 	    sURIMatcher.addURI(AUTHORITY, CONTROL_NUTRICIONAL_PATH, CONTROL_NUTRICIONAL_TODOS);
 	    sURIMatcher.addURI(AUTHORITY, CONTROL_NUTRICIONAL_PATH + "/#", CONTROL_NUTRICIONAL_ID);
 	    
+	    sURIMatcher.addURI(AUTHORITY, CONTROL_PERIMETRO_CEFALICO_PATH, CONTROL_PERIMETRO_CEFALICO_TODOS);
+	    sURIMatcher.addURI(AUTHORITY, CONTROL_PERIMETRO_CEFALICO_PATH + "/#", CONTROL_PERIMETRO_CEFALICO_ID);
+	    
 	    sURIMatcher.addURI(AUTHORITY, PERSONA_ALERGIA_PATH, PERSONA_ALERGIA_TODOS);
 	    sURIMatcher.addURI(AUTHORITY, PERSONA_ALERGIA_PATH + "/#", PERSONA_ALERGIA_ID);
 	    sURIMatcher.addURI(AUTHORITY, ALERGIA_PATH, ALERGIA_TODOS);
@@ -420,10 +520,44 @@ public class ProveedorContenido extends ContentProvider {
 	    sURIMatcher.addURI(AUTHORITY, PARTO_MULTIPLE_PATH, PARTO_MULTIPLE_TODOS);
 	    sURIMatcher.addURI(AUTHORITY, PARTO_MULTIPLE_PATH + "/#", PARTO_MULTIPLE_ID);
 	    
+	    sURIMatcher.addURI(AUTHORITY, ESTADO_NUTRICION_PESO_PATH, ESTADO_NUTRICION_PESO_TODOS);
+	    sURIMatcher.addURI(AUTHORITY, ESTADO_NUTRICION_PESO_PATH + "/#", ESTADO_NUTRICION_PESO_ID);
+	    sURIMatcher.addURI(AUTHORITY, ESTADO_NUTRICION_PESO_POR_EDAD_PATH, ESTADO_NUTRICION_PESO_POR_EDAD_TODOS);
+	    sURIMatcher.addURI(AUTHORITY, ESTADO_NUTRICION_PESO_POR_EDAD_PATH + "/#", ESTADO_NUTRICION_PESO_POR_EDAD_ID);
+	    sURIMatcher.addURI(AUTHORITY, ESTADO_NUTRICION_PESO_POR_ALTURA_PATH, ESTADO_NUTRICION_PESO_POR_ALTURA_TODOS);
+	    sURIMatcher.addURI(AUTHORITY, ESTADO_NUTRICION_PESO_POR_ALTURA_PATH + "/#", ESTADO_NUTRICION_PESO_POR_ALTURA_ID);
+	    sURIMatcher.addURI(AUTHORITY, ESTADO_NUTRICION_ALTURA_PATH, ESTADO_NUTRICION_ALTURA_TODOS);
+	    sURIMatcher.addURI(AUTHORITY, ESTADO_NUTRICION_ALTURA_PATH + "/#", ESTADO_NUTRICION_ALTURA_ID);
+	    sURIMatcher.addURI(AUTHORITY, ESTADO_NUTRICION_ALTURA_POR_EDAD_PATH, ESTADO_NUTRICION_ALTURA_POR_EDAD_TODOS);
+	    sURIMatcher.addURI(AUTHORITY, ESTADO_NUTRICION_ALTURA_POR_EDAD_PATH + "/#", ESTADO_NUTRICION_ALTURA_POR_EDAD_ID);
+	    sURIMatcher.addURI(AUTHORITY, ESTADO_IMC_PATH, ESTADO_IMC_TODOS);
+	    sURIMatcher.addURI(AUTHORITY, ESTADO_IMC_PATH + "/#", ESTADO_IMC_ID);
+	    sURIMatcher.addURI(AUTHORITY, ESTADO_IMC_POR_EDAD_PATH, ESTADO_IMC_POR_EDAD_TODOS);
+	    sURIMatcher.addURI(AUTHORITY, ESTADO_IMC_POR_EDAD_PATH + "/#", ESTADO_IMC_POR_EDAD_ID);
+	    sURIMatcher.addURI(AUTHORITY, ESTADO_PERIMETRO_PATH, ESTADO_PERIMETRO_TODOS);
+	    sURIMatcher.addURI(AUTHORITY, ESTADO_PERIMETRO_PATH + "/#", ESTADO_PERIMETRO_ID);
+	    sURIMatcher.addURI(AUTHORITY, ESTADO_PERIMETRO_POR_EDAD_PATH, ESTADO_PERIMETRO_POR_EDAD_TODOS);
+	    sURIMatcher.addURI(AUTHORITY, ESTADO_PERIMETRO_POR_EDAD_PATH + "/#", ESTADO_PERIMETRO_POR_EDAD_ID);
+	    sURIMatcher.addURI(AUTHORITY, HEMOGLOBINA_ALTITUD_PATH, HEMOGLOBINA_ALTITUD_TODOS);
+	    sURIMatcher.addURI(AUTHORITY, HEMOGLOBINA_ALTITUD_PATH + "/#", HEMOGLOBINA_ALTITUD_ID);
+	    
+	    sURIMatcher.addURI(AUTHORITY, SALES_REHIDRATACION_PATH, SALES_REHIDRATACION_TODOS);
+	    sURIMatcher.addURI(AUTHORITY, SALES_REHIDRATACION_PATH + "/#", SALES_REHIDRATACION_ID);
+	    
+	    sURIMatcher.addURI(AUTHORITY, ESTIMULACION_TEMPRANA_PATH, ESTIMULACION_TEMPRANA_TODOS);
+	    sURIMatcher.addURI(AUTHORITY, ESTIMULACION_TEMPRANA_PATH + "/#", ESTIMULACION_TEMPRANA_ID);
+	    
+	    sURIMatcher.addURI(AUTHORITY, GRUPO_ATENCION_PATH, GRUPO_ATENCION_TODOS);
+	    sURIMatcher.addURI(AUTHORITY, GRUPO_ATENCION_PATH + "/#", GRUPO_ATENCION_ID);
+	    
+	    sURIMatcher.addURI(AUTHORITY, CATEGORIA_CIE10_PATH, CATEGORIA_CIE10_TODOS);
+	    sURIMatcher.addURI(AUTHORITY, CATEGORIA_CIE10_PATH + "/#", CATEGORIA_CIE10_ID);
+	    
 	    //VISTAS
 	    sURIMatcher.addURI(AUTHORITY, CENSO_PATH, CENSO_TODOS);
 	    sURIMatcher.addURI(AUTHORITY, VISTA_ESQUEMA_INCOMPLETO_PATH, VISTA_ESQUEMA_INCOMPLETO_TODOS);
 	    sURIMatcher.addURI(AUTHORITY, REPORTE_VACUNAS_PATH, REPORTE_VACUNAS_TODOS);
+	    sURIMatcher.addURI(AUTHORITY, VISTA_LOCALIDAD_DOMICILIO_PERSONA_PATH, VISTA_LOCALIDAD_DOMICILIO_PERSONA_TODOS);
 	}
 	
 	
@@ -578,7 +712,7 @@ public class ProveedorContenido extends ContentProvider {
 			
 		case ProveedorContenido.CONSULTA_ID:
 			builder.setTables(Consulta.NOMBRE_TABLA);
-			builder.appendWhere(Consulta.ID + "=?");
+			builder.appendWhere(Consulta._ID + "=?");
 			parametros=new String[]{uri.getLastPathSegment()};
 			break;
 		case ProveedorContenido.CONSULTA_TODOS:
@@ -676,6 +810,15 @@ public class ProveedorContenido extends ContentProvider {
 			break;			
 		case ProveedorContenido.CONTROL_NUTRICIONAL_TODOS:
 			builder.setTables(ControlNutricional.NOMBRE_TABLA);// No existe filtro
+			break;
+			
+		case ProveedorContenido.CONTROL_PERIMETRO_CEFALICO_ID:
+			builder.setTables(ControlPerimetroCefalico.NOMBRE_TABLA);
+			builder.appendWhere(ControlPerimetroCefalico._ID + "=?");
+			parametros=new String[]{uri.getLastPathSegment()};
+			break;			
+		case ProveedorContenido.CONTROL_PERIMETRO_CEFALICO_TODOS:
+			builder.setTables(ControlPerimetroCefalico.NOMBRE_TABLA);// No existe filtro
 			break;
 			
 		//ALERGIAS	
@@ -814,6 +957,126 @@ public class ProveedorContenido extends ContentProvider {
 			builder.setTables(PartoMultiple.NOMBRE_TABLA);// No existe filtro
 			break;
 			
+		//TABLAS NUTRICIONALES
+		case ProveedorContenido.ESTADO_NUTRICION_PESO_ID:
+			builder.setTables(EstadoNutricionPeso.NOMBRE_TABLA);
+			builder.appendWhere(EstadoNutricionPeso.ID + "=?");
+			parametros=new String[]{uri.getLastPathSegment()};
+			break;			
+		case ProveedorContenido.ESTADO_NUTRICION_PESO_TODOS:
+			builder.setTables(EstadoNutricionPeso.NOMBRE_TABLA);// No existe filtro
+			break;
+		case ProveedorContenido.ESTADO_NUTRICION_PESO_POR_EDAD_ID:
+			builder.setTables(EstadoNutricionPesoPorEdad.NOMBRE_TABLA);
+			builder.appendWhere(EstadoNutricionPesoPorEdad._ID + "=?");
+			parametros=new String[]{uri.getLastPathSegment()};
+			break;			
+		case ProveedorContenido.ESTADO_NUTRICION_PESO_POR_EDAD_TODOS:
+			builder.setTables(EstadoNutricionPesoPorEdad.NOMBRE_TABLA);// No existe filtro
+			break;
+		case ProveedorContenido.ESTADO_NUTRICION_PESO_POR_ALTURA_ID:
+			builder.setTables(EstadoNutricionPesoPorAltura.NOMBRE_TABLA);
+			builder.appendWhere(EstadoNutricionPesoPorAltura._ID + "=?");
+			parametros=new String[]{uri.getLastPathSegment()};
+			break;			
+		case ProveedorContenido.ESTADO_NUTRICION_PESO_POR_ALTURA_TODOS:
+			builder.setTables(EstadoNutricionPesoPorAltura.NOMBRE_TABLA);// No existe filtro
+			break;
+		case ProveedorContenido.ESTADO_NUTRICION_ALTURA_ID:
+			builder.setTables(EstadoNutricionAltura.NOMBRE_TABLA);
+			builder.appendWhere(EstadoNutricionAltura.ID + "=?");
+			parametros=new String[]{uri.getLastPathSegment()};
+			break;			
+		case ProveedorContenido.ESTADO_NUTRICION_ALTURA_TODOS:
+			builder.setTables(EstadoNutricionAltura.NOMBRE_TABLA);// No existe filtro
+			break;
+		case ProveedorContenido.ESTADO_NUTRICION_ALTURA_POR_EDAD_ID:
+			builder.setTables(EstadoNutricionAlturaPorEdad.NOMBRE_TABLA);
+			builder.appendWhere(EstadoNutricionAlturaPorEdad._ID + "=?");
+			parametros=new String[]{uri.getLastPathSegment()};
+			break;			
+		case ProveedorContenido.ESTADO_NUTRICION_ALTURA_POR_EDAD_TODOS:
+			builder.setTables(EstadoNutricionAlturaPorEdad.NOMBRE_TABLA);// No existe filtro
+			break;
+		case ProveedorContenido.ESTADO_IMC_ID:
+			builder.setTables(EstadoImc.NOMBRE_TABLA);
+			builder.appendWhere(EstadoImc.ID + "=?");
+			parametros=new String[]{uri.getLastPathSegment()};
+			break;			
+		case ProveedorContenido.ESTADO_IMC_TODOS:
+			builder.setTables(EstadoImc.NOMBRE_TABLA);// No existe filtro
+			break;
+		case ProveedorContenido.ESTADO_IMC_POR_EDAD_ID:
+			builder.setTables(EstadoImcPorEdad.NOMBRE_TABLA);
+			builder.appendWhere(EstadoImcPorEdad._ID + "=?");
+			parametros=new String[]{uri.getLastPathSegment()};
+			break;			
+		case ProveedorContenido.ESTADO_IMC_POR_EDAD_TODOS:
+			builder.setTables(EstadoImcPorEdad.NOMBRE_TABLA);// No existe filtro
+			break;
+		case ProveedorContenido.ESTADO_PERIMETRO_ID:
+			builder.setTables(EstadoPerimetroCefalico.NOMBRE_TABLA);
+			builder.appendWhere(EstadoPerimetroCefalico.ID + "=?");
+			parametros=new String[]{uri.getLastPathSegment()};
+			break;			
+		case ProveedorContenido.ESTADO_PERIMETRO_TODOS:
+			builder.setTables(EstadoPerimetroCefalico.NOMBRE_TABLA);// No existe filtro
+			break;
+		case ProveedorContenido.ESTADO_PERIMETRO_POR_EDAD_ID:
+			builder.setTables(EstadoPerimetroCefalicoPorEdad.NOMBRE_TABLA);
+			builder.appendWhere(EstadoPerimetroCefalicoPorEdad._ID + "=?");
+			parametros=new String[]{uri.getLastPathSegment()};
+			break;			
+		case ProveedorContenido.ESTADO_PERIMETRO_POR_EDAD_TODOS:
+			builder.setTables(EstadoPerimetroCefalicoPorEdad.NOMBRE_TABLA);// No existe filtro
+			break;
+		case ProveedorContenido.HEMOGLOBINA_ALTITUD_ID:
+			builder.setTables(HemoglobinaAltitud.NOMBRE_TABLA);
+			builder.appendWhere(HemoglobinaAltitud._ID + "=?");
+			parametros=new String[]{uri.getLastPathSegment()};
+			break;			
+		case ProveedorContenido.HEMOGLOBINA_ALTITUD_TODOS:
+			builder.setTables(HemoglobinaAltitud.NOMBRE_TABLA);// No existe filtro
+			break;
+			
+		case ProveedorContenido.SALES_REHIDRATACION_ID:
+			builder.setTables(SalesRehidratacion.NOMBRE_TABLA);
+			builder.appendWhere(SalesRehidratacion._ID + "=?");
+			parametros=new String[]{uri.getLastPathSegment()};
+			break;			
+		case ProveedorContenido.SALES_REHIDRATACION_TODOS:
+			builder.setTables(SalesRehidratacion.NOMBRE_TABLA);// No existe filtro
+			break;
+			
+		case ProveedorContenido.ESTIMULACION_TEMPRANA_ID:
+			builder.setTables(EstimulacionTemprana.NOMBRE_TABLA);
+			builder.appendWhere(EstimulacionTemprana._ID + "=?");
+			parametros=new String[]{uri.getLastPathSegment()};
+			break;			
+		case ProveedorContenido.ESTIMULACION_TEMPRANA_TODOS:
+			builder.setTables(EstimulacionTemprana.NOMBRE_TABLA);// No existe filtro
+			break;
+			
+		case ProveedorContenido.GRUPO_ATENCION_ID:
+			builder.setTables(GrupoAtencion.NOMBRE_TABLA);
+			builder.appendWhere(GrupoAtencion._ID + "=?");
+			parametros=new String[]{uri.getLastPathSegment()};
+			break;			
+		case ProveedorContenido.GRUPO_ATENCION_TODOS:
+			builder.setTables(GrupoAtencion.NOMBRE_TABLA);// No existe filtro
+			break;
+			
+		case ProveedorContenido.CATEGORIA_CIE10_ID:
+			builder.setTables(CategoriaCie10.NOMBRE_TABLA);
+			builder.appendWhere(CategoriaCie10._ID + "=?");
+			parametros=new String[]{uri.getLastPathSegment()};
+			break;			
+		case ProveedorContenido.CATEGORIA_CIE10_TODOS:
+			builder.setTables(CategoriaCie10.NOMBRE_TABLA);// No existe filtro
+			break;
+			
+			
+			
 			//VISTAS
 			
 		case ProveedorContenido.CENSO_TODOS:
@@ -829,6 +1092,11 @@ public class ProveedorContenido extends ContentProvider {
 			projection = ReportesVacunas.COLUMNAS;
 			builder.setTables(ReportesVacunas.TABLAS);
 			groupBy = ReportesVacunas.GROUPBY;
+			break;
+		case ProveedorContenido.VISTA_LOCALIDAD_DOMICILIO_PERSONA_TODOS:
+			projection = LocalidadDomicilioPersonas.COLUMNAS;
+			builder.setTables(LocalidadDomicilioPersonas.TABLAS);
+			builder.setDistinct(true);
 			break;
 		default:
 			throw new IllegalArgumentException("Uri desconocido "+tipoUri);
@@ -953,6 +1221,9 @@ public class ProveedorContenido extends ContentProvider {
 		case ProveedorContenido.CONTROL_NUTRICIONAL_TODOS:
 			tabla=ControlNutricional.NOMBRE_TABLA;
 			break;
+		case ProveedorContenido.CONTROL_PERIMETRO_CEFALICO_TODOS:
+			tabla=ControlPerimetroCefalico.NOMBRE_TABLA;
+			break;
 		case ProveedorContenido.CONTROL_CONSULTA_TODOS:
 			tabla=ControlConsulta.NOMBRE_TABLA;
 			break;
@@ -977,6 +1248,49 @@ public class ProveedorContenido extends ContentProvider {
 		case ProveedorContenido.PARTO_MULTIPLE_TODOS:
 			tabla=PartoMultiple.NOMBRE_TABLA;
 			break;
+		case ProveedorContenido.ESTADO_NUTRICION_PESO_TODOS:
+			tabla=EstadoNutricionPeso.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_NUTRICION_PESO_POR_EDAD_TODOS:
+			tabla=EstadoNutricionPesoPorEdad.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_NUTRICION_PESO_POR_ALTURA_TODOS:
+			tabla=EstadoNutricionPesoPorAltura.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_NUTRICION_ALTURA_TODOS:
+			tabla=EstadoNutricionAltura.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_NUTRICION_ALTURA_POR_EDAD_TODOS:
+			tabla=EstadoNutricionAlturaPorEdad.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_IMC_TODOS:
+			tabla=EstadoImc.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_IMC_POR_EDAD_TODOS:
+			tabla=EstadoImcPorEdad.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_PERIMETRO_TODOS:
+			tabla=EstadoPerimetroCefalico.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_PERIMETRO_POR_EDAD_TODOS:
+			tabla=EstadoPerimetroCefalicoPorEdad.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.HEMOGLOBINA_ALTITUD_TODOS:
+			tabla=HemoglobinaAltitud.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.SALES_REHIDRATACION_TODOS:
+			tabla=SalesRehidratacion.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTIMULACION_TEMPRANA_TODOS:
+			tabla=EstimulacionTemprana.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.GRUPO_ATENCION_TODOS:
+			tabla=GrupoAtencion.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.CATEGORIA_CIE10_TODOS:
+			tabla=CategoriaCie10.NOMBRE_TABLA;
+			break;
+			
 			
 		default:
 			throw new IllegalArgumentException("Uri desconocido "+uri);
@@ -1102,6 +1416,9 @@ public class ProveedorContenido extends ContentProvider {
 		case ProveedorContenido.CONTROL_NUTRICIONAL_TODOS:
 			tabla=ControlNutricional.NOMBRE_TABLA;
 			break;
+		case ProveedorContenido.CONTROL_PERIMETRO_CEFALICO_TODOS:
+			tabla=ControlPerimetroCefalico.NOMBRE_TABLA;
+			break;
 		case ProveedorContenido.CONTROL_CONSULTA_TODOS:
 			tabla=ControlConsulta.NOMBRE_TABLA;
 			break;
@@ -1131,6 +1448,48 @@ public class ProveedorContenido extends ContentProvider {
 			break;
 		case ProveedorContenido.PARTO_MULTIPLE_TODOS:
 			tabla=PartoMultiple.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_NUTRICION_PESO_TODOS:
+			tabla=EstadoNutricionPeso.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_NUTRICION_PESO_POR_EDAD_TODOS:
+			tabla=EstadoNutricionPesoPorEdad.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_NUTRICION_PESO_POR_ALTURA_TODOS:
+			tabla=EstadoNutricionPesoPorAltura.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_NUTRICION_ALTURA_TODOS:
+			tabla=EstadoNutricionAltura.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_NUTRICION_ALTURA_POR_EDAD_TODOS:
+			tabla=EstadoNutricionAlturaPorEdad.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_IMC_TODOS:
+			tabla=EstadoImc.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_IMC_POR_EDAD_TODOS:
+			tabla=EstadoImcPorEdad.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_PERIMETRO_TODOS:
+			tabla=EstadoPerimetroCefalico.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_PERIMETRO_POR_EDAD_TODOS:
+			tabla=EstadoPerimetroCefalicoPorEdad.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.HEMOGLOBINA_ALTITUD_TODOS:
+			tabla=HemoglobinaAltitud.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.SALES_REHIDRATACION_TODOS:
+			tabla=SalesRehidratacion.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTIMULACION_TEMPRANA_TODOS:
+			tabla=EstimulacionTemprana.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.GRUPO_ATENCION_TODOS:
+			tabla=GrupoAtencion.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.CATEGORIA_CIE10_TODOS:
+			tabla=CategoriaCie10.NOMBRE_TABLA;
 			break;
 			
 		default:
@@ -1270,6 +1629,9 @@ public class ProveedorContenido extends ContentProvider {
 		case ProveedorContenido.CONTROL_NUTRICIONAL_TODOS:
 			tabla=ControlNutricional.NOMBRE_TABLA;
 			break;
+		case ProveedorContenido.CONTROL_PERIMETRO_CEFALICO_TODOS:
+			tabla=ControlPerimetroCefalico.NOMBRE_TABLA;
+			break;
 		case ProveedorContenido.CONTROL_CONSULTA_TODOS:
 			tabla=ControlConsulta.NOMBRE_TABLA;
 			break;
@@ -1299,6 +1661,48 @@ public class ProveedorContenido extends ContentProvider {
 			break;
 		case ProveedorContenido.PARTO_MULTIPLE_TODOS:
 			tabla=PartoMultiple.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_NUTRICION_PESO_TODOS:
+			tabla=EstadoNutricionPeso.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_NUTRICION_PESO_POR_EDAD_TODOS:
+			tabla=EstadoNutricionPesoPorEdad.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_NUTRICION_PESO_POR_ALTURA_TODOS:
+			tabla=EstadoNutricionPesoPorAltura.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_NUTRICION_ALTURA_TODOS:
+			tabla=EstadoNutricionAltura.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_NUTRICION_ALTURA_POR_EDAD_TODOS:
+			tabla=EstadoNutricionAlturaPorEdad.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_IMC_TODOS:
+			tabla=EstadoImc.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_IMC_POR_EDAD_TODOS:
+			tabla=EstadoImcPorEdad.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_PERIMETRO_TODOS:
+			tabla=EstadoPerimetroCefalico.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTADO_PERIMETRO_POR_EDAD_TODOS:
+			tabla=EstadoPerimetroCefalicoPorEdad.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.HEMOGLOBINA_ALTITUD_TODOS:
+			tabla=HemoglobinaAltitud.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.SALES_REHIDRATACION_TODOS:
+			tabla=SalesRehidratacion.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.ESTIMULACION_TEMPRANA_TODOS:
+			tabla=EstimulacionTemprana.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.GRUPO_ATENCION_TODOS:
+			tabla=GrupoAtencion.NOMBRE_TABLA;
+			break;
+		case ProveedorContenido.CATEGORIA_CIE10_TODOS:
+			tabla=CategoriaCie10.NOMBRE_TABLA;
 			break;
 			
 		default:

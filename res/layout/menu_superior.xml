@@ -38,16 +38,16 @@
 			    android:text="@string/censo_nominal"/>
 		    
             <TextView
-                android:id="@+id/mnNotificaciones"
-			    style="@style/boton_menu_superior"
-			    android:drawableLeft="@drawable/notificacion"
-			    android:text="@string/notificaciones"/>
-            
-            <TextView
                 android:id="@+id/mnEsquemas"
 			    style="@style/boton_menu_superior"
 			    android:drawableLeft="@drawable/esquema"
 			    android:text="@string/esquemas"/>
+            
+            <TextView
+                android:id="@+id/mnNotificaciones"
+			    style="@style/boton_menu_superior"
+			    android:drawableLeft="@drawable/notificacion"
+			    android:text="@string/notificaciones"/>            
             
             <TextView
                 android:id="@+id/mnSincronizacion"

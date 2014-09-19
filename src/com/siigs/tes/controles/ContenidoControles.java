@@ -68,26 +68,39 @@ public class ContenidoControles {
 		public final static int ICA_PACIENTE_EDITAR_DOMICILIO = 98;
 		public final static int ICA_PACIENTE_ASIGNAR_UM = 97;
 		public final static int ICA_PACIENTE_AGREGAR_ALERGIAS = 99;
+		
 	public final static int ICA_CONTROLVACUNA_LISTAR = 106;
 		//Acciones internas
 		public final static int ICA_CONTROLVACUNA_VER = 105;
 		public final static int ICA_CONTROLVACUNA_INSERTAR = 104;
+		
 	public final static int ICA_CONTROLNUTRICIONAL_LISTAR = 89;
 		//Acciones internas
 		public final static int ICA_CONTROLNUTRICIONAL_VER = 88;
 		public final static int ICA_CONTROLNUTRICIONAL_INSERTAR = 87;
+		
 	public final static int ICA_CONTROLACCIONNUTRICIONAL_LISTAR = 76;
 		//Acciones internas
 		public final static int ICA_CONTROLACCIONNUTRICIONAL_VER = 75;
 		public final static int ICA_CONTROLACCIONNUTRICIONAL_INSERTAR = 74;
+		public final static int ICA_CONTROLACCIONNUTRICIONAL_SRO_LISTAR = 1010;
+		public final static int ICA_CONTROLACCIONNUTRICIONAL_SRO_INSERTAR = 1011;
+		
+	public final static int ICA_ESTIMULACIONTEMPRANA_LISTAR = 1014;
+		//Acciones internas
+		public final static int ICA_ESTIMULACIONTEMPRANA_VER = 1013;
+		public final static int ICA_ESTIMULACIONTEMPRANA_INSERTAR = 1012;
+		
 	public final static int ICA_EDA_LISTAR = 83;
 		//Acciones internas
 		public final static int ICA_EDA_VER = 82;
 		public final static int ICA_EDA_INSERTAR = 81;
+		
 	public final static int ICA_IRA_LISTAR = 86;
 		//Acciones internas
 		public final static int ICA_IRA_VER = 85;
 		public final static int ICA_IRA_INSERTAR = 84;
+		
 	public final static int ICA_CONTROLCONSULTA_LISTAR = 80;
 		//Acciones internas
 		public final static int ICA_CONTROLCONSULTA_VER = 79;
@@ -117,7 +130,7 @@ public class ContenidoControles {
 	 * @author Axel
 	 * Crea los arreglos y mapas para los menús de navegación.
 	 * Esta función es llamada al crear la aplicación pero debe ser
-	 * llamada nuevamente en la funcióin de login y aquí se debe implementar
+	 * llamada nuevamente en la función de login y aquí se debe implementar
 	 * verificación de roles para solo agregar los menús permitidos.
 	 */
 	private static void CrearControles(List<Permiso> permisos){
@@ -143,14 +156,18 @@ public class ContenidoControles {
 			item=new ItemControl(ICA_CONTROLACCIONNUTRICIONAL_LISTAR, "Acciones Nutricionales", ControlAccionNutricional.class, R.drawable.nutricionales);
 			addItem(item, CONTROLES_ATENCION, CONTROLES_ATENCION_MAP);
 		}
-		if(ExistePermiso(ICA_IRA_LISTAR, permisos)){
+		if(ExistePermiso(ICA_ESTIMULACIONTEMPRANA_LISTAR, permisos)){
+			item=new ItemControl(ICA_ESTIMULACIONTEMPRANA_LISTAR, "Estimulación Temprana", ControlEstimulacionTemprana.class, R.drawable.estimulacion_temprana);
+			addItem(item, CONTROLES_ATENCION, CONTROLES_ATENCION_MAP);
+		}
+		/*if(ExistePermiso(ICA_IRA_LISTAR, permisos)){
 			item=new ItemControl(ICA_IRA_LISTAR, "Control IRAs", ControlIras.class, R.drawable.iras);
 			addItem(item, CONTROLES_ATENCION, CONTROLES_ATENCION_MAP);
 		}
 		if(ExistePermiso(ICA_EDA_LISTAR, permisos)){
 			item=new ItemControl(ICA_EDA_LISTAR, "Control EDAs", ControlEdas.class, R.drawable.edas);
 			addItem(item, CONTROLES_ATENCION, CONTROLES_ATENCION_MAP);
-		}
+		}*/
 		if(ExistePermiso(ICA_CONTROLCONSULTA_LISTAR, permisos)){
 			item=new ItemControl(ICA_CONTROLCONSULTA_LISTAR, "Control Consultas", ControlConsultas.class, R.drawable.consultas);
 			addItem(item, CONTROLES_ATENCION, CONTROLES_ATENCION_MAP);

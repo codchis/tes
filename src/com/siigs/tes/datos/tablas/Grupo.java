@@ -1,6 +1,14 @@
 package com.siigs.tes.datos.tablas;
 
+import java.util.List;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+
 import com.google.gson.annotations.SerializedName;
+import com.siigs.tes.datos.DatosUtil;
+import com.siigs.tes.datos.ProveedorContenido;
 
 /**
  * Esquema de tabla de base de datos
@@ -34,4 +42,20 @@ public class Grupo {
 	public int _id;
 	public String nombre="";
 	public String descripcion;
+	
+	public static List<Grupo> getTodos(Context context){
+		Cursor cur = context.getContentResolver().query(ProveedorContenido.GRUPO_CONTENT_URI, 
+				null, null, null, null);
+		List<Grupo> salida = DatosUtil.ObjetosDesdeCursor(cur, Grupo.class);
+		cur.close();
+		return salida;
+	}
+	
+	public static void AgregarRegistros(Context context, List<Grupo> grupos) throws Exception{
+		ContentValues[] registros = new ContentValues[grupos.size()];
+		int i=0;
+		for(Grupo grupo : grupos)
+			registros[i++]= DatosUtil.ContentValuesDesdeObjeto(grupo);
+		context.getContentResolver().bulkInsert(ProveedorContenido.GRUPO_CONTENT_URI,	registros);
+	}
 }

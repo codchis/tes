@@ -242,7 +242,7 @@ public class Login extends DialogFragment {
 	
 	/**
 	 * Cierra este diálogo y notifica a fragmento padre los datos.
-	 * @param código de resultado oficial de la ejecución de este diálogo
+	 * @param resultado Código de resultado oficial de la ejecución de este diálogo
 	 */
 	private void Cerrar(int resultado){
 		Intent datos= new Intent();

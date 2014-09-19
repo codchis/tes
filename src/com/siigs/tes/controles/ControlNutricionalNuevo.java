@@ -100,6 +100,7 @@ public class ControlNutricionalNuevo extends DialogFragment {
 		
 		final EditText txtEstatura = (EditText)vista.findViewById(R.id.txtEstatura);
 		final EditText txtPeso = (EditText)vista.findViewById(R.id.txtPeso);
+		final EditText txtHemoglobina = (EditText)vista.findViewById(R.id.txtHemoglobina);
 		
 		//Agregar
 		Button btnAgregar = (Button) vista.findViewById(R.id.btnAgregar);
@@ -124,6 +125,18 @@ public class ControlNutricionalNuevo extends DialogFragment {
 					return;
 				}
 				
+				double tmpHemoglobina = ControlNutricional.HEMOGLOBINA_NULL;
+				if(!txtHemoglobina.getText().toString().equals("")){
+					try{
+						tmpHemoglobina = Double.parseDouble(txtHemoglobina.getText().toString());
+						if(tmpHemoglobina<=0)throw new Exception("Hemoglobina ilógica");
+					}catch(Exception e){
+						Toast.makeText(getActivity(), "Introduzca una hemoglobina válida", Toast.LENGTH_LONG).show();
+						return;
+					}
+				}
+				final double hemoglobina = tmpHemoglobina;
+				
 				//Confirmación
 				AlertDialog dialogo=new AlertDialog.Builder(getActivity()).create();
 				dialogo.setMessage("¿En verdad desea registrar este control?");
@@ -138,6 +151,7 @@ public class ControlNutricionalNuevo extends DialogFragment {
 						//Talla no se toma en cuenta en este proceso así que se deja en 0
 						controlNutricional.altura = estatura;
 						controlNutricional.peso = peso;
+						controlNutricional.hemoglobina = hemoglobina;
 						controlNutricional.id_persona = p.id;
 						controlNutricional.id_invitado = sesion.getUsuarioInvitado() != null ? 
 								sesion.getUsuarioInvitado()._id : null;

@@ -4,6 +4,8 @@
 package com.siigs.tes.controles;
 
 
+import java.util.List;
+
 import com.siigs.tes.R;
 import com.siigs.tes.Sesion;
 import com.siigs.tes.TesAplicacion;
@@ -116,7 +118,7 @@ public class ControlConsultas extends Fragment {
 		AdaptadorArrayMultiTextView<ControlConsulta> adaptador = new AdaptadorArrayMultiTextView<ControlConsulta>(
 				getActivity(), R.layout.fila_comun_para_ira_eda_accion_consulta,
 				sesion.getDatosPacienteActual().consultas, 
-				new String[]{ControlConsulta.FECHA, ControlConsulta.ID_ASU_UM, ControlConsulta.ID_CONSULTA, 
+				new String[]{ControlConsulta.FECHA, ControlConsulta.ID_ASU_UM, ControlConsulta.CLAVE_CIE10, 
 					ControlConsulta.ID_TRATAMIENTO},
 				new int[]{R.id.txtFecha, R.id.txtUM, R.id.txtDetalle, 
 					R.id.txtTratamiento});
@@ -142,15 +144,18 @@ public class ControlConsultas extends Fragment {
 				destino.setText(ArbolSegmentacion.getDescripcion(getActivity(), 
 						Integer.parseInt(valor.toString())));
 				return true;
-			}else if(atributoOrigen.equals(ControlConsulta.ID_CONSULTA)){
-				destino.setText(Consulta.getDescripcion(getActivity(), 
-						Integer.parseInt(valor.toString())));
+			}else if(atributoOrigen.equals(ControlConsulta.CLAVE_CIE10)){
+				destino.setText(Consulta.getDescripcion(getActivity(), valor.toString()) );
 				TextView clave = (TextView)destino.getRootView().findViewById(R.id.txtClave);
 				if(clave!=null)
-					clave.setText(Consulta.getClave(getActivity(), origen.id_consulta));
+					clave.setText(/*Consulta.getClave(getActivity(), origen.clave_cie10)*/origen.clave_cie10);
 				return true;
-			}else if(atributoOrigen.equals(ControlIra.ID_TRATAMIENTO)){
-				destino.setText(Tratamiento.getDescripcion(getActivity(), origen.id_tratamiento));
+			}else if(atributoOrigen.equals(ControlConsulta.ID_TRATAMIENTO)){
+				List<Tratamiento> tratamientos = origen.getTratamientos(getActivity());
+				String texto = "";
+				for(Tratamiento tratamiento : tratamientos)
+					texto += (texto.equals("") ? "" : ", ") + tratamiento.descripcion;
+				destino.setText(texto);
 				return true;
 			}
 			return false;

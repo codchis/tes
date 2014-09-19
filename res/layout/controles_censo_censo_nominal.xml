@@ -34,14 +34,29 @@ se compone de Grupo:controles, Subgrupo:censo, Control:censo_nominal -->
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:layout_weight="10"
+            android:layout_weight="7"
+            android:text="@string/localidad" />
+
+        <Spinner
+            android:id="@+id/spLocalidad"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="25"
+            tools:listitem="@android:layout/simple_spinner_dropdown_item" />
+        
+        <TextView
+            style="@style/atributo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            
+            android:layout_weight="5"
             android:text="@string/sexo" />
 
         <Spinner
             android:id="@+id/spSexo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="40"
+            android:layout_weight="13"
             tools:listitem="@android:layout/simple_spinner_dropdown_item" />
     </LinearLayout>
 

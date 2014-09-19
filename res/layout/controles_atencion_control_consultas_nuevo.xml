@@ -1,122 +1,243 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingLeft="@dimen/padding_izquierda_agregar_control"
-    android:orientation="vertical" >
-
-    <include
-        android:id="@+id/barra_titulo_consulta"
-        layout="@layout/barra_titulo" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:text="Paciente" />
-
-        <EditText
-            android:id="@+id/txtNombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:enabled="false"
-            android:inputType="text"
-            android:singleLine="true" />
-    </LinearLayout>
-
-    <LinearLayout
-        style="@style/fila_padecimiento" >
-
-        <CheckBox 
-            android:id="@+id/chkPrimeraVez"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="@string/primera_vez"
-            android:checked="true"/>      
-
-
-        <Spinner
-            android:id="@+id/spPadecimiento"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            tools:listitem="@android:layout/simple_dropdown_item_1line" />
-    </LinearLayout>
+    android:layout_height="match_parent">
     
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
 
-        <TextView
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:text="Afección" />
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:paddingLeft="@dimen/padding_izquierda_agregar_control"
+	    android:orientation="vertical" >
+	
+	    <include
+	        android:id="@+id/barra_titulo_consulta"
+	        layout="@layout/barra_titulo" />
+	
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	
+	        <TextView
+	            android:layout_width="70dp"
+	            android:layout_height="wrap_content"
+	            android:text="Paciente" />
+	
+	        <EditText
+	            android:id="@+id/txtNombre"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:enabled="false"
+	            android:inputType="text"
+	            android:singleLine="true" />
+	    </LinearLayout>
 
-        <Spinner
-            android:id="@+id/spConsultas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@android:layout/simple_spinner_dropdown_item" />
-    </LinearLayout>
+	    
+	    <!-- Sección de selección de afecciones -->
+	    	
+	    <LinearLayout
+	        android:id="@+id/llAfeccion"
+	        android:orientation="vertical" 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+	    
+		    <LinearLayout
+		        style="@style/fila_padecimiento" >
+		
+		        <CheckBox 
+		            android:id="@+id/chkPrimeraVez"
+		            android:layout_width="200dp"
+		            android:layout_height="wrap_content"
+		            android:text="@string/primera_vez"
+		            android:checked="true"/>      
+		
+		
+		        <Spinner
+		            android:id="@+id/spPadecimiento"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:visibility="gone"
+		            tools:listitem="@android:layout/simple_dropdown_item_1line" />
+		    </LinearLayout>
 
-        <TextView
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:text="Tipo de tratamiento" />
+		
+		    <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content" >
+		
+		        <TextView
+		            android:layout_width="130dp"
+		            android:layout_height="wrap_content"
+		            android:text="Categoría" />
+		
+		        <Spinner
+		            android:id="@+id/spCategoria"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            tools:listitem="@android:layout/simple_spinner_dropdown_item" />
+		    </LinearLayout>
+		
+		    <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content" >
+		
+		        <TextView
+		            android:layout_width="130dp"
+		            android:layout_height="wrap_content"
+		            android:text="Afección" />
+		
+		        <Spinner
+		            android:id="@+id/spConsulta"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            tools:listitem="@android:layout/simple_spinner_dropdown_item" />
+		    </LinearLayout>
 
-        <Spinner
-            android:id="@+id/spTipoTratamiento"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@android:layout/simple_spinner_dropdown_item" />
-    </LinearLayout>
+		    
+		    <TextView
+		        android:id="@+id/txtBuscarAfeccion"
+				android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textStyle="bold"
+		        android:textColor="@color/link_texto"
+		        android:clickable="true"
+		        android:text="También puede buscar la afección aquí" />		    
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+		    
+		    <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:gravity="center"
+		        style="@android:attr/buttonBarStyle" >
+		
+		        <Button 
+		            android:id="@+id/btnCancelar"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="@android:string/cancel"
+		            style="@style/boton" />
+		        
+		        <Button 
+		            android:id="@+id/btnSiguiente"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="@string/siguiente"
+		            android:layout_marginLeft="5dp"
+		            style="@style/boton" />
+		    </LinearLayout>
+		</LinearLayout>
+		
+	    
+	    <!-- Sección de Tratamientos -->
+	    <LinearLayout 
+	        android:id="@+id/llTratamientos"
+	        android:orientation="vertical"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content">
+		    
+	        <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content" >
+		
+		        <TextView
+		            android:layout_width="130dp"
+		            android:layout_height="wrap_content"
+		            android:text="Medicamentos para:" />
+		        
+		        <TextView
+		            android:id="@+id/txtAfeccion"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:textStyle="bold"
+		            android:text="[afección]" />		
+		    </LinearLayout>
+		    
+	        <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content" >
+		
+		        <TextView
+		            android:layout_width="130dp"
+		            android:layout_height="wrap_content"
+		            android:text="Tipo de medicamento" />
+		
+		        <Spinner
+		            android:id="@+id/spTipoTratamiento"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            tools:listitem="@android:layout/simple_spinner_dropdown_item" />
+		    </LinearLayout>
+		    
+			<LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content" >
+		
+		        <TextView
+		            android:layout_width="130dp"
+		            android:layout_height="wrap_content"
+		            android:text="@string/tratamiento" />
+		
+		        <Spinner
+		            android:id="@+id/spTratamiento"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            tools:listitem="@android:layout/simple_spinner_dropdown_item" />
+		    </LinearLayout>
 
-        <TextView
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:text="Tratamiento" />
+			
+			<!-- CONTENEDOR PRINCIPAL DE TRATAMIENTOS SELECCIONADOS -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical" >
 
-        <Spinner
-            android:id="@+id/spTratamiento"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@android:layout/simple_spinner_dropdown_item" />
-    </LinearLayout>
-    
-    
-    
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        style="@android:attr/buttonBarStyle" >
+                <TextView 
+                	android:layout_width="wrap_content" 
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold|italic"
+                    android:text="Medicamentos asignados:" />           
+	
+	
+				<!-- DATOS -->
+                <com.siigs.tes.ui.ListaSimple
+                android:orientation="vertical"
+                android:id="@+id/lsTratamientos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:listitem="@android:layout/simple_list_item_checked" />
 
-        <Button 
-            android:id="@+id/btnCancelar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@android:string/cancel"
-            style="@style/boton" />
-        
-        <Button 
-            android:id="@+id/btnAgregar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/agregar"
-            android:layout_marginLeft="5dp"
-            style="@style/boton" />
-    </LinearLayout>
+            </LinearLayout>
+			
+			
+			<LinearLayout
+			    style="@android:attr/buttonBarStyle"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginTop="10dp"
+			    android:gravity="center" >
 
-</LinearLayout>
+			    <Button
+			        android:id="@+id/btnAtras"
+			        style="@style/boton"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="@string/atras" />
+
+			    <Button
+			        android:id="@+id/btnAgregar"
+			        style="@style/boton"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginLeft="5dp"
+			        android:text="@string/agregar" />
+			</LinearLayout>
+	        
+	    </LinearLayout>
+	    
+	    
+	</LinearLayout>
+	
+</ScrollView>

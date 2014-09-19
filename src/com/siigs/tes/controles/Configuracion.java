@@ -46,11 +46,11 @@ public class Configuracion extends Fragment {
 		final TextView txtUrl = (TextView)rootView.findViewById(R.id.txtUrl);
 		txtUrl.setText(aplicacion.getUrlSincronizacion());
 		
-		final TextView txtIras = (TextView)rootView.findViewById(R.id.txtFiltroIras);
+		/*final TextView txtIras = (TextView)rootView.findViewById(R.id.txtFiltroIras);
 		txtIras.setText(aplicacion.getFiltroDiasAntiguedadIras()+"");
 		
 		final TextView txtEdas = (TextView)rootView.findViewById(R.id.txtFiltroEdas);
-		txtEdas.setText(aplicacion.getFiltroDiasAntiguedadEdas()+"");
+		txtEdas.setText(aplicacion.getFiltroDiasAntiguedadEdas()+"");*/
 		
 		final TextView txtConsultas = (TextView)rootView.findViewById(R.id.txtFiltroConsultas);
 		txtConsultas.setText(aplicacion.getFiltroDiasAntiguedadConsultas()+"");
@@ -62,16 +62,16 @@ public class Configuracion extends Fragment {
 			public void onClick(View v) {
 				int diasIras, diasEdas, diasConsultas;
 				try{
-					diasIras = Integer.parseInt(txtIras.getText().toString());
-					diasEdas = Integer.parseInt(txtEdas.getText().toString());
+					/*diasIras = Integer.parseInt(txtIras.getText().toString());
+					diasEdas = Integer.parseInt(txtEdas.getText().toString());*/
 					diasConsultas = Integer.parseInt(txtConsultas.getText().toString());
 				}catch(Exception e){
-					Toast.makeText(getActivity(), "Por favor introduzca números correctos", Toast.LENGTH_LONG).show();
+					Toast.makeText(getActivity(), "Por favor introduzca número correcto de días visibles", Toast.LENGTH_LONG).show();
 					return;
 				}
 				aplicacion.setUrlSincronizacion(txtUrl.getText().toString());
-				aplicacion.setFiltroDiasAntiguedadIras(diasIras);
-				aplicacion.setFiltroDiasAntiguedadEdas(diasEdas);
+				/*aplicacion.setFiltroDiasAntiguedadIras(diasIras);
+				aplicacion.setFiltroDiasAntiguedadEdas(diasEdas);*/
 				aplicacion.setFiltroDiasAntiguedadConsultas(diasConsultas);
 				Toast.makeText(getActivity(), "Datos guardados", Toast.LENGTH_SHORT).show();			
 			}

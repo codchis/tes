@@ -3,14 +3,19 @@
  */
 package com.siigs.tes.controles;
 
+import java.util.List;
+
 import com.siigs.tes.R;
 import com.siigs.tes.Sesion;
 import com.siigs.tes.TesAplicacion;
 import com.siigs.tes.datos.DatosUtil;
+import com.siigs.tes.datos.tablas.ArbolSegmentacion;
 import com.siigs.tes.datos.tablas.EsquemaIncompleto;
 import com.siigs.tes.datos.tablas.PartoMultiple;
 import com.siigs.tes.datos.vistas.Censo;
 import com.siigs.tes.datos.vistas.EsquemasIncompletos;
+import com.siigs.tes.datos.vistas.LocalidadDomicilioPersonas;
+import com.siigs.tes.ui.AdaptadorArrayMultiTextView;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -65,6 +70,7 @@ public class CensoCensoNominal extends Fragment implements LoaderManager.LoaderC
 	
 	//Datos de filtro para consulta
 	private static final String FILTRO_NOMBRE = "filtro_nombre";
+	private static final String FILTRO_LOCALIDAD = "filtro_localidad";
 	private static final String FILTRO_SEXO = "filtro_sexo";
 	private static final String FILTRO_ANO_NACIMIENTO = "filtro_ano_nacimiento";
 	private static final String FILTRO_AGEB = "filtro_ageb";
@@ -129,6 +135,16 @@ public class CensoCensoNominal extends Fragment implements LoaderManager.LoaderC
 				android.R.layout.simple_spinner_dropdown_item);
 		spSexo.setAdapter(adaptadorSexo);
 		
+		//Localidad
+		final Spinner spLocalidad=(Spinner)rootView.findViewById(R.id.spLocalidad);
+		List<ArbolSegmentacion> localidades = LocalidadDomicilioPersonas.getLocalidadDomicilio(getActivity());
+		AdaptadorArrayMultiTextView<ArbolSegmentacion> adaptadorLocalidades =
+				new AdaptadorArrayMultiTextView<ArbolSegmentacion>(
+				getActivity(), android.R.layout.simple_spinner_item, localidades,
+				new String[]{ArbolSegmentacion.DESCRIPCION}, new int[]{android.R.id.text1});
+		adaptadorLocalidades.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spLocalidad.setAdapter(adaptadorLocalidades);
+		
 		//Botón usado solo en esquemas incompletos
 		btnTotalPrioridades = (ImageButton) rootView.findViewById(R.id.btnTotalPrioridades);
 		btnTotalPrioridades.setOnClickListener(new OnClickListener() {
@@ -172,14 +188,21 @@ public class CensoCensoNominal extends Fragment implements LoaderManager.LoaderC
 				else if(sexo.equals(getString(R.string.masculino)))sexo = Censo.MASCULINO;
 				else sexo = Censo.FEMENINO;
 				
+				Integer idAsuLocalidad = null;
+				ArbolSegmentacion localidad = (ArbolSegmentacion) spLocalidad.getSelectedItem();
+				if(localidad._id > 0)
+					idAsuLocalidad = localidad._id;
+				
+				
 				String ageb = txtAgeb.getText().toString().trim();
 				if(ageb.equals(""))ageb = null;
 				
 				Bundle filtro = new Bundle();
-				if(nombre!=null)filtro.putString(FILTRO_NOMBRE, nombre);
-				if(sexo!=null)filtro.putString(FILTRO_SEXO, sexo);
-				if(anoNacimiento!=null)filtro.putInt(FILTRO_ANO_NACIMIENTO, anoNacimiento);
+				if(nombre != null)filtro.putString(FILTRO_NOMBRE, nombre);
+				if(sexo != null)filtro.putString(FILTRO_SEXO, sexo);
+				if(anoNacimiento != null)filtro.putInt(FILTRO_ANO_NACIMIENTO, anoNacimiento);
 				if(ageb != null) filtro.putString(FILTRO_AGEB, ageb);
+				if(idAsuLocalidad != null)filtro.putInt(FILTRO_LOCALIDAD, idAsuLocalidad);
 				
 				LlenarResultados(filtro);
 			}
@@ -423,6 +446,7 @@ public class CensoCensoNominal extends Fragment implements LoaderManager.LoaderC
 	public Loader<Cursor> onCreateLoader(int idLoader, Bundle args) {    	
 		String nombre = args.containsKey(FILTRO_NOMBRE) ? args.getString(FILTRO_NOMBRE) : null;
 		Integer ano = args.containsKey(FILTRO_ANO_NACIMIENTO) ? args.getInt(FILTRO_ANO_NACIMIENTO) : null;
+		Integer idAsuLocalidad = args.containsKey(FILTRO_LOCALIDAD) ? args.getInt(FILTRO_LOCALIDAD) : null;
 		String sexo = args.containsKey(FILTRO_SEXO) ? args.getString(FILTRO_SEXO) : null;
 		String ageb = args.containsKey(FILTRO_AGEB) ? args.getString(FILTRO_AGEB) : null;
 		
@@ -430,13 +454,13 @@ public class CensoCensoNominal extends Fragment implements LoaderManager.LoaderC
     	case ID_LOADER_CENSO:
     		if(pbProgreso!=null)pbProgreso.setVisibility(View.VISIBLE);
     		if(esVistaCenso){
-    			return Censo.getCenso(getActivity(), nombre, ano, sexo, ageb);
+    			return Censo.getCenso(getActivity(), nombre, ano, sexo, ageb, idAsuLocalidad);
     		}else{
-    			return EsquemasIncompletos.getEsquemasIncompletos(getActivity(), nombre, ano, sexo, ageb);
+    			return EsquemasIncompletos.getEsquemasIncompletos(getActivity(), nombre, ano, sexo, ageb, idAsuLocalidad);
     		}
     	case ID_LOADER_TOTAL_PRIORIDADES:
     		if(btnTotalPrioridades!=null)btnTotalPrioridades.setVisibility(View.GONE);
-    		return EsquemasIncompletos.getPrioridades(getActivity(), nombre, ano, sexo, ageb);
+    		return EsquemasIncompletos.getPrioridades(getActivity(), nombre, ano, sexo, ageb, idAsuLocalidad);
     	}
     	return null;
 	}

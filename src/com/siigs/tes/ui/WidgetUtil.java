@@ -84,8 +84,8 @@ public class WidgetUtil {
 
 	/**
 	 * Define contenido del TextView que debe existir en contenedor y que debe tener id R.id.txtDatosBasicos
-	 * @param contenedor
-	 * @param p
+	 * @param contenedor Destino del contenido
+	 * @param p {@link Persona} origen de datos
 	 */
 	public static void setDatosBasicosPaciente(View contenedor, Persona p){
 		((TextView)contenedor.findViewById(R.id.txtDatosBasicos))

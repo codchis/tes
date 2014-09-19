@@ -1,5 +1,8 @@
 package com.siigs.tes.datos.tablas;
 
+import java.util.List;
+
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
@@ -82,5 +85,21 @@ public class Usuario {
 		int salida = cur.getCount();
 		cur.close();
 		return salida;
+	}
+	
+	public static List<Usuario> getTodos(Context context){
+		Cursor cur = context.getContentResolver().query(ProveedorContenido.USUARIO_CONTENT_URI, 
+				null, null, null, null);
+		List<Usuario> salida = DatosUtil.ObjetosDesdeCursor(cur, Usuario.class);
+		cur.close();
+		return salida;
+	}
+	
+	public static void AgregarRegistros(Context context, List<Usuario> usuarios) throws Exception{
+		ContentValues[] registros = new ContentValues[usuarios.size()];
+		int i=0;
+		for(Usuario usuario : usuarios)
+			registros[i++]= DatosUtil.ContentValuesDesdeObjeto(usuario);
+		context.getContentResolver().bulkInsert(ProveedorContenido.USUARIO_CONTENT_URI,	registros);
 	}
 }

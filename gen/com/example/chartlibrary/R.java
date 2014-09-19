@@ -8,8 +8,8 @@ package com.example.chartlibrary;
 
 public final class R {
 	public static final class drawable {
-		public static final int ic_launcher = 0x7f020021;
-		public static final int popup_ninepatch = 0x7f02002d;
+		public static final int ic_launcher = 0x7f020023;
+		public static final int popup_ninepatch = 0x7f02002f;
 	}
 	public static final class string {
 		public static final int app_name = 0x7f060000;

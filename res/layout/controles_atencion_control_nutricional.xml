@@ -27,7 +27,15 @@
             
             <!-- Contenido -->
                 
+                <Spinner
+		            android:id="@+id/spTipoGrafica"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_gravity="right"
+		            tools:listitem="@android:layout/simple_spinner_dropdown_item" />
+                
                 <TextView 
+                    android:id="@+id/txtEjeY"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left"
@@ -42,6 +50,7 @@
 			    
                 <!-- Info gráfica -->
                 <TextView 
+                    android:id="@+id/txtEjeX"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
@@ -49,9 +58,12 @@
                     android:text="Tiempo (meses)"/>
                 
 	            <LinearLayout
+	            	android:id="@+id/llEtiquetas"
 	                android:layout_width="match_parent"
 	                android:layout_height="wrap_content" >
 	
+	                <!-- Objetos de muestra. Serán borrados con código y generados según el tipo de gráfica -->
+	                
 	                <TextView
 	                    android:layout_width="wrap_content"
 	                    android:layout_height="wrap_content"
@@ -133,8 +145,31 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Agregar Control"/>
+                android:text="Agregar Control Nutricional"/>
+                                
+        </LinearLayout>
+        
+        
+        <LinearLayout
+            android:id="@+id/accion_agregar_perimetro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical" >
 
+            <!-- Título -->
+            <include 
+                android:id="@+id/barra_titulo_agregar_perimetro"
+                layout="@layout/barra_titulo"/>
+
+            
+            <!-- Contenido -->
+            <Button android:id="@+id/btnAgregarControlPerimetro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Agregar Control Perímetro Cefálico"/>
                                 
         </LinearLayout>
     </LinearLayout>

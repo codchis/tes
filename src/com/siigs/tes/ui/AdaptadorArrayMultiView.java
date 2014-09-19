@@ -3,7 +3,6 @@ package com.siigs.tes.ui;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,7 +15,7 @@ import android.widget.ArrayAdapter;
  * widgets de cualquier clase que visualizarán/recibirán los atributos definidos.
  * @author Axel
  *
- * @param <T>
+ * @param <T> Clase genérica
  */
 public class AdaptadorArrayMultiView<T> extends ArrayAdapter<T> {
 
@@ -24,6 +23,7 @@ public class AdaptadorArrayMultiView<T> extends ArrayAdapter<T> {
 	
 	private Context contexto;
 	private int layoutId;
+	private int dropDownLayoutId; //asignable en setDrowDownViewResource
 	private List<T> datos;
 	
 	private Mapeo[] reglasMapeo;
@@ -44,6 +44,7 @@ public class AdaptadorArrayMultiView<T> extends ArrayAdapter<T> {
 		super(c, layout, datos);
 		this.contexto = c;
 		this.layoutId = layout;
+		this.dropDownLayoutId = layout;
 		this.datos = datos;
 		this.reglasMapeo = mapeoAtributoView;
 	}
@@ -52,10 +53,22 @@ public class AdaptadorArrayMultiView<T> extends ArrayAdapter<T> {
 	
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
+		return crearView(position, convertView, parent, this.layoutId);
+	}
+	
+	/**
+	 * Construye un View con el layout especificado. Usado por getView() y getDropDownView()
+	 * @param position
+	 * @param convertView
+	 * @param parent
+	 * @param layout
+	 * @return
+	 */
+	private View crearView(int position, View convertView, ViewGroup parent, int layout){
 		View salida = convertView;
 		if(salida == null){
 			LayoutInflater inflater = LayoutInflater.from(contexto);
-			salida = inflater.inflate(this.layoutId, parent, false);	
+			salida = inflater.inflate(layout, parent, false);	
 		}
 		
 		T elemento = datos.get(position);
@@ -92,15 +105,21 @@ public class AdaptadorArrayMultiView<T> extends ArrayAdapter<T> {
 
 	@Override
 	/**
-	 * Regresamos lo mismo que getView() pues queremos mostrar mismos datos en caso de un spinner
+	 * Regresamos lo mismo que getView() pues queremos mostrar mismos datos pero con layout de drop down
 	 * @param position
 	 * @param convertView
 	 * @param parent
 	 * @return
 	 */
 	public View getDropDownView(int position, View convertView, ViewGroup parent) {
-		return getView(position, convertView, parent);
+		return crearView(position, convertView, parent, this.dropDownLayoutId);
+		//return getView(position, convertView, parent);
 		//return super.getDropDownView(position, convertView, parent);
+	}
+	
+	@Override
+	public void setDropDownViewResource(int resource) {
+		this.dropDownLayoutId = resource;
 	}
 
 	@Override

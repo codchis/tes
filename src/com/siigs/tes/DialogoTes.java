@@ -4,10 +4,12 @@
  */
 package com.siigs.tes;
 
+import java.io.IOException;
 import java.util.List;
 
-import com.siigs.tes.controles.ControlVacunasNuevo;
 import com.siigs.tes.datos.ManejadorNfc;
+import com.siigs.tes.datos.ManejadorNfc.LectorUsb;
+import com.siigs.tes.datos.ManejadorNfc.LectorUsb.EventosLector;
 import com.siigs.tes.datos.tablas.ErrorSis;
 import com.siigs.tes.datos.tablas.PendientesTarjeta;
 
@@ -91,15 +93,22 @@ public class DialogoTes extends DialogFragment {
 	public static enum ModoOperacion {LOGIN, GUARDAR}
 	private ModoOperacion modoOperacion;
 
-	//NFC
-	private NfcAdapter adaptadorNFC;
+	//NFC Nativo
+	private NfcAdapter adaptadorNFC = null;
 	private PendingIntent pendingIntentNFC;
 	private IntentFilter writeTagFiltersNFC[];
-	private boolean modoEscrituraNFC;
 	
+	//NFC Usb
+	private LectorUsb miLectorUsb = null;
+	private String idTarjetaLeida = null;
+	private boolean escribirUsbConNdef = true; //Indica que la escritura en lector Usb será en formato Ndef
+	
+	//Para generación de pendientes
 	private PendientesTarjeta pendiente = null; //Pendiente que mandaría a escribir
 	private List<PendientesTarjeta> pendientesResueltos = null; //En login esta lista podría recibir valores
 	private View txtPasarTesDeNuevo=null;
+	
+	private TesAplicacion aplicacion;
 	
 	/**
 	 * Usado para comunicarse con actividad contenedora la cual DEBE implementar
@@ -109,15 +118,15 @@ public class DialogoTes extends DialogFragment {
 	 */
 	public interface Callbacks {
 		/**
-		 * Usado para avisar que esta instancia de {@link ControlVacunasNuevo} existe y que
+		 * Usado para avisar que esta instancia de {@link DialogoTes} existe y que
 		 * requiere ser avisada cuando actividad contenedora detecte un tag NFC
-		 * @param llamador {@link ControlVacunasNuevo} que solicita recibir tags NFC
+		 * @param llamador {@link DialogoTes} que solicita recibir tags NFC
 		 */
 		public void onIniciarDialogoTes(DialogoTes llamador);
 		/**
 		 * Usado apra avisar a actividad contenedora que ya no es necesario
 		 * dar avisos de tags NFC
-		 * @param llamador {@link ControlVacunasNuevo} que hace la llamada
+		 * @param llamador {@link DialogoTes} que hace la llamada
 		 */
 		public void onDetenerDialogoTes(DialogoTes llamador);
 	}
@@ -153,7 +162,9 @@ public class DialogoTes extends DialogFragment {
 		//Método 2 para hacer la ventana modal 
 		setCancelable(false);
 		
-		//INICIA MODO ESCUCHA REDIRIGIENDO A ACTIVIDAD PADRE EN CASO DE ENCONTRAR ALGO
+		aplicacion = (TesAplicacion)getActivity().getApplication();
+		
+		//INICIA MODO ESCUCHA NFC NATIVO REDIRIGIENDO A ACTIVIDAD PADRE EN CASO DE ENCONTRAR ALGO
 		try{
 			adaptadorNFC = NfcAdapter.getDefaultAdapter(getActivity());
 		}catch(Exception e){
@@ -167,6 +178,87 @@ public class DialogoTes extends DialogFragment {
 		IntentFilter tagDetectada = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
 		tagDetectada.addCategory(Intent.CATEGORY_DEFAULT);
 		writeTagFiltersNFC = new IntentFilter[] { tagDetectada };
+		
+		
+		//INICIA LECTOR USB
+		EventosLector eventosUsb = new EventosLector() {
+			@Override
+			public void onGetIdTarjeta(LectorUsb lector, String idTarjeta) {
+				if(idTarjeta != null){
+					idTarjetaLeida = idTarjeta;
+					//miLectorUsb.msg("se recibió id tarjeta:'"+idTarjeta+ "'");
+					
+					if(modoOperacion == ModoOperacion.LOGIN){
+						try {
+							miLectorUsb.LeerTarjeta(idTarjeta);
+						} catch (IOException e) {
+							String msg = "No puede leer la tarjeta USB: "+e.getMessage() + ":\n"+e.toString();
+							miLectorUsb.msg(msg, false);
+							ErrorSis.AgregarError(getActivity(), aplicacion.getSesion().getUsuario()._id, 
+								ErrorSis.ERROR_DESCONOCIDO, "Usb-LlamarLeerTarjeta:"+msg);
+						}
+					}else{ //Escritura común de tarjeta
+						try {
+							miLectorUsb.EscribirTarjeta(idTarjeta, aplicacion.getSesion().getDatosPacienteActual(), escribirUsbConNdef);
+							//Resultado llegará a onEscritirTarjeta()
+						} catch (IOException e) {
+							String msg = "No puede escribir la tarjeta USB: "+e.getMessage() + ":\n"+e.toString();
+							miLectorUsb.msg(msg, false);
+							ErrorSis.AgregarError(getActivity(), aplicacion.getSesion().getUsuario()._id, 
+								ErrorSis.ERROR_DESCONOCIDO, "Usb-LlamarEscribirTarjeta:"+msg);
+							return;
+						}
+					}
+				}else{
+					miLectorUsb.msg("No se detectó la tarjeta. Puede acercarla al lector e intentar de nuevo", false);
+				}
+			}
+			@Override
+			public void onLeerTarjeta(LectorUsb lector, List<PendientesTarjeta> pendientes) {
+				//miLectorUsb.msg("Terminado onLeerTarjeta");
+				pendientesResueltos = pendientes;
+				if(pendientesResueltos.size() > 0){
+					try {
+						//miLectorUsb.msg("Hay pendientes y los va a escribir");
+						miLectorUsb.EscribirTarjeta(idTarjetaLeida, aplicacion.getSesion().getDatosPacienteActual(), escribirUsbConNdef);
+						//resultado llegará a onEscribirTarjeta()
+					} catch (IOException e) {
+						String msg = e.getMessage() + ":\n"+e.toString();
+						miLectorUsb.msg("Al escribir pendientes sucedio:"+msg, false);
+						ErrorSis.AgregarError(getActivity(), aplicacion.getSesion().getUsuario()._id, 
+							ErrorSis.ERROR_DESCONOCIDO, "Usb-EscribirPendientes:"+msg);
+						return;
+					}
+				}else{
+					//El paciente ya está leído en sesión y cerramos esto (en UI thread)
+					//miLectorUsb.msg("No hubo pendientes y salimos normal");
+					getActivity().runOnUiThread(new Runnable() {
+						@Override
+						public void run() {
+							Cerrar(RESULT_OK);							
+						}
+					});
+				}
+			}
+			@Override
+			public void onEscribirTarjeta(LectorUsb lector) {
+				//miLectorUsb.msg("se ha terminado de escribir");
+				//Se ha terminado de escribir, ya sea en guardado común o por pendientes
+				if(pendientesResueltos != null)
+					for(PendientesTarjeta pendiente : pendientesResueltos)
+						PendientesTarjeta.MarcarPendienteResuelto(getActivity(), pendiente);
+				//Ahora solo cerramos (en UI thread)
+				getActivity().runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						Cerrar(RESULT_OK);							
+					}
+				});
+			}
+		};
+		try{
+			miLectorUsb = new LectorUsb(getActivity(), eventosUsb);
+		}catch(Exception e){}
 		
 		this.modoOperacion = (ModoOperacion) getArguments().getSerializable(PARAM_MODO_OPERACION);
 	}
@@ -216,6 +308,25 @@ public class DialogoTes extends DialogFragment {
 			}
 		});
 		
+		//Botón Lector USB
+		Button btnLectorUsb=(Button)vista.findViewById(R.id.btnLectorUsb);
+		btnLectorUsb.setVisibility(miLectorUsb == null ? View.GONE : View.VISIBLE);
+		btnLectorUsb.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				try {
+					miLectorUsb.IdentificarTarjeta();
+					//miLectorUsb.msg("Fin botonazo Usar LECTOR usb");
+					//Su resultado va a onGetIdTarjeta()
+				} catch (IOException e) {
+					String msg = e.getMessage() + ":\n"+e.toString();
+					Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+					ErrorSis.AgregarError(getActivity(), aplicacion.getSesion().getUsuario()._id, 
+							ErrorSis.ERROR_DESCONOCIDO, "Usb-LlamarIdentificarTarjeta:"+msg);
+				}
+			}
+		});
+		
 		return vista;
 	}
 	
@@ -248,8 +359,7 @@ public class DialogoTes extends DialogFragment {
 		} catch (Exception e) {
 			String msg = e.getMessage() + ":\n"+e.toString();
 			Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
-			ErrorSis.AgregarError(getActivity(), 
-					((TesAplicacion)getActivity().getApplication()).getSesion().getUsuario()._id, 
+			ErrorSis.AgregarError(getActivity(), aplicacion.getSesion().getUsuario()._id, 
 					ErrorSis.ERROR_DESCONOCIDO, "NFC:"+msg);
 		}
 	}
@@ -260,8 +370,7 @@ public class DialogoTes extends DialogFragment {
 	 * @throws Exception
 	 */
 	private void GuardarDatosEnTes(Tag tag) throws Exception{
-		Sesion.DatosPaciente datosPaciente = 
-				((TesAplicacion)getActivity().getApplication()).getSesion().getDatosPacienteActual();
+		Sesion.DatosPaciente datosPaciente = aplicacion.getSesion().getDatosPacienteActual();
 		//Esta validación se quitó pues desafortunadamente la tarjeta puede ser desconfigurada
 		//facilmente al intentar escribirla, por lo que una tarjeta que se usaba en paciente
 		//podría desconfigurarse en una mala escritura, lo que después la dejaría inutilizable
@@ -301,12 +410,18 @@ public class DialogoTes extends DialogFragment {
 	}
 
 	private void ModoEscrituraNfcActivo(){
-		modoEscrituraNFC = true;
-		adaptadorNFC.enableForegroundDispatch(getActivity(), pendingIntentNFC, writeTagFiltersNFC, null);
+		if(adaptadorNFC != null)
+			adaptadorNFC.enableForegroundDispatch(getActivity(), pendingIntentNFC, writeTagFiltersNFC, null);
+		
+		if(miLectorUsb != null)
+			miLectorUsb.onResume();;
 	}
 
 	private void ModoEscrituraNfcInactivo(){
-		modoEscrituraNFC = false;
-		adaptadorNFC.disableForegroundDispatch(getActivity());
+		if(adaptadorNFC != null)
+			adaptadorNFC.disableForegroundDispatch(getActivity());
+		
+		if(miLectorUsb != null)
+			miLectorUsb.onPause();
 	}
 }//fin clase

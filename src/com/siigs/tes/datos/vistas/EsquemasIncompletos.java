@@ -22,14 +22,14 @@ public class EsquemasIncompletos {
 	public static final String MASCULINO = "M";
 	public static final String FEMENINO = "F";
 	
-	public static CursorLoader getEsquemasIncompletos(Context context, String nombre, Integer anoNacimiento, String sexo, String ageb){
+	public static CursorLoader getEsquemasIncompletos(Context context, String nombre, Integer anoNacimiento, String sexo, String ageb, Integer asuLocalidadDomicilio){
 		boolean regresarDatos = true;
-		return getEsquemas(context, regresarDatos, nombre, anoNacimiento, sexo, ageb);
+		return getEsquemas(context, regresarDatos, nombre, anoNacimiento, sexo, ageb, asuLocalidadDomicilio);
 	}
 	
-	public static CursorLoader getPrioridades(Context context, String nombre, Integer anoNacimiento, String sexo, String ageb){
+	public static CursorLoader getPrioridades(Context context, String nombre, Integer anoNacimiento, String sexo, String ageb, Integer asuLocalidadDomicilio){
 		boolean regresarDatos = false;
-		return getEsquemas(context, regresarDatos, nombre, anoNacimiento, sexo, ageb);
+		return getEsquemas(context, regresarDatos, nombre, anoNacimiento, sexo, ageb, asuLocalidadDomicilio);
 	}
 	
 	/**
@@ -43,7 +43,7 @@ public class EsquemasIncompletos {
 	 * @param ageb Filtro para búsqueda por ageb
 	 * @return {@link CursorLoader} con referencia a la consulta de esquemas a realizar
 	 */
-	private static CursorLoader getEsquemas(Context context, boolean regresarDatos, String nombre, Integer anoNacimiento, String sexo, String ageb){
+	private static CursorLoader getEsquemas(Context context, boolean regresarDatos, String nombre, Integer anoNacimiento, String sexo, String ageb, Integer asuLocalidadDomicilio){
 		String selection = "1=1";
 		if(nombre != null)
 			selection += " AND ("+NOMBRE_PACIENTE + " LIKE '%"+nombre+"%' OR "+APPAT_PACIENTE
@@ -51,6 +51,8 @@ public class EsquemasIncompletos {
 			+ "OR "+NOMBRE_PACIENTE+" || ' ' || "+APPAT_PACIENTE+" || ' ' || "+APMAT_PACIENTE+" LIKE '%"+nombre+"%')";
 		if(anoNacimiento != null)
 			selection += " AND '" + anoNacimiento + "'=" + "strftime('%Y', "+FECHA_NACIMIENTO+")";
+		if(asuLocalidadDomicilio != null)
+			selection += " AND " + ID_ASU_LOCALIDAD_DOMICILIO + "='"+asuLocalidadDomicilio+"'";
 		if(sexo != null)
 			selection += " AND " + SEXO + "='"+sexo+"'";
 		if(ageb != null)
@@ -118,6 +120,9 @@ public class EsquemasIncompletos {
 	public final static String APMAT_TUTOR = "apmat_tutor"; 
 	private final static String COL_APMAT_TUTOR = "t." + Tutor.APELLIDO_MATERNO + " " + APMAT_TUTOR;
 
+	public final static String ID_ASU_LOCALIDAD_DOMICILIO = Persona.ID_ASU_LOCALIDAD_DOMICILIO;
+	private final static String COL_ID_ASU_LOCALIDAD_DOMICILIO = "p." + Persona.ID_ASU_LOCALIDAD_DOMICILIO + " " + ID_ASU_LOCALIDAD_DOMICILIO;
+	
 	public final static String CALLE_DOMICILIO = Persona.CALLE_DOMICILIO;
 	private final static String COL_CALLE_DOMICILIO = "p." + Persona.CALLE_DOMICILIO + " " + CALLE_DOMICILIO;
 	
@@ -217,9 +222,10 @@ public class EsquemasIncompletos {
 	
 	public final static String CREAR_VISTA = "CREATE VIEW " + NOMBRE_VISTA + " AS SELECT " +
 			COL__ID_PACIENTE + ", " + COL_NOMBRE_PACIENTE + ", " + COL_APPAT_PACIENTE + ", " + COL_APMAT_PACIENTE + ", " +
-			COL_NOMBRE_TUTOR + ", " + COL_APPAT_TUTOR + ", " + COL_APMAT_TUTOR + ", " + COL_CALLE_DOMICILIO + ", " +
-			COL_NUMERO_DOMICILIO + ", " + COL_COLONIA_DOMICILIO + ", " + COL_REFERENCIA_DOMICILIO + ", " +
-			COL_AGEB + ", " + COL_CURP + ", " + COL_FECHA_NACIMIENTO + ", " + COL_PARTO +", " + COL_SEXO + ", " + COL_BCG + ", " + 
+			COL_NOMBRE_TUTOR + ", " + COL_APPAT_TUTOR + ", " + COL_APMAT_TUTOR + ", " + 
+			COL_ID_ASU_LOCALIDAD_DOMICILIO + ", " + COL_CALLE_DOMICILIO + ", " + COL_NUMERO_DOMICILIO + ", " + 
+			COL_COLONIA_DOMICILIO + ", " + COL_REFERENCIA_DOMICILIO + ", " + COL_AGEB + ", " + COL_CURP + ", " + 
+			COL_FECHA_NACIMIENTO + ", " + COL_PARTO +", " + COL_SEXO + ", " + COL_BCG + ", " + 
 			COL_HEPATITIS_1 + ", " + COL_HEPATITIS_2 + ", " + COL_HEPATITIS_3 + ", " + COL_PENTAVALENTE_1 + ", " +
 			COL_PENTAVALENTE_2 + ", " + COL_PENTAVALENTE_3 + ", " + COL_PENTAVALENTE_4 + ", " +
 			COL_DPT_R + ", " + COL_SRP_1 + ", " + COL_SRP_2 + ", " + COL_ROTAVIRUS_1 + ", " + COL_ROTAVIRUS_2 + ", " +

@@ -5,7 +5,6 @@ import android.support.v4.content.CursorLoader;
 
 import com.siigs.tes.datos.ProveedorContenido;
 import com.siigs.tes.datos.tablas.ControlVacuna;
-import com.siigs.tes.datos.tablas.PartoMultiple;
 import com.siigs.tes.datos.tablas.Persona;
 import com.siigs.tes.datos.tablas.PersonaTutor;
 import com.siigs.tes.datos.tablas.Tutor;
@@ -20,7 +19,7 @@ public class Censo {
 	public static final String MASCULINO = "M";
 	public static final String FEMENINO = "F";
 	
-	public static CursorLoader getCenso(Context context, String nombre, Integer anoNacimiento, String sexo, String ageb){
+	public static CursorLoader getCenso(Context context, String nombre, Integer anoNacimiento, String sexo, String ageb, Integer asuLocalidadDomicilio){
 		String selection = "1=1";
 		if(nombre != null)
 			selection += " AND (p."+Persona.NOMBRE + " LIKE '%"+nombre+"%' OR p."+Persona.APELLIDO_PATERNO
@@ -28,6 +27,8 @@ public class Censo {
 			+ "OR p."+Persona.NOMBRE+" || ' ' || p."+Persona.APELLIDO_PATERNO+" || ' ' || p."+Persona.APELLIDO_MATERNO+" LIKE '%"+nombre+"%')";
 		if(anoNacimiento != null)
 			selection += " AND '" + anoNacimiento + "'=" + "strftime('%Y', p."+Persona.FECHA_NACIMIENTO+")";
+		if(asuLocalidadDomicilio != null)
+			selection += " AND " + "p."+Persona.ID_ASU_LOCALIDAD_DOMICILIO + "='"+asuLocalidadDomicilio+"'";
 		if(sexo != null)
 			selection += " AND " + "p."+Persona.SEXO + "='"+sexo+"'";
 		if(ageb != null)
@@ -63,6 +64,9 @@ public class Censo {
 	public final static String APMAT_TUTOR = "apmat_tutor"; 
 	private final static String COL_APMAT_TUTOR = "t." + Tutor.APELLIDO_MATERNO + " " + APMAT_TUTOR;
 
+	public final static String ID_ASU_LOCALIDAD_DOMICILIO = Persona.ID_ASU_LOCALIDAD_DOMICILIO;
+	private final static String COL_ID_ASU_LOCALIDAD_DOMICILIO = "p." + Persona.ID_ASU_LOCALIDAD_DOMICILIO + " " + ID_ASU_LOCALIDAD_DOMICILIO;
+	
 	public final static String CALLE_DOMICILIO = Persona.CALLE_DOMICILIO;
 	private final static String COL_CALLE_DOMICILIO = "p." + Persona.CALLE_DOMICILIO + " " + CALLE_DOMICILIO;
 	
@@ -154,10 +158,10 @@ public class Censo {
 
 	//Columnas para la consulta del ContentProvider
 	public final static String[] COLUMNAS = new String[]{COL__ID_PACIENTE, COL_NOMBRE_PACIENTE, COL_APPAT_PACIENTE, 
-		COL_APMAT_PACIENTE, COL_NOMBRE_TUTOR, COL_APPAT_TUTOR, COL_APMAT_TUTOR, COL_CALLE_DOMICILIO, 
-		COL_NUMERO_DOMICILIO, COL_COLONIA_DOMICILIO, COL_REFERENCIA_DOMICILIO, COL_AGEB, COL_CURP, COL_FECHA_NACIMIENTO, 
-		COL_PARTO, COL_SEXO, COL_BCG, COL_HEPATITIS_1, COL_HEPATITIS_2, COL_HEPATITIS_3, COL_PENTAVALENTE_1, 
-		COL_PENTAVALENTE_2, COL_PENTAVALENTE_3,	COL_PENTAVALENTE_4, COL_DPT_R, COL_SRP_1, COL_SRP_2, 
+		COL_APMAT_PACIENTE, COL_NOMBRE_TUTOR, COL_APPAT_TUTOR, COL_APMAT_TUTOR, COL_ID_ASU_LOCALIDAD_DOMICILIO, 
+		COL_CALLE_DOMICILIO, COL_NUMERO_DOMICILIO, COL_COLONIA_DOMICILIO, COL_REFERENCIA_DOMICILIO, COL_AGEB, COL_CURP, 
+		COL_FECHA_NACIMIENTO, COL_PARTO, COL_SEXO, COL_BCG, COL_HEPATITIS_1, COL_HEPATITIS_2, COL_HEPATITIS_3, 
+		COL_PENTAVALENTE_1,	COL_PENTAVALENTE_2, COL_PENTAVALENTE_3,	COL_PENTAVALENTE_4, COL_DPT_R, COL_SRP_1, COL_SRP_2, 
 		COL_ROTAVIRUS_1, COL_ROTAVIRUS_2, COL_ROTAVIRUS_3, COL_NEUMOCOCO_1, COL_NEUMOCOCO_2, COL_NEUMOCOCO_3, 
 		COL_INFLUENZA_1, COL_INFLUENZA_2, COL_INFLUENZA_R};
 	

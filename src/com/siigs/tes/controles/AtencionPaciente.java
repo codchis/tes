@@ -124,6 +124,9 @@ public class AtencionPaciente extends Fragment {
 		((TextView)rootView.findViewById(R.id.txtAGEB)).setText(p.ageb==null?"":p.ageb);
 		((TextView)rootView.findViewById(R.id.txtSector)).setText(p.sector==null?"":p.sector);
 		((TextView)rootView.findViewById(R.id.txtManzana)).setText(p.manzana==null?"":p.manzana);
+		((TextView)rootView.findViewById(R.id.txtTamiz)).setText(
+				p.tamiz_neonatal==Persona.TAMIZ_NO ? R.string.tamiz_no : 
+					p.tamiz_neonatal == Persona.TAMIZ_SI ? R.string.tamiz_si : R.string.tamiz_ignora);
 		
 		String valor = getString(R.string.desconocido);
 		try{valor=ArbolSegmentacion.getDescripcion(getActivity(), p.id_asu_localidad_domicilio);}catch(Exception e){}

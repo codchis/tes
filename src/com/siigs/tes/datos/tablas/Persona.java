@@ -43,6 +43,7 @@ public class Persona {
 	public final static String ID_NACIONALIDAD = "id_nacionalidad";
 	public final static String ID_OPERADORA_CELULAR = "id_operadora_celular";
 	public final static String ID_PARTO_MULTIPLE = "id_parto_multiple";
+	public final static String TAMIZ_NEONATAL = "tamiz_neonatal";
 	
 	//Columnas de control interno
 	public final static String _ID = "_id"; //para adaptadores android
@@ -79,6 +80,7 @@ public class Persona {
 		ID_NACIONALIDAD + " INTEGER NOT NULL, "+
 		ID_OPERADORA_CELULAR + " INTEGER DEFAULT NULL, "+
 		ID_PARTO_MULTIPLE + " INTEGER DEFAULT 1, "+
+		TAMIZ_NEONATAL + " INTEGER DEFAULT 2, "+ //0 = No, 1 = Si, 2 = Se ignora
 		" UNIQUE (" + ID + ")" +
 		"); "; 
 		/*
@@ -88,6 +90,9 @@ public class Persona {
 			    REFERENCES `siigs`.`ece_tipo_sanguineo` (`id`)
 			    );
 			*/
+	public final static String INDEX_ASU_LOCALIDAD_DOMICILIO = 
+			"CREATE INDEX idx_"+NOMBRE_TABLA+"_"+ID_ASU_LOCALIDAD_DOMICILIO+" ON "+NOMBRE_TABLA+" ( "
+			+ID_ASU_LOCALIDAD_DOMICILIO + "); ";
 	
 	//POJO
 	public String id;
@@ -116,9 +121,14 @@ public class Persona {
 	public int id_nacionalidad;
 	public Integer id_operadora_celular;
 	public int id_parto_multiple;
+	public int tamiz_neonatal;
 	
 	public final static String SEXO_MASCULINO = "M";
 	public final static String SEXO_FEMENINO = "F";
+	
+	public final static int TAMIZ_NO = 0;
+	public final static int TAMIZ_SI = 1;
+	public final static int TAMIZ_IGNORA = 2;
 	
 	public String getNombreCompleto(){return nombre + " "+ apellido_paterno + " " + apellido_materno;}
 	

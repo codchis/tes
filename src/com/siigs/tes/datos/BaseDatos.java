@@ -3,6 +3,9 @@
  */
 package com.siigs.tes.datos;
 
+import java.io.File;
+
+import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 import com.siigs.tes.datos.tablas.AccionNutricional;
 import com.siigs.tes.datos.tablas.Afiliacion;
 import com.siigs.tes.datos.tablas.Alergia;
@@ -10,18 +13,22 @@ import com.siigs.tes.datos.tablas.AntiguaUM;
 import com.siigs.tes.datos.tablas.AntiguoDomicilio;
 import com.siigs.tes.datos.tablas.ArbolSegmentacion;
 import com.siigs.tes.datos.tablas.Bitacora;
+import com.siigs.tes.datos.tablas.CategoriaCie10;
 import com.siigs.tes.datos.tablas.Consulta;
 import com.siigs.tes.datos.tablas.ControlAccionNutricional;
 import com.siigs.tes.datos.tablas.ControlConsulta;
 import com.siigs.tes.datos.tablas.ControlEda;
 import com.siigs.tes.datos.tablas.ControlIra;
 import com.siigs.tes.datos.tablas.ControlNutricional;
+import com.siigs.tes.datos.tablas.ControlPerimetroCefalico;
 import com.siigs.tes.datos.tablas.ControlVacuna;
 import com.siigs.tes.datos.tablas.Eda;
 import com.siigs.tes.datos.tablas.ErrorSis;
 import com.siigs.tes.datos.tablas.EsquemaIncompleto;
 import com.siigs.tes.datos.tablas.EstadoVisita;
+import com.siigs.tes.datos.tablas.EstimulacionTemprana;
 import com.siigs.tes.datos.tablas.Grupo;
+import com.siigs.tes.datos.tablas.GrupoAtencion;
 import com.siigs.tes.datos.tablas.Ira;
 import com.siigs.tes.datos.tablas.Nacionalidad;
 import com.siigs.tes.datos.tablas.Notificacion;
@@ -35,6 +42,7 @@ import com.siigs.tes.datos.tablas.PersonaAlergia;
 import com.siigs.tes.datos.tablas.PersonaTutor;
 import com.siigs.tes.datos.tablas.RegistroCivil;
 import com.siigs.tes.datos.tablas.ReglaVacuna;
+import com.siigs.tes.datos.tablas.SalesRehidratacion;
 import com.siigs.tes.datos.tablas.TipoSanguineo;
 import com.siigs.tes.datos.tablas.Tratamiento;
 import com.siigs.tes.datos.tablas.Tutor;
@@ -43,6 +51,16 @@ import com.siigs.tes.datos.tablas.UsuarioInvitado;
 import com.siigs.tes.datos.tablas.Vacuna;
 import com.siigs.tes.datos.tablas.ViaVacuna;
 import com.siigs.tes.datos.tablas.Visita;
+import com.siigs.tes.datos.tablas.graficas.EstadoImc;
+import com.siigs.tes.datos.tablas.graficas.EstadoImcPorEdad;
+import com.siigs.tes.datos.tablas.graficas.EstadoNutricionAltura;
+import com.siigs.tes.datos.tablas.graficas.EstadoNutricionAlturaPorEdad;
+import com.siigs.tes.datos.tablas.graficas.EstadoNutricionPeso;
+import com.siigs.tes.datos.tablas.graficas.EstadoNutricionPesoPorAltura;
+import com.siigs.tes.datos.tablas.graficas.EstadoNutricionPesoPorEdad;
+import com.siigs.tes.datos.tablas.graficas.EstadoPerimetroCefalico;
+import com.siigs.tes.datos.tablas.graficas.EstadoPerimetroCefalicoPorEdad;
+import com.siigs.tes.datos.tablas.graficas.HemoglobinaAltitud;
 import com.siigs.tes.datos.vistas.EsquemasIncompletos;
 
 import android.content.Context;
@@ -54,8 +72,15 @@ import android.util.Log;
  * @author Axel
  * Clase que genera la base de datos de la aplicación y controla
  * acciones en cambios de versión.
+ * Esta versión implementa a la clase {@link SQLiteAssetHelper} en vez de la versión antigua 
+ * con la clase {@link SQLiteOpenHelper}. Este cambio es con el objetivo de incorporar un archivo con la base de datos
+ * precargada en el APK que {@link SQLiteAssetHelper} copia de forma transparente en el folder adecuado al usar
+ * la base de datos por primera vez.
+ * Los scripts para la creación de la base de datos siguen siendo válidos pues la base de datos precargada en la
+ * carpeta "assets" no contiene todas las tablas y los scripts aún son ejecutados para crear el resto de las tablas.
+ * Ver <b>https://github.com/jgilfelt/android-sqlite-asset-helper</b>
  */
-public class BaseDatos extends SQLiteOpenHelper {
+public class BaseDatos extends SQLiteAssetHelper {
 
 	private static final String TAG = "BaseDatos";
 	private static final int DB_VERSION = 1;
@@ -76,9 +101,14 @@ public class BaseDatos extends SQLiteOpenHelper {
 			RegistroCivil.CREATE_TABLE, TipoSanguineo.CREATE_TABLE, Tutor.CREATE_TABLE, 
 			Usuario.CREATE_TABLE, UsuarioInvitado.CREATE_TABLE, Vacuna.CREATE_TABLE, ReglaVacuna.CREATE_TABLE,
 			ViaVacuna.CREATE_TABLE, Tratamiento.CREATE_TABLE, EstadoVisita.CREATE_TABLE, Visita.CREATE_TABLE,
-			PartoMultiple.CREATE_TABLE,
+			PartoMultiple.CREATE_TABLE, EstadoNutricionPeso.CREATE_TABLE, EstadoNutricionPesoPorEdad.CREATE_TABLE,
+			EstadoNutricionPesoPorAltura.CREATE_TABLE, EstadoNutricionAltura.CREATE_TABLE, 
+			EstadoNutricionAlturaPorEdad.CREATE_TABLE, EstadoImc.CREATE_TABLE, EstadoImcPorEdad.CREATE_TABLE,
+			EstadoPerimetroCefalico.CREATE_TABLE, EstadoPerimetroCefalicoPorEdad.CREATE_TABLE,
+			HemoglobinaAltitud.CREATE_TABLE, SalesRehidratacion.CREATE_TABLE, EstimulacionTemprana.CREATE_TABLE,
+			GrupoAtencion.CREATE_TABLE, ControlPerimetroCefalico.CREATE_TABLE, CategoriaCie10.CREATE_TABLE,
 			//Indices
-			EsquemaIncompleto.INDEX,
+			EsquemaIncompleto.INDEX, Persona.INDEX_ASU_LOCALIDAD_DOMICILIO,
 			//Vistas
 			EsquemasIncompletos.CREAR_VISTA
 			};
@@ -89,16 +119,27 @@ public class BaseDatos extends SQLiteOpenHelper {
 			"VACUUM;"+
 			"PRAGMA INTEGRITY_CHECK;";
 	
-	
+	/**
+	 * Crea el objeto manejador de la base de datos y verifica si la base de datos <b>DB_NAME</b> está creada (con estílo assets).
+	 * Si el archivo de base de datos no ha sido copiado aún desde el assets, hace la llamada a <b>getWritableDatabase()</b> 
+	 * que se encarga en fondo de copiar la base de datos desde carpeta assets.
+	 * El resultado de la llamada a getWritableDatabase() es usado como parámetro para {@link onCrear()} quien 
+	 * ejecuta los scripts para crear el resto de las tablas.
+	 * @param context Contexto de la aplicación
+	 */
 	public BaseDatos(Context context){
 		super(context, DB_NAME, null, DB_VERSION);
+		
+		File archivoBaseDatos = context.getDatabasePath(DB_NAME);
+		if(!archivoBaseDatos.exists())
+			onCrear(getWritableDatabase());
 	}
 	
-	/* (non-Javadoc)
-	 * @see android.database.sqlite.SQLiteOpenHelper#onCreate(android.database.sqlite.SQLiteDatabase)
+	/**
+	 * Ejecuta los scripts para crear las tablas, vistas e índices de la base de datos.
+	 * @param db Base de datos de SQLite que debe tener permisos de escritura
 	 */
-	@Override
-	public void onCreate(SQLiteDatabase db) {
+	public void onCrear(SQLiteDatabase db) {
 		Log.d(TAG, "Inicia creación de tablas");
 		for(String script : BaseDatos.SCRIPTS){
 			Log.d(TAG, script);
@@ -127,13 +168,14 @@ public class BaseDatos extends SQLiteOpenHelper {
 				+ oldVersion + "]->[" + newVersion + "]");
 		        db.execSQL(BaseDatos.DB_SCHEMA_DROP);
 		        
-		this.onCreate(db);
+		this.onCrear(db);
 	}
 	
 	
-	@Override
+	/* No soportado en SQLiteAssetHelper
+	 * @Override
 	public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		super.onDowngrade(db, oldVersion, newVersion);
-	}
-
-}
+	}*/	
+	
+}//fin BaseDatos

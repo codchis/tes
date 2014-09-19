@@ -1,9 +1,13 @@
 package com.siigs.tes.datos.tablas;
 
+import java.util.List;
+
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
 import com.google.gson.annotations.SerializedName;
+import com.siigs.tes.datos.DatosUtil;
 import com.siigs.tes.datos.ProveedorContenido;
 
 /**
@@ -46,4 +50,21 @@ public class Permiso {
 		return context.getContentResolver().query(ProveedorContenido.PERMISO_CONTENT_URI, 
 				null, ID_GRUPO + "="+idGrupo, null, null);
 	}
+	
+	public static List<Permiso> getTodos(Context context){
+		Cursor cur = context.getContentResolver().query(ProveedorContenido.PERMISO_CONTENT_URI, 
+				null, null, null, null);
+		List<Permiso> salida = DatosUtil.ObjetosDesdeCursor(cur, Permiso.class);
+		cur.close();
+		return salida;
+	}
+	
+	public static void AgregarRegistros(Context context, List<Permiso> permisos) throws Exception{
+		ContentValues[] registros = new ContentValues[permisos.size()];
+		int i=0;
+		for(Permiso permiso : permisos)
+			registros[i++]= DatosUtil.ContentValuesDesdeObjeto(permiso);
+		context.getContentResolver().bulkInsert(ProveedorContenido.PERMISO_CONTENT_URI,	registros);
+	}
+	
 }

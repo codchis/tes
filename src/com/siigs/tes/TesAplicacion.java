@@ -24,9 +24,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -51,6 +55,7 @@ public class TesAplicacion extends Application {
 	private final static String REINTENTOS_CONEXION = "reintentos_conexion";
 	private final static String TIEMPO_ESPERA_REINTENTO = "tiempo_espera_reintento";
 	private final static String TIPO_CENSO = "tipo_censo";
+	private final static String NIVEL_ATENCION = "nivel_atencion";
 	private final static String UNIDAD_MEDICA = "unidad_medica";
 	private final static String FILTRO_DIAS_ANTIGUEDAD_IRAS = "filtro_dias_antiguedad_iras";
 	private final static String FILTRO_DIAS_ANTIGUEDAD_EDAS = "filtro_dias_antiguedad_edas";
@@ -64,6 +69,14 @@ public class TesAplicacion extends Application {
 	private Sesion sesion = null; //La sesión de uso
 	
 	private ProgressDialog pdProgreso = null; //Contenedor para diálogos de progreso
+	
+	//Manejo de GPS
+	private LocationManager miLocationManager = null;
+	private Location ubicacionGPS = null;
+	private LocationListener listenerGPS = null;
+	private final static long MILISEGUNDOS_ACTUALIZAR_GPS = 300000;
+	private final static float METROS_ACTUALIZAR_GPS = 10;
+	
 	
 	@Override
 	public void onCreate() {
@@ -87,10 +100,60 @@ public class TesAplicacion extends Application {
 			setRequiereActualizarApk(false); //para dejar de pedir actualizar
 		}
 		setVersionUltimoApkConocido(getVersionApk());
+		
+		//Servicio de localización GPS
+		miLocationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+		listenerGPS = new LocationListener() {
+			@Override public void onStatusChanged(String provider, int status, Bundle extras) {}
+			@Override public void onProviderEnabled(String provider) {}
+			@Override public void onProviderDisabled(String provider) {}
+			@Override public void onLocationChanged(Location location) {
+				ubicacionGPS = location;
+				Log.d(TAG, "Se ha actualizado la ubicación GPS: "+ location);
+			}
+		};
+		IniciarLocalizacionGPS();
+	}
+	
+	
+	/**
+	 * Inicia la localización de ubicación GPS. La ubicación se puede obtener llamando a {@link getLocalizacionGPS}
+	 * Debido a que este servicio gasta la batería es importante usarlo solo cuando sea necesario y 
+	 * llamar la función {@link DetenerLocalizacionGPS} cuando ya no sea necesario obtener la ubicación GPS.
+	 * @return <i>true</i> si el servicio de localización fue iniciado correctamente. <i>false</i> caso contrario
+	 */
+	public boolean IniciarLocalizacionGPS(){
+		try{
+			miLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 
+					MILISEGUNDOS_ACTUALIZAR_GPS, METROS_ACTUALIZAR_GPS, listenerGPS);
+			Log.d(TAG, "Se ha iniciado la localización GPS");
+			return true;
+		}catch(Exception e){
+			Log.d(TAG, "No fue posible iniciar la localización GPS:"+e);
+			return false;
+		}
+	}
+	
+	public void DetenerLocalizacionGPS(){
+		miLocationManager.removeUpdates(listenerGPS);
+		Log.d(TAG, "Se ha detenido la localización GPS");
 	}
 	
 	/**
+	 * Regresa la ubicación GPS más reciente desde la última vez que se llamó a {@link IniciarLocalizacionGPS}
+	 * Debido a que {@link IniciarLocalizacionGPS} puede tomar tiempo para conseguir una ubicación, es posible que 
+	 * la ubicación no sea exacta ó que el valor regresado sea <i>null</i>. Por esa razón es recomendable llamar 
+	 * a {@link IniciarLocalizacionGPS} con suficiente tiempo antes de llamar esta función.
+	 * También es importante notar que si el valor regresado por {@link IniciarLocalizacionGPS} es <i>false</i> entonces
+	 * el valor regresado en esta función puede ser <i>null</i> ó una ubicación no exacta.
+	 * @return Ubicación GPS más reciente o <i>null</i> si no se ha podido conseguir.
+	 */
+	public Location getLocalizacionGPS(){return ubicacionGPS;}
+	
+	
+	/**
 	 * Indica si hay conectividad en Wifi, aunque no garantiza que haya internet.
+	 * @return true cuando hay conectividad y false caso contrario
 	 */
 	public boolean hayInternet() {
 	    ConnectivityManager cm =
@@ -106,6 +169,7 @@ public class TesAplicacion extends Application {
 	
 	/**
 	 * Preferencia disponible también para el usuario administrador
+	 * @return Url de la sincronización
 	 */
 	public String getUrlSincronizacion(){
 		return preferencias.getString(URL_SINCRONIZACION, "http://www.sm2015.com.mx/tes/servicios/synchronization");
@@ -145,6 +209,16 @@ public class TesAplicacion extends Application {
 		editor.putInt(TIPO_CENSO, tipo);
 		editor.apply();
 		Log.d(TAG, "Cambiado tipo censo a:"+tipo);
+	}
+	
+	public int getNivelAtencion(){
+		return preferencias.getInt(NIVEL_ATENCION, 3);
+	}
+	public void setNivelAtencion(int nivel){
+		SharedPreferences.Editor editor = preferencias.edit();
+		editor.putInt(NIVEL_ATENCION, nivel);
+		editor.apply();
+		Log.d(TAG, "Cambiado nivel atención:"+nivel);
 	}
 	
 	public int getUnidadMedica(){
@@ -222,7 +296,7 @@ public class TesAplicacion extends Application {
 	 * Si hubiera actualización del APK, este valor ayuda a definir si el APK ha cambiado y por lo tanto
 	 * realizar las acciones necesarias.
 	 * Esta función puede usarse para reemplazar el método de definición getEsInstalacionNueva()
-	 * @return
+	 * @return Versión del APK actual
 	 */
 	public String getVersionUltimoApkConocido(){
 		return preferencias.getString(ULTIMO_APK_CONOCIDO, "0");
@@ -347,10 +421,12 @@ public class TesAplicacion extends Application {
 	}
 	/**
 	 * Indica si existe una sesión de usuario
+	 * @return true cuando hay sesión activa y false caso contrario
 	 */
 	public boolean haySesion(){return this.sesion != null;}
 	/**
 	 * Devuelve la sesión de usuario actual
+	 * @return Objeto {@link Sesion} actual o null
 	 */
 	public Sesion getSesion(){return this.sesion;}
 	

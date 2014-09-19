@@ -14,8 +14,9 @@ import com.siigs.tes.datos.ProveedorContenido;
 /**
  * Esquema de tabla de base de datos
  * @author Axel
- *
+ * @deprecated Funcionalidad descartada
  */
+@Deprecated
 public class Eda {
 
 	public final static String NOMBRE_TABLA = "cns_eda"; //nombre en BD

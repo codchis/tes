@@ -38,6 +38,7 @@ public class ControlAccionNutricional extends Fragment {
 	private Sesion sesion;
 	
 	private ListaSimple lsAccionNutricional = null;
+	private ListaSimple lsSales = null;
 		
 	/**
 	 * Mandatory empty constructor for the fragment manager to instantiate the
@@ -76,15 +77,27 @@ public class ControlAccionNutricional extends Fragment {
 		if(sesion.tienePermiso(ContenidoControles.ICA_CONTROLACCIONNUTRICIONAL_INSERTAR))
 			agregarAccion.setVisibility(View.VISIBLE); else agregarAccion.setVisibility(View.GONE);
 		
+		LinearLayout verSales = (LinearLayout)rootView.findViewById(R.id.accion_ver_sales);
+		if(sesion.tienePermiso(ContenidoControles.ICA_CONTROLACCIONNUTRICIONAL_SRO_LISTAR))
+			verSales.setVisibility(View.VISIBLE); else verSales.setVisibility(View.GONE);
+		
+		LinearLayout agregarSales = (LinearLayout)rootView.findViewById(R.id.accion_agregar_sales);
+		if(sesion.tienePermiso(ContenidoControles.ICA_CONTROLACCIONNUTRICIONAL_SRO_INSERTAR))
+			agregarSales.setVisibility(View.VISIBLE); else agregarSales.setVisibility(View.GONE);
 		
 		WidgetUtil.setBarraTitulo(rootView, R.id.barra_titulo_ver_acciones, "Ver Acciones Nutricionales", 
 				R.string.ayuda_ver_acciones_nutricionales, getFragmentManager());
+		
+		WidgetUtil.setBarraTitulo(rootView, R.id.barra_titulo_ver_sales, "Ver Sales de Rehidratación Oral", 
+				R.string.ayuda_ver_sales, getFragmentManager());
 
 		
 		//VER CONTROL
 		lsAccionNutricional = (ListaSimple)rootView.findViewById(R.id.lsAccionNutricional); 
 		GenerarAcciones();
 		
+		lsSales = (ListaSimple)rootView.findViewById(R.id.lsSales);
+		GenerarSales();
 		
 		//AGREGAR CONTROL
 		WidgetUtil.setBarraTitulo(rootView, R.id.barra_titulo_agregar_accion, R.string.agregar_accion, 
@@ -106,8 +119,29 @@ public class ControlAccionNutricional extends Fragment {
 			}
 		});
 		
+		//AGREGAR SALES
+		WidgetUtil.setBarraTitulo(rootView, R.id.barra_titulo_agregar_sales, R.string.agregar_sales, 
+				R.string.ayuda_boton_agregar_sales, getFragmentManager());
+				
+		Button btnAgregarSales = (Button)rootView.findViewById(R.id.btnAgregarSales);
+		btnAgregarSales.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				//Diálogo de nueva acción
+				ControlSalesRehidratacionNuevo dialogo=new ControlSalesRehidratacionNuevo();
+				Bundle args = new Bundle();
+				dialogo.setArguments(args);
+				dialogo.setTargetFragment(ControlAccionNutricional.this, ControlSalesRehidratacionNuevo.REQUEST_CODE);
+				dialogo.show(ControlAccionNutricional.this.getFragmentManager(),
+						//.beginTransaction().setCustomAnimations(android.R.animator.fade_out, android.R.animator.fade_in), 
+						ControlSalesRehidratacionNuevo.TAG);
+				//Este diálogo avisará su fin en onActivityResult() de llamador
+			}
+		});
+		
 		return rootView;
 	}
+	
 	
 	private void GenerarAcciones(){
 		AdaptadorArrayMultiTextView<com.siigs.tes.datos.tablas.ControlAccionNutricional> adaptador = 
@@ -157,6 +191,55 @@ public class ControlAccionNutricional extends Fragment {
 		}
 	};
 	
+	
+	private void GenerarSales(){
+		AdaptadorArrayMultiTextView<com.siigs.tes.datos.tablas.SalesRehidratacion> adaptador = 
+				new AdaptadorArrayMultiTextView<com.siigs.tes.datos.tablas.SalesRehidratacion>(
+						
+				getActivity(), R.layout.fila_comun_para_ira_eda_accion_consulta,
+				sesion.getDatosPacienteActual().salesRehidratacion, 
+				new String[]{com.siigs.tes.datos.tablas.SalesRehidratacion.FECHA, 
+						com.siigs.tes.datos.tablas.SalesRehidratacion.ID_ASU_UM, 
+						com.siigs.tes.datos.tablas.SalesRehidratacion.CANTIDAD},
+				new int[]{R.id.txtFecha, R.id.txtUM, R.id.txtDetalle});
+		adaptador.setViewBinder(binderFilaSales);
+		lsSales.setAdaptador(adaptador);
+	}
+	
+	private ObjectViewBinder<com.siigs.tes.datos.tablas.SalesRehidratacion> binderFilaSales = 
+			new ObjectViewBinder<com.siigs.tes.datos.tablas.SalesRehidratacion>(){
+		@Override
+		public boolean setViewValue(View viewDestino, String metodoInvocarDestino, 
+				com.siigs.tes.datos.tablas.SalesRehidratacion origen,
+				String atributoOrigen, Object valor, int posicion) {
+			
+			TextView destino = (TextView)viewDestino;
+			if(atributoOrigen.equals(com.siigs.tes.datos.tablas.SalesRehidratacion.FECHA)){
+				destino.setText(DatosUtil.fechaHoraCorta(valor.toString()));
+				//Se pone color aquí pero pudo ser en cualquier columna
+				int fondo = 0;
+				if(posicion % 2 == 0)
+					fondo = R.drawable.selector_fila_tabla;
+				else fondo = R.drawable.selector_fila_tabla_alterno;
+					((LinearLayout)viewDestino.getParent()).setBackgroundResource(fondo);
+				return true;
+			}else if(atributoOrigen.equals(com.siigs.tes.datos.tablas.SalesRehidratacion.ID_ASU_UM)){
+				destino.setText(ArbolSegmentacion.getDescripcion(getActivity(), 
+						Integer.parseInt(valor.toString())));
+				return true;
+			}else if(atributoOrigen.equals(com.siigs.tes.datos.tablas.SalesRehidratacion.CANTIDAD)){
+				//destino.setText(valor.toString());
+				View v = destino.getRootView().findViewById(R.id.txtClave);
+				if(v!=null)v.setVisibility(View.GONE); //No se maneja clave en sales
+				v = destino.getRootView().findViewById(R.id.txtTratamiento);
+				if(v!=null)v.setVisibility(View.GONE); //... tampoco tratamiento
+				return false;
+			}
+			return false;
+		}
+	};
+	
+	
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
@@ -165,6 +248,9 @@ public class ControlAccionNutricional extends Fragment {
 			//if(resultCode==ControlAccionNutricionalNuevo.RESULT_OK){
 				GenerarAcciones();
 			//}
+			break;
+		case ControlSalesRehidratacionNuevo.REQUEST_CODE:
+			GenerarSales();
 			break;
 		}
 	}

@@ -1,154 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingLeft="@dimen/padding_izquierda_agregar_control"
-    android:orientation="vertical" >
-
+    android:layout_height="match_parent" >
     
-    <include
-        android:id="@+id/barra_titulo_vacuna"
-        layout="@layout/barra_titulo" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:text="Paciente" />
-
-    	<TextView 
-            android:id="@+id/txtDatosBasicos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="[DATOS BÁSICOS]"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:text="Vacuna" />
-
-        <Spinner
-            android:id="@+id/spVacunas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@android:layout/simple_spinner_dropdown_item" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:text="Vía" />
-
-        <TextView
-            android:id="@+id/txtViaVacuna"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="[via vacuna]"/>
-        
-        <TextView
-            android:layout_width="70dp"
-            android:layout_marginLeft="50dp"
-            android:layout_height="wrap_content"
-            android:text="Dósis (ml)" />
-
-        <TextView
-            android:id="@+id/txtDosis"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="[dosis]"/>
-        
-    </LinearLayout>
     
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:paddingLeft="@dimen/padding_izquierda_agregar_control"
+	    android:orientation="vertical" >
+	
+	    
+	    <include
+	        android:id="@+id/barra_titulo_vacuna"
+	        layout="@layout/barra_titulo" />
+	
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	
+	        <TextView
+	            android:layout_width="70dp"
+	            android:layout_height="wrap_content"
+	            android:text="Paciente" />
+	
+	    	<TextView 
+	            android:id="@+id/txtDatosBasicos"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:text="[DATOS BÁSICOS]"/>
+	    </LinearLayout>
+	
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	
+	        <TextView
+	            android:layout_width="70dp"
+	            android:layout_height="wrap_content"
+	            android:text="Vacuna" />
+	
+	        <Spinner
+	            android:id="@+id/spVacunas"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            tools:listitem="@android:layout/simple_spinner_dropdown_item" />
+	    </LinearLayout>
+	
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	
+	        <TextView
+	            android:layout_width="70dp"
+	            android:layout_height="wrap_content"
+	            android:text="Vía" />
+	
+	        <TextView
+	            android:id="@+id/txtViaVacuna"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textStyle="bold"
+	            android:text="[via vacuna]"/>
+	        
+	        <TextView
+	            android:layout_width="70dp"
+	            android:layout_marginLeft="50dp"
+	            android:layout_height="wrap_content"
+	            android:text="Dósis (ml)" />
+	
+	        <TextView
+	            android:id="@+id/txtDosis"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textStyle="bold"
+	            android:text="[dosis]"/>
+	        
+	    </LinearLayout>
+	    
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	
+	        <TextView
+	            android:layout_width="70dp"
+	            android:layout_height="wrap_content"
+	            android:text="Región" />
+	
+	        <TextView
+	            android:id="@+id/txtRegion"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:textStyle="bold"
+	            android:text="[región]"/>
+	    </LinearLayout>
+	    
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	
+	        <TextView
+	            android:layout_width="90dp"
+	            android:layout_height="wrap_content"
+	            android:text="Observación" />
+	
+	        <TextView
+	            android:id="@+id/txtObservacion"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:textStyle="bold"
+	            android:textColor="@color/link_texto"
+	            android:clickable="true"
+	            android:text="[observación]"/>
+	    </LinearLayout>
+	    
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	
+	        <TextView
+	            android:layout_width="90dp"
+	            android:layout_height="wrap_content"
+	            android:text="Lote" />
+	
+	        <EditText
+	            android:id="@+id/txtLote"
+	            style="@style/APP_EditTextStyle"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:singleLine="true"
+	            android:maxLength="40"
+	            android:digits="@string/caracteres_permitidos" />
+	    </LinearLayout>
+	    
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	
+	        <TextView
+	            android:layout_width="90dp"
+	            android:layout_height="wrap_content"
+	            android:text="Temperatura" />
+	
+	        <EditText
+	            android:id="@+id/txtTemperatura"
+	            style="@style/APP_EditTextStyle"
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:singleLine="true"
+	            android:maxLength="4"
+	            android:inputType="numberDecimal" />
+	        
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:text="Grados" />
+	    </LinearLayout>
+	
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        style="@android:attr/buttonBarStyle" >
+	
+	        <Button 
+	            android:id="@+id/btnCancelar"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@android:string/cancel"
+	            style="@style/boton" />
+	        
+	        <Button 
+	            android:id="@+id/btnAgregar"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/agregar"
+	            android:layout_marginLeft="5dp"
+	            style="@style/boton" />
+	    </LinearLayout>
+	
+	</LinearLayout>
 
-        <TextView
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:text="Región" />
-
-        <TextView
-            android:id="@+id/txtRegion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="[región]"/>
-    </LinearLayout>
-    
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:text="Observación" />
-
-        <TextView
-            android:id="@+id/txtObservacion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@color/link_texto"
-            android:clickable="true"
-            android:text="[observación]"/>
-    </LinearLayout>
-    
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:text="Lote" />
-
-        <EditText
-            android:id="@+id/txtLote"
-            style="@style/APP_EditTextStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:maxLength="40"
-            android:digits="@string/caracteres_permitidos" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        style="@android:attr/buttonBarStyle" >
-
-        <Button 
-            android:id="@+id/btnCancelar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@android:string/cancel"
-            style="@style/boton" />
-        
-        <Button 
-            android:id="@+id/btnAgregar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/agregar"
-            android:layout_marginLeft="5dp"
-            style="@style/boton" />
-    </LinearLayout>
-
-</LinearLayout>
+		
+</ScrollView>

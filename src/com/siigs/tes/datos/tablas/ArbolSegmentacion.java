@@ -73,6 +73,14 @@ public class ArbolSegmentacion {
 		return salida;
 	}
 	
+	/**
+	 * Busca en el árbol de segmentación de acuerdo a los filtros especificados
+	 * @param context Contexto
+	 * @param like Cadena usada como criterio de búsqueda
+	 * @param grado El grado de segmentación por el cual se filtrarán los resultados
+	 * @param id_padre El nodo padre que deben tener todos los resultados filtrados
+	 * @return Cursor apuntando a los resultados existentes de acuerdo a la búsqueda
+	 */
 	public static Cursor buscar(Context context, String like, int grado, int id_padre){
 		String selection = GRADO_SEGMENTACION + "=? and "+ ID_PADRE + "=? and " + 
 				DESCRIPCION + " LIKE '%"+like+"%'";

@@ -250,7 +250,7 @@
                     style="@style/atributo"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
-                    android:text="Localidad Reg. Civil" />
+                    android:text="Localidad Nacimiento" />
 
                 <EditText
                     android:id="@+id/txtLocalidadRegistroCivil"
@@ -290,6 +290,24 @@
 
                 <EditText
                     android:id="@+id/txtTutor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="text" />
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    style="@style/atributo"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="Tamiz neonatal" />
+
+                <EditText
+                    android:id="@+id/txtTamiz"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:enabled="false"

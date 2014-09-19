@@ -17,6 +17,8 @@ import com.siigs.tes.datos.ProveedorContenido;
  *
  */
 public class ControlNutricional {
+	
+	public static double HEMOGLOBINA_NULL = 0.0; //Valor para el cual hemoglobina será considerado vacío
 
 	public final static String NOMBRE_TABLA = "cns_control_nutricional"; //nombre en BD
 	
@@ -25,8 +27,9 @@ public class ControlNutricional {
 	public final static String FECHA = "fecha";
 	public final static String ID_ASU_UM = "id_asu_um";
 	public final static String PESO = "peso";
-	public final static String ALTURA = "altura";
-	public final static String TALLA = "talla";
+	public final static String ALTURA = "altura"; //estatura
+	public final static String TALLA = "talla"; //no usado (cintura)
+	public final static String HEMOGLOBINA = "hemoglobina";
 	public final static String ID_INVITADO = "id_invitado";
 	
 	//Columnas de control interno
@@ -44,6 +47,7 @@ public class ControlNutricional {
 		PESO + " NUMERIC NOT NULL, "+
 		ALTURA + " INTEGER NOT NULL, "+
 		TALLA + " INTEGER NOT NULL, "+
+		HEMOGLOBINA + " NUMERIC NOT NULL, "+
 		ID_INVITADO + " INTEGER DEFAULT NULL, "+
 		"UNIQUE (" + ID_PERSONA + "," + FECHA + ")" +
 		"); ";
@@ -55,6 +59,7 @@ public class ControlNutricional {
 	public double peso;
 	public int altura;
 	public int talla;
+	public double hemoglobina;
 	public transient Integer id_invitado; //transient pues no se envía en JSON
 
 	@Override

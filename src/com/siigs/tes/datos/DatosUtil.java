@@ -272,8 +272,8 @@ public class DatosUtil {
 	
 	/**
 	 * Indica si fecha1 es menor que fecha2
-	 * @param fecha1
-	 * @param feccha2
+	 * @param fecha1 Fecha en formato yyyy-MM-dd HH:mm:ss
+	 * @param feccha2 Fecha en formato yyyy-MM-dd HH:mm:ss
 	 * @return true si fecha1 es menor a fecha2 y false en caso contrario 
 	 */
 	public static boolean esFechaHoraMenor(String fecha1, String feccha2){

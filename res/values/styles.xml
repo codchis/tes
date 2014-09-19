@@ -26,7 +26,7 @@
     <color name="boton_menu_activado">#b1bfc2</color>
     
     <color name="nombre_usuario">#61ac1e</color>
-    <color name="grafica_linea_paciente">#005fae</color>
+    <color name="grafica_linea_paciente">#ffa500</color><!-- #005fae -->
     <color name="vacuna_aplicable">#61ac1e</color>
     <color name="vacuna_rosa">#ff0085</color>
     <color name="vacuna_rojo">#c7232a</color><!-- e7232a -->

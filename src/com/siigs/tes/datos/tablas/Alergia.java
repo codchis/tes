@@ -62,7 +62,7 @@ public class Alergia {
 	 * Devuelve todas las alergias que Están ó NO Están en alergiasDePersona, según el valor
 	 * de enAlergiasDePersona
 	 * @param context
-	 * @param alergiasDePersona
+	 * @param alergiasDePersona Lista de alergias a comparar
 	 * @param enAlergiasDePersona true, devuelve alergias que están en <b>alergiasDePersona</b> false, lo contrario.
 	 */
 	public static List<Alergia> getAlergiasConLista(Context context, List<PersonaAlergia> alergiasDePersona, boolean enAlergiasDePersona){

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.example.chartlibrary.Line;
 import com.example.chartlibrary.LinePoint;
+import com.siigs.tes.datos.tablas.graficas.EstadoNutricionPesoPorEdad;
 
 import android.graphics.Color;
 
@@ -13,8 +14,9 @@ import android.graphics.Color;
  * dinámica como por ejemplo el catálogo de una base de datos.
  * 
  * @author Axel
- *
+ * @deprecated Dada de baja. Use {@link EstadoNutricionPesoPorEdad#getPorEstado(android.content.Context, int, String)}
  */
+@Deprecated
 public final class NivelNutricion{
 	//Sexos disponibles
 	public final static int MASCULINO=0;

@@ -17,6 +17,8 @@
     <string name="cancelar">Cancelar</string>
     <string name="ayuda">Ayuda</string>
     <string name="agregar">Agregar</string>
+    <string name="atras">Atrás</string>
+    <string name="siguiente">Siguiente</string>
     <string name="usuario">Usuario</string>
     <string name="invitado">Invitado</string>
     <string name="sin_resultados">Sin resultados</string>
@@ -24,17 +26,22 @@
     <string name="descripcion">Descripción</string>
     <string name="clave">Clave</string>
     <string name="detalle">Detalle</string>
-    <string name="tratamiento">Tratamiento</string>
+    <string name="cantidad">Cantidad</string>
+    <string name="tratamiento">Medicamento</string>
     <string name="datos_paciente">Datos del paciente</string>
     <string name="actualizar_domicilio">Actualizar Domicilio</string>
     <string name="actualizar_um">Asignar Paciente a esta Unidad Médica</string>
     <string name="agregar_alergia">Agregar Alergia o Riesgo</string>
+    <string name="confirmar">Confirmar</string>
     
     <string name="agregar_vacuna">Agregar Vacuna</string>
     <string name="agregar_nutricion">Agregar Control Nutricional</string>
+    <string name="agregar_perimetro">Agregar Control Perímetro Cefálico</string>
     <string name="agregar_eda">Agregar Control EDA</string>
     <string name="agregar_ira">Agregar Control IRA</string>
     <string name="agregar_accion">Agregar Accion Nutricional</string>
+    <string name="agregar_sales">Registrar entrega de SRO</string>
+    <string name="agregar_estimulacion">Agregar Estimulación Temprana</string>
     <string name="agregar_consulta">Agregar Control Consulta</string>
     <string name="registrar_visita">Registrar visita</string>
     
@@ -47,7 +54,7 @@
     <string name="ano_nacimiento">Año nacido</string>
     <string name="domicilio">Domicilio</string>
     <string name="cp">CP</string>
-    <string name="localidad">Localidad</string>
+    <!-- <string name="localidad">Localidad</string>  -->
     <string name="ageb">AGEB</string>
     <string name="bcg">BCG</string>
     <string name="hepatitis_b">Hepatitis B</string>
@@ -105,6 +112,33 @@
         <item>@string/femenino</item>
     </string-array>
     
+    <string name="peso_x_edad">Peso por edad</string>
+    <string name="altura_x_edad">Altura por edad</string>
+    <string name="imc_x_edad">IMC por edad</string>
+    <string name="peso_x_altura">Peso por altura</string>
+    <string name="perimetro_x_edad">Perimetro cefálico</string>
+    <string name="concentracion_hemoglobina">Concentración hemoglobina</string>
+    <string-array name="opciones_tipo_grafica">
+        <item>@string/peso_x_edad</item>
+        <item>@string/altura_x_edad</item>
+        <item>@string/imc_x_edad</item>
+        <item>@string/peso_x_altura</item>
+        <item>@string/perimetro_x_edad</item>
+        <item>@string/concentracion_hemoglobina</item>
+    </string-array>
+    
+    <string name="peso_kg">Peso (Kg)</string>
+    <string name="edad_meses">Edad (meses)</string>
+    <string name="altura_cm">Altura (Cm)</string>
+    <string name="perimetro_cm">Perimetro (Cm)</string>
+    <string name="imc">IMC</string>
+    <string name="hemoglobina">Hemoglobina</string>
+    
+    <!-- TAMIZ -->
+    <string name="tamiz_no">No</string>
+    <string name="tamiz_si">Si</string>
+    <string name="tamiz_ignora">Se ignora</string>
+    
     <!-- SHARED PREFERENCES -->
     <string name="url_sincronizacion">Url Sincronización</string>
     <string name="url_sincronizacion_summary">Dirección del servidor usado para sincronizar</string>
@@ -124,11 +158,17 @@
     <string name="ayuda_actualizar_um">Para modificar la UM tratante del paciente a la UM que atiende esta tableta, de clic en el botón \'Asignar Paciente a esta Unidad Médica\'.</string>
     <string name="ayuda_configuracion">Desde esta pantalla puede modificar la dirección a la cual se realizan las sincronizaciones de esta tableta.  Puede ser motivo de error el modificar esta dirección si no se cuenta con el conocimiento requerido.  Una vez modificada la dirección, de click en el botón \'Actualizar\'.</string>
     <string name="ayuda_ver_acciones_nutricionales">La siguiente tabla muestra las Acciones Nutricionales que ha recibido el paciente, indicando la fecha de atención, UM que realizó el control y la acción emprendida.</string>
+    <string name="ayuda_ver_estimulaciones_tempranas">La siguiente tabla muestra las Estimulaciones Tempranas que ha recibido el paciente, indicando la fecha de atención, UM que realizó la estimulación y el estado de capacitación del tutor.</string>
+    <string name="ayuda_ver_sales">La siguiente tabla muestra las Sales de Rehidratación Oral que ha recibido el paciente, indicando la fecha de entrega, UM que realizó la entrega y la cantidad.</string>
     <string name="ayuda_boton_agregar_accion_nutricional">Si desea agregar una nueva Acción Nutricional al paciente, de clic en \'Agregar Acción Nutricional\'.</string>
+    <string name="ayuda_boton_agregar_estimulacion_temprana">Si desea agregar una nueva Estimulación Temprana al paciente, de clic en \'Agregar Estimulación Temprana\'.</string>
+    <string name="ayuda_boton_agregar_sales">Si desea agregar una nueva Entrega de SRO al paciente, de clic en \'Registrar entrega de SRO\'.</string>
     <string name="ayuda_agregar_accion_nutricional">Indique la Acción nutricional que desea agregar al usuario desde el listado \'Acciones Nutricionales\'.  Una vez seleccionada, presione el botón \'Agregar\'.</string>
+    <string name="ayuda_agregar_estimulacion_temprana">Indique si el tutor del paciente está actualmente capacitado en el tema de estimulación temprana.  Una indicado, presione el botón \'Agregar\'.</string>
+    <string name="ayuda_agregar_sales">Indique la cantidad de unidades de Sales de Rehidratación que desea entregar al usuario.  Finalmente presione el botón \'Agregar\'.</string>
     <string name="ayuda_ver_consultas">La siguiente tabla muestra las Consultas que ha recibido el paciente, indicando la fecha de atención, UM que realizó la consulta, la descripción de la afección por la cual recibió atención y el tratamiento recibido.</string>
     <string name="ayuda_boton_agregar_consulta">Si desea agregar una nueva Consulta al paciente, de clic en \'Agregar Control Consulta\'.</string>
-    <string name="ayuda_agregar_consulta">Indique la afección por la cual recibió atención el paciente desde el listado de \'Afecciones\'.  Indique el tratamiento aplicado, desde el listado de \'Tratamiento\'.  Una vez seleccionados ambos, presione el botón \'Agregar\'.</string>
+    <string name="ayuda_agregar_consulta">Indique la afección por la cual recibie atención el paciente desde el listado de \'Afecciones\'.\n\nPresione \'Siguiente\' y agregue los medicamentos recetados al paciente para curar la afección.\n\nLa casilla \'Primera vez\' permite escoger de una lista de consultas aplicadas anteriormente en caso de que usted esté continuando labor de diagnóstico o medicación de una consulta pasada.\n\nUna vez seleccionados los medicamentos presione el botón \'Agregar\'.</string>
     <string name="ayuda_ver_edas">La siguiente tabla muestra las Consultas que ha recibido el paciente por Enfermedades Diarreicas Agudas (EDAs), indicando la fecha de atención, UM que realizó la consulta, la descripción de la afección por la cual recibió atención y el tratamiento recibido.</string>
     <string name="ayuda_boton_agregar_eda">Si desea agregar un nuevo Control de EDAs, de click en \'Agregar Control EDA\'.</string>
     <string name="ayuda_agregar_eda">Indique la afección por la cual recibió atención el paciente desde el listado de \'Afecciones\'.  Indique el tratamiento aplicado, desde el listado de \'Tratamiento\'.  Una vez seleccionados ambos, presione el botón \'Agregar\'.</string>
@@ -136,8 +176,10 @@
     <string name="ayuda_boton_agregar_ira">Si desea agregar un nuevo Control de EDAs, de clic en \'Agregar Control IRA\'.</string>
     <string name="ayuda_agregar_ira">Indique la afección por la cual recibió atención el paciente desde el listado de \'Afecciones\'.  Indique el tratamiento aplicado, desde el listado de \'Tratamiento\'.  Una vez seleccionados ambos, presione el botón \'Agregar\'.</string>
     <string name="ayuda_ver_controles_nutricionales">El gráfico que aparece a continuación ubica el peso y talla del Paciente con referencia a los estándares de Peso y Talla Ideales, Desnutrición, Sobrepeso y Obesidad.  Para conocer los valores específicos de peso y edad, de clic en la algún punto de la línea que ilustra al Paciente (en color Azul).</string>
-    <string name="ayuda_boton_agregar_control_nutricional">Si desea agregar un nuevo Control de Nutricional, de clic en \'Agregar Control Nutricional\'.</string>
+    <string name="ayuda_boton_agregar_control_nutricional">Si desea agregar un nuevo Control de Nutrición, de clic en \'Agregar Control Nutricional\'.</string>
+    <string name="ayuda_boton_agregar_control_perimetro">Si desea agregar un nuevo Control de Perímetro Cefálico, de clic en \'Agregar Control Perímetro Cefálico\'.</string>
     <string name="ayuda_agregar_control_nutricional">Indique el Peso y la Talla del Paciente para su captura.  Una vez ingresados los datos, presione el botón \'Agregar\'.</string>
+    <string name="ayuda_agregar_control_perimetro">Indique el Perímetro Cefálico del Paciente para su captura.  Una vez ingresados los datos, presione el botón \'Agregar\'.</string>
 	<string name="ayuda_ver_vacunas">La gráfica que se muestra indica las vacunas que ha recibido el Paciente con una X.  En color rojo se muestra aquellas vacunas que están consideradas prioritarias y que requiere el Paciente de forma inmediata.  En color rosa se muestran aquellas vacunas que serán consideradas como esquema incompleto una vez superado el Periodo de Ventana del Esquemas Incompletos.\n\n Posteriormente se listan todas las Vacunas indicando Fecha, UM aplicante y la descripción de la Vacuna.\n\n Puede agregar una nueva vacuna dando clic sobre la casilla de la vacuna correspondiente desde la tabla de Vacunas o desde la sección inferior.</string>
     <string name="ayuda_boton_agregar_vacuna">Si desea agregar una nueva Vacuna al Paciente, de clic en \'Agregar Vacuna\'.</string>
     <string name="ayuda_agregar_vacuna">Indique la vacuna que está aplicando desde el listado \'Vacuna\'.  Capture el Número de Lote de la Vacuna aplicada.  Una vez ingresados los datos, presione el botón \'Agregar\'.</string>
@@ -146,6 +188,7 @@
     <string name="ayuda_sincronizacion">Esta sección es para sincronizar los contenidos de la Tableta con el Servidor Central.  La pantalla indica: La versión Actual de la TES Móvil instalada, la fecha de la última Sincronización realizada con éxito, el total de controles (Vacunas, Nutricionales, IRAs, EDAs, Consultas y Acciones) que no han sido reportados al Servidor Central, el nombre de la UM a la que sirve esta aplicación y el total de pacientes modificados (en su dirección, alergias o UM tratante) que no han sido reportados al Servidor Central.\n\n Antes de realizar este proceso, es necesario que se asegure de contar con una conexión a Internet.</string>
     <string name="ayuda_visitar">Indique la causa por la cual no se pudo aplicar la vacuna en esta visita de la lista de opciones.\n\nNOTA: Este proceso sacará al paciente del listado de esquema incompleto de ESTA tableta</string>
     <string name="ayuda_prioridades">Muestra el total de vacunas requeridas con los esquemas incompletos que se ven actualmente en pantalla</string>
+    <string name="ayuda_buscar_afeccion">Comience a escribir en el espacio de texto para generar afecciones que coincidan con el texto escrito</string>
     
     
 </resources>

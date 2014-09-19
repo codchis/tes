@@ -1,76 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:text="Declarar visita a domicilio"
-            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
-
-        <ImageButton
-            android:id="@+id/btnAyuda"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentRight="true"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/ayuda"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ayuda" />
-    </RelativeLayout>
-    <!-- Línea horizontal -->
-
-    <View
-        android:layout_width="400dp"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray" />
-
-    <TextView
-        android:id="@+id/txtDatosBasicos"
-        style="@style/datos_basicos_paciente"
-        android:text="[DATOS BÁSICOS]" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Motivo por el que no aplicó la o las vacunas:" />
-
-    <Spinner
-        android:id="@+id/spEstadoVisita"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@android:layout/simple_spinner_dropdown_item" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal" >
-
-        <Button
-            android:id="@+id/btnCancelar"
-            style="@style/boton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@android:string/cancel" />
-
-        <Button
-            android:id="@+id/btnRegistrarVisita"
-            style="@style/boton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="@string/registrar_visita" />
-    </LinearLayout>
-
-</LinearLayout>
+    android:layout_height="match_parent" >
+    
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical" >
+	
+	    <RelativeLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal" >
+	
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentLeft="true"
+	            android:text="Declarar visita a domicilio"
+	            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+	
+	        <ImageButton
+	            android:id="@+id/btnAyuda"
+	            android:layout_width="30dp"
+	            android:layout_height="30dp"
+	            android:layout_alignParentRight="true"
+	            android:background="@android:color/transparent"
+	            android:contentDescription="@string/ayuda"
+	            android:scaleType="centerCrop"
+	            android:src="@drawable/ayuda" />
+	    </RelativeLayout>
+	    <!-- Línea horizontal -->
+	
+	    <View
+	        android:layout_width="400dp"
+	        android:layout_height="1dp"
+	        android:background="@android:color/darker_gray" />
+	
+	    <TextView
+	        android:id="@+id/txtDatosBasicos"
+	        style="@style/datos_basicos_paciente"
+	        android:text="[DATOS BÁSICOS]" />
+	
+	    <TextView
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:text="Motivo por el que no aplicó la o las vacunas:" />
+	
+	    <Spinner
+	        android:id="@+id/spEstadoVisita"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        tools:listitem="@android:layout/simple_spinner_dropdown_item" />
+	
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+	        android:orientation="horizontal" >
+	
+	        <Button
+	            android:id="@+id/btnCancelar"
+	            style="@style/boton"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@android:string/cancel" />
+	
+	        <Button
+	            android:id="@+id/btnRegistrarVisita"
+	            style="@style/boton"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="5dp"
+	            android:text="@string/registrar_visita" />
+	    </LinearLayout>
+	
+	</LinearLayout>
+	
+	
+</ScrollView>

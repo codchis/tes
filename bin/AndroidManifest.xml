@@ -5,12 +5,15 @@
     android:versionName="TES-Desarrollo" >
 
     <uses-sdk
-        android:minSdkVersion="14"
+        android:minSdkVersion="16"
         android:targetSdkVersion="16" />
     
     <uses-permission android:name="android.permission.NFC" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/> <!-- Para ubicación GPS -->
     <!-- Para obtener mac address -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
@@ -28,9 +31,16 @@
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            
+            <!-- intent-filter creado para escuchar cuando el lector usb se conecta -->
+            <intent-filter android:label="@string/app_name">
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <!-- Usado por el intent-filter de arriba para saber cuales dispositivos escuchar -->
+            <meta-data android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" android:resource="@xml/filtro_dispositivos_usb" />
         </activity>
         <activity
             android:name="com.siigs.tes.ControlActivity"

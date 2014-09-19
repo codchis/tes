@@ -1,0 +1,31 @@
+
+
+Hecho:
+- crear sharedpreference nivelAtencion
+- recibir sharedpreference nivelAtencion por sincronización
+- decidir texto de atributo json de nivelAtencion al recibirlo en sincronización
+- Recibir ids de nuevos controlador_accion_permisos para features nuevos
+- Modificar clase Tratamiento con filtrado de nivel de atención texto (si sucediera, y en consecuencia todo lo que trata de nivel atención como shardprefs)
+- implementar envío de estimulacion_temprana, sales_rehidratacion en la sincronización
+- recodificar importación de datos de gráficas
+- Actualizar sesion.datospaciente con perimetrocefalico
+- Visualizar sección de agregar control nutricional ó perímetro cefálico según la opción seleccionada
+- Incorporar hemoglobina en registro control nutricional
+- Dejar funcional registro de perímetro cefálico
+- Actualizar Sesion.DatosPaciente cuando haya sincronización para recibir tabla de control_peri_cefa
+- Probar lectura de controles perímetro cefálico en control nutricional
+- UI control nutricional redefinido
+- recodificar generación de gráficas con nuevo UI y datos de gráficas
+- Modificar Sesion.DatosPaciente con espacio para sales
+- UI sales_rehidratacion abajo de control_accion_nutricional con permisos
+- codificación sales_rehidratacion
+- UI estimulación temprana
+- codificación estimulación temprana
+- Agregar tipo de afecciones al sistema de consultas
+- Modificar CONTROL CONSULTA para permitir multiples tratamientos
+- Implementar backup en grupos como fue en permisos
+- Actualizar ManejadorNfc perimetroCefalico/sales/estimulaciones/consultas con lectura, escritura, pendientes
+- Mejorar UI de consulta con gerardo
+- Actualizar consultas con teclado predictivo
+- Implementar uso de GPS
+- Agregar latitud/longitud/temperatura en control vacuna en base de datos, UI de temperatura, guardado del control

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical" >
+	
+	    <RelativeLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal" >
+	
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentLeft="true"
+	            android:text="Buscar afección"
+	            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+	
+	        <ImageButton
+	            android:id="@+id/btnAyuda"
+	            android:layout_width="30dp"
+	            android:layout_height="30dp"
+	            android:layout_alignParentRight="true"
+	            android:background="@android:color/transparent"
+	            android:contentDescription="@string/ayuda"
+	            android:scaleType="centerCrop"
+	            android:src="@drawable/ayuda" />
+	    </RelativeLayout>
+	    <!-- Línea horizontal -->
+	
+	    <View
+	        android:layout_width="400dp"
+	        android:layout_height="1dp"
+	        android:background="@android:color/darker_gray" />
+	
+	    <AutoCompleteTextView
+	        android:id="@+id/acAfeccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:completionThreshold="1"
+            android:digits="@string/caracteres_permitidos"
+            android:ems="10"
+            android:hint="comenzar a escribir aquí"
+            android:lines="3" >
+        </AutoCompleteTextView>
+	    
+	
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_horizontal"
+	        android:orientation="horizontal" >
+	
+	        <Button
+	            android:id="@+id/btnCancelar"
+	            style="@style/boton"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@android:string/cancel" />
+	
+	        <Button
+	            android:id="@+id/btnConfirmar"
+	            style="@style/boton"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="5dp"
+	            android:text="@string/confirmar" />
+	    </LinearLayout>
+	
+	</LinearLayout>
+	
+	
+</ScrollView>

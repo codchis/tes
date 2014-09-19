@@ -28,6 +28,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Paint;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
@@ -170,6 +171,7 @@ public class ControlVacunasNuevo extends DialogFragment {
 		});
 		
 		final EditText txtLote = (EditText)vista.findViewById(R.id.txtLote);
+		final EditText txtTemperatura = (EditText)vista.findViewById(R.id.txtTemperatura);
 		
 		//Agregar
 		Button btnAgregar = (Button) vista.findViewById(R.id.btnAgregar);
@@ -197,6 +199,16 @@ public class ControlVacunasNuevo extends DialogFragment {
 						vacuna.fecha = DatosUtil.getAhora();
 						vacuna.codigo_barras = txtLote.getText().toString().trim().equals("") ? 
 								null : txtLote.getText().toString().trim();
+						//Temperatura
+						Double temperatura = null;
+						try{temperatura = Double.parseDouble(txtTemperatura.getText()+"");}catch(Exception e){}
+						vacuna.temperatura = temperatura+"";
+						//Ubicación
+						Location loc = aplicacion.getLocalizacionGPS();
+						if(loc != null){
+							vacuna.latitud = loc.getLatitude()+"";
+							vacuna.longitud = loc.getLongitude()+"";
+						}
 						sesion.getDatosPacienteActual().vacunas.add(vacuna);
 						//En bd
 						int ICA = ContenidoControles.ICA_CONTROLVACUNA_INSERTAR;

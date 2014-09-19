@@ -26,6 +26,9 @@ public class ControlVacuna {
 	public final static String FECHA = "fecha";
 	public final static String ID_ASU_UM = "id_asu_um";
 	public final static String CODIGO_BARRAS = "codigo_barras";
+	public final static String TEMPERATURA = "temperatura";
+	public final static String LATITUD = "latitud";
+	public final static String LONGITUD = "longitud";
 	public final static String ID_INVITADO = "id_invitado";
 	
 	//Columnas de control interno
@@ -42,6 +45,9 @@ public class ControlVacuna {
 		FECHA + " INTEGER NOT NULL DEFAULT(strftime('%s','now')), "+
 		ID_ASU_UM + " INTEGER NOT NULL, "+
 		CODIGO_BARRAS + " TEXT DEFAULT NULL, "+
+		TEMPERATURA + " TEXT DEFAULT NULL, "+
+		LATITUD + " TEXT DEFAULT NULL, "+
+		LONGITUD + " TEXT DEFAULT NULL, "+
 		ID_INVITADO + " INTEGER DEFAULT NULL, "+
 		"UNIQUE (" + ID_PERSONA + "," + FECHA + "," + ID_VACUNA + ")" +
 		"); ";
@@ -52,6 +58,9 @@ public class ControlVacuna {
 	public String fecha;
 	public int id_asu_um;
 	public String codigo_barras;
+	public String temperatura = null;
+	public String latitud = null;
+	public String longitud = null;
 	public transient Integer id_invitado; //transient pues no se envía en JSON
 	
 	@Override

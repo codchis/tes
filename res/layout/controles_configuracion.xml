@@ -27,7 +27,7 @@
             android:inputType="textUri"/>
     </LinearLayout>
 
-    <LinearLayout android:orientation="horizontal"
+    <!-- <LinearLayout android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp">
@@ -63,7 +63,7 @@
             android:gravity="center"
             android:maxLength="3"
             android:inputType="number"/>
-    </LinearLayout>
+    </LinearLayout>-->
     
     <LinearLayout android:orientation="horizontal"
         android:layout_width="match_parent"

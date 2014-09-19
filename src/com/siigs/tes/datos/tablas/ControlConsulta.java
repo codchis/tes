@@ -22,7 +22,7 @@ public class ControlConsulta {
 	
 	//Columnas en la nube
 	public final static String ID_PERSONA = "id_persona";
-	public final static String ID_CONSULTA = "id_consulta";
+	public final static String CLAVE_CIE10 = "clave_cie10";
 	public final static String FECHA = "fecha";
 	public final static String ID_ASU_UM = "id_asu_um";
 	public final static String ID_TRATAMIENTO = "id_tratamiento";
@@ -38,27 +38,36 @@ public class ControlConsulta {
 		"CREATE TABLE IF NOT EXISTS " + NOMBRE_TABLA + " (" +
 		_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " + //para adaptadores android
 		ID_PERSONA + " TEXT NOT NULL, "+
-		ID_CONSULTA + " INTEGER NOT NULL, "+
+		CLAVE_CIE10 + " TEXT NOT NULL, "+
 		FECHA + " INTEGER NOT NULL DEFAULT(strftime('%s','now')), "+
 		ID_ASU_UM + " INTEGER NOT NULL, "+
-		ID_TRATAMIENTO + " INTEGER NOT NULL, "+
+		ID_TRATAMIENTO + " TEXT NOT NULL, "+ //lista de id's de cns_tratamiento separados por ","
 		GRUPO_FECHA_SECUENCIAL + " INTEGER NOT NULL DEFAULT(strftime('%s','now')), "+
-		"UNIQUE (" + ID_PERSONA + "," + FECHA + "," + ID_CONSULTA + ")" +
+		"UNIQUE (" + ID_PERSONA + "," + FECHA + "," + CLAVE_CIE10 + ")" +
 		"); ";
 	
 	//POJO
 	public String id_persona;
-	public int id_consulta;
+	public String clave_cie10;
 	public String fecha;
 	public int id_asu_um;
-	public int id_tratamiento;
+	public String id_tratamiento;
 	public String grupo_fecha_secuencial;
 
 	@Override
 	public boolean equals(Object o) {
 		if(!(o instanceof ControlConsulta))return false;
 		ControlConsulta c = (ControlConsulta)o;
-		return id_consulta == c.id_consulta && fecha.equals(c.fecha) && id_persona.equals(c.id_persona);
+		return clave_cie10.equals(c.clave_cie10) && fecha.equals(c.fecha) && id_persona.equals(c.id_persona);
+	}
+	
+	/**
+	 * Regresa una lista de objetos {@link Tratamiento} basado en valores del campo <b>id_tratamiento</b> de esta instancia
+	 * @param context
+	 * @return Lista de objetos {@link Tratamiento}
+	 */
+	public  List<Tratamiento> getTratamientos(Context context){
+		return Tratamiento.getTratamientosConId(context, id_tratamiento);
 	}
 	
 	public static Uri AgregarNuevoControlConsulta(Context context, ControlConsulta consulta) throws Exception{
@@ -89,4 +98,5 @@ public class ControlConsulta {
 		cur.close();
 		return salida;
 	}
+	
 }
